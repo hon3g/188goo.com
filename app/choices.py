@@ -100,10 +100,5 @@ states_readable = ('阿拉巴马',
                    '威斯康星',
                    '怀俄明')
 
-regions_db = ('NE', 'MW', 'S', 'W')
-
-regions_readable = ('东北部', '中西部', '南部', '西部')
-
 
 STATE_CHOICES = list(zip(states_db, states_readable))
-REGION_CHOICES = list(zip(regions_db, regions_readable))
