@@ -7,3 +7,4 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = ['city_id', 'category', 'user_id',
                   'title', 'content']
+        # lookup_field = 'slug'
