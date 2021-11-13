@@ -3,6 +3,7 @@ from .models import Post, State, City, User, Image
 
 
 class PostAdmin(admin.ModelAdmin):
+    ordering = ('-pub_date', )
     readonly_fields = ('slug', 'pub_date')
     list_filter = ('category', 'city_id')
 
