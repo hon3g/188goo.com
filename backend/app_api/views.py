@@ -1,5 +1,7 @@
 from rest_framework import generics
+from rest_framework.exceptions import ParseError
 from django_filters.rest_framework import DjangoFilterBackend
+
 from app.models import Post, State, City
 from .serializers import PostSerializer
 
@@ -26,7 +28,7 @@ class PostList(generics.ListAPIView):
                 return Post.objects.filter(city=city_id)
             # Not empty but doesn't match a city
             else:
-                return Post.objects.filter(city=-1)
+                raise ParseError(detail=None, code=400)
 
         if current_state is not None:
             # Empty argument
@@ -39,7 +41,7 @@ class PostList(generics.ListAPIView):
                 return Post.objects.filter(city__in=city_ids)
             # Not empty but doesn't match a state
             else:
-                return Post.objects.filter(city=-1)
+                raise ParseError(detail=None, code=400)
 
         # If not passed-in or empty, return default
         return super().get_queryset()
