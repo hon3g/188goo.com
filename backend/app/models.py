@@ -13,7 +13,7 @@ class State(models.Model):
 
 class City(models.Model):
     name = models.CharField(max_length=50, unique=True)
-    state_id = models.ForeignKey(State, on_delete=PROTECT)
+    state = models.ForeignKey(State, on_delete=PROTECT)
 
     def __str__(self):
         return self.name
@@ -31,25 +31,31 @@ class Post(models.Model):
     class Meta:
         ordering = ['-pub_date']
 
-    city_id = models.ForeignKey(City, on_delete=PROTECT)
-    category = models.CharField(max_length=50)
+    CATEGORY_CHOICES = [
+        ('work', 'work'),
+        ('housing', 'housing'),
+    ]
 
-    user_id = models.ForeignKey(User, on_delete=CASCADE)
+    city = models.ForeignKey(City, on_delete=PROTECT)
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+
+    user = models.ForeignKey(User, on_delete=CASCADE)
     title = models.CharField(max_length=50)
     content = models.TextField()
 
-    slug = models.SlugField(blank=True, editable=False, db_index=True, unique=True)
+    slug = models.SlugField(blank=True, editable=False,
+                            db_index=True, unique=True)
     pub_date = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
-        cur_slug = slugify(self.title, allow_unicode=True)
+        current_slug = slugify(self.title, allow_unicode=True)
 
         # Delete old post with same title/slug
-        filter_result = Post.objects.filter(slug=cur_slug)
+        filter_result = Post.objects.filter(slug=current_slug)
         if len(filter_result) != 0:
-            Post.objects.filter(slug=cur_slug).delete()
+            Post.objects.filter(slug=current_slug).delete()
 
-        self.slug = cur_slug
+        self.slug = current_slug
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -61,7 +67,7 @@ class Image(models.Model):
         ordering = ['-pub_date']
 
     link = models.CharField(max_length=500)
-    post_id = models.ForeignKey(Post, on_delete=CASCADE)
+    post = models.ForeignKey(Post, on_delete=CASCADE)
     pub_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
