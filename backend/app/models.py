@@ -43,19 +43,11 @@ class Post(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField()
 
-    slug = models.SlugField(blank=True, editable=False,
-                            db_index=True, unique=True)
+    slug = models.SlugField(blank=True, editable=False)
     pub_date = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
-        current_slug = slugify(self.title, allow_unicode=True)
-
-        # Delete old post with same title/slug
-        filter_result = Post.objects.filter(slug=current_slug)
-        if len(filter_result) != 0:
-            Post.objects.filter(slug=current_slug).delete()
-
-        self.slug = current_slug
+        self.slug = slugify(self.title, allow_unicode=True)
         super().save(*args, **kwargs)
 
     def __str__(self):

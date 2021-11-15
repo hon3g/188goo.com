@@ -8,4 +8,4 @@ class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     filter_backends = {DjangoFilterBackend}
-    filterset_fields = {'city', 'category', 'user_id', 'slug'}
+    filterset_fields = {'id', 'city', 'category', 'user_id', 'slug'}
