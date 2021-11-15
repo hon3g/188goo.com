@@ -4,12 +4,12 @@ from app.models import Post
 from .serializers import PostSerializer
 
 
-class PostList(generics.ListCreateAPIView):
+class AllPosts(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
 
-class PostDetail(generics.RetrieveUpdateAPIView):
+class SinglePost(generics.RetrieveUpdateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     lookup_field = 'slug'
