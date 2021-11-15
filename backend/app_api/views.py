@@ -28,7 +28,7 @@ class PostList(generics.ListAPIView):
                 return Post.objects.filter(city=city_id)
             # Not empty but doesn't match a city
             else:
-                raise ParseError(detail=None, code=400)
+                raise ParseError(detail='city', code=400)
 
         if current_state is not None:
             # Empty argument
@@ -41,7 +41,7 @@ class PostList(generics.ListAPIView):
                 return Post.objects.filter(city__in=city_ids)
             # Not empty but doesn't match a state
             else:
-                raise ParseError(detail=None, code=400)
+                raise ParseError(detail='state', code=400)
 
         # If not passed-in or empty, return default
         return super().get_queryset()

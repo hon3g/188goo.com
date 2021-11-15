@@ -12,6 +12,9 @@ class State(models.Model):
 
 
 class City(models.Model):
+    class Meta:
+        verbose_name_plural = "cities"
+        
     name = models.CharField(max_length=50, unique=True)
     state = models.ForeignKey(State, on_delete=PROTECT)
 
@@ -27,17 +30,32 @@ class User(models.Model):
         return self.username
 
 
+class Category(models.Model):
+    class Meta:
+        verbose_name_plural = "categories"
+
+    TYPE_CHOICES = [
+        ('recruitment', '招聘求职'),
+        ('house_rental_and_sale', '房屋租售'),
+        ('flea_market', '二手买卖'),
+        ('business_transfer', '生意转让'),
+        ('city_service', '同城服务'),
+    ]
+    name = models.CharField(max_length=50)
+    type = models.CharField(max_length=50, choices=TYPE_CHOICES)
+
+    def __str__(self):
+        return self.name
+
+
 class Post(models.Model):
     class Meta:
         ordering = ['-pub_date']
 
-    CATEGORY_CHOICES = [
-        ('work', 'work'),
-        ('housing', 'housing'),
-    ]
+    
 
     city = models.ForeignKey(City, on_delete=PROTECT)
-    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+    category = models.ForeignKey(Category, on_delete=PROTECT)
 
     user = models.ForeignKey(User, on_delete=CASCADE)
     title = models.CharField(max_length=50)
