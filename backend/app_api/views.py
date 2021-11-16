@@ -3,6 +3,7 @@ from rest_framework.exceptions import ParseError
 from django_filters.rest_framework import DjangoFilterBackend
 
 from app.models import Post, State, City
+from backend.app.models import Category
 from .serializers import PostSerializer
 
 
@@ -12,11 +13,16 @@ class PostList(generics.ListAPIView):
     filter_backends = {DjangoFilterBackend}
     filterset_fields = {'id', 'category', 'slug'}
 
-    # # Filter by state name or city name
+    # Filter by state name or city name
     def get_queryset(self):
         # City first than State
         current_city = self.request.query_params.get('city')
         current_state = self.request.query_params.get('state')
+
+        filters = {
+            'cities': [],
+            'categories': [],
+        }
 
         if current_city is not None:
             # Empty argument
