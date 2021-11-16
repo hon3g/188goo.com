@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.deletion import CASCADE, PROTECT
 from django.utils.text import slugify
+from django.core.validators import RegexValidator
 
 
 class State(models.Model):
@@ -14,7 +15,7 @@ class State(models.Model):
 class City(models.Model):
     class Meta:
         verbose_name_plural = "cities"
-        
+
     name = models.CharField(max_length=50, unique=True)
     state = models.ForeignKey(State, on_delete=PROTECT)
 
@@ -23,8 +24,13 @@ class City(models.Model):
 
 
 class User(models.Model):
+    phone_num_regex = RegexValidator(regex=r"^\d{10}$")
+    
     uid = models.CharField(max_length=150, unique=True)
     username = models.CharField(max_length=15, unique=True)
+    phone_number = models.CharField(
+        validators=[phone_num_regex],
+        max_length=10, null=False, blank=False, unique=True)
 
     def __str__(self):
         return self.username
