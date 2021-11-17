@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
 import './App.css';
 
+import Header from './components/header/header';
+
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  useEffect(() => {
+    const baseApi = 'http://127.0.0.1:8000/api/';
+    const fetchFunc = async () => {
+      const response = await fetch(baseApi);
+      const resJson = await response.json();
+      console.log(resJson);
+    };
+    fetchFunc();
+  }, []);
+
+  return <Header currentCity='纽约' />;
 }
 
 export default App;
