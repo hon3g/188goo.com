@@ -1,0 +1,49 @@
+.navbar {
+  background-color: #37475a;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .title-location {
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .title {
+      font-size: 1.5rem;
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+
+    .location {
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 0.9rem;
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .sign-in {
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    padding: 0.333rem 0.9rem;
+    border: 1px;
+    border-style: solid;
+    border-color: rgb(201, 201, 201);
+    border-radius: 5px;
+
+    &:hover {
+      cursor: pointer;
+      border-color: rgb(255, 255, 255);
+    }
+  }
+}

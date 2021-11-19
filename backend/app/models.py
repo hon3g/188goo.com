@@ -3,6 +3,9 @@ from django.db.models.deletion import CASCADE, PROTECT
 from django.utils.text import slugify
 from django.core.validators import RegexValidator
 
+import re
+from .choices import CATEGORY_CHOICES, TYPE_CHOICES
+
 
 class State(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -25,7 +28,7 @@ class City(models.Model):
 
 class User(models.Model):
     phone_num_regex = RegexValidator(regex=r"^\d{10}$")
-    
+
     uid = models.CharField(max_length=150, unique=True)
     username = models.CharField(max_length=15, unique=True)
     phone_number = models.CharField(
@@ -40,38 +43,6 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = "categories"
 
-    TYPE_CHOICES = [
-        ('recruitment', 'Recruitment'),
-        ('house_rental_and_sale', 'House Rental and Sale'),
-        ('flea_market', 'Flea Market'),
-        ('business_transfer', 'Business Transfer'),
-        ('city_service', 'City Service'),
-    ]
-
-    CATEGORY_CHOICES = [
-        # Recruitment
-        ('restaurant', 'Restaurant'),
-        ('construction', 'Construction'),
-        ('manicure', 'Manicure'),
-        ('office', 'Office'),
-        ('massage', 'Massage'),
-        ('other_recruitment', 'Other Recruitment'),
-        # House Rental and Sale
-        ('house_for_rent', 'House for Rent'),
-        ('house_rent_seeking', 'House Rent Seeking'),
-        ('store_rental', 'Store Rental'),
-        ('property_sale', 'Property Sale'),
-        # Business Transfer
-        ('used_cars', 'Used Cars'),
-        ('used_goods', 'Used Goods'),
-        ('used_restaurant_stuff', 'Used Restaurant Stuff'),
-        # City Service
-        ('car_service', 'Car Service'),
-        ('renovation', 'Renovation'),
-        ('hotel', 'Hotel'),
-        ('lawyer', 'Lawyer'),
-        ('doctor', 'Doctor'),
-    ]
     name = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
     type = models.CharField(max_length=50, choices=TYPE_CHOICES)
 
@@ -87,13 +58,14 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=PROTECT)
 
     user = models.ForeignKey(User, on_delete=CASCADE)
-    title = models.CharField(max_length=50)
-    content = models.TextField()
+    title = models.CharField(max_length=50, blank=False, null=False)
+    content = models.TextField(blank=False)
 
-    slug = models.SlugField(blank=True, editable=False)
+    slug = models.SlugField(blank=True, null=False, editable=False)
     pub_date = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
+        self.title = de_emojified(self.title)
         self.slug = slugify(self.title, allow_unicode=True)
         super().save(*args, **kwargs)
 
@@ -111,3 +83,13 @@ class Image(models.Model):
 
     def __str__(self):
         return self.link
+
+
+def de_emojified(text):
+    regrex_pattern = re.compile(pattern="["
+                                u"\U0001F600-\U0001F64F"  # emoticons
+                                u"\U0001F300-\U0001F5FF"  # symbols & pictographs
+                                u"\U0001F680-\U0001F6FF"  # transport & map symbols
+                                u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
+                                "]+", flags=re.UNICODE)
+    return regrex_pattern.sub(r'', text)

@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import './App.css';
 
-import Header from './components/header/header';
-
+import Header from './components/header/header.component';
 
 function App() {
   useEffect(() => {
@@ -15,7 +14,7 @@ function App() {
     fetchFunc();
   }, []);
 
-  return <Header currentCity='纽约' />;
+  return <Header currentLocation='纽约' />;
 }
 
 export default App;

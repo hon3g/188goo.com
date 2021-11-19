@@ -10,18 +10,22 @@ const SECTIONS = [
   { title: '同城聊天', url: '#' },
   { title: '招聘求职', url: '#' },
   { title: '房屋租售', url: '#' },
+  { title: '本地服务', url: '#' },
   { title: '二手市场', url: '#' },
   { title: '生意转让', url: '#' },
-  { title: '本地服务', url: '#' },
   { title: null, url: null },
 ];
 
-function Header(props) {
+function HeaderMUI(props) {
   const { currentCity } = props;
 
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Toolbar
+        sx={{
+          backgroundColor: '#37475A',
+        }}
+      >
         <Box
           sx={{
             display: 'flex',
@@ -29,9 +33,9 @@ function Header(props) {
             alignItems: 'center',
           }}
         >
-          <Typography>{currentCity}</Typography>
-          <Button size='small' sx={{ padding: 0 }}>
-            [切换城市]
+          <Typography sx={{ color: 'white' }}>{currentCity}</Typography>
+          <Button size='small' sx={{ padding: 0, color: 'white' }}>
+            [切换地区]
           </Button>
         </Box>
         <Typography
@@ -40,21 +44,31 @@ function Header(props) {
           color='inherit'
           align='center'
           noWrap
-          sx={{ flex: 1 }}
+          sx={{ flex: 1, color: 'white' }}
         >
           <Link href='' underline='hover' color='inherit'>
             美国同城
           </Link>
         </Typography>
-        <Button variant='outlined' size='small'>
-          登陆 / 注册
+        <Button
+          variant='outlined'
+          size='small'
+          style={{ color: 'white', borderColor: 'white' }}
+        >
+          登陆
         </Button>
       </Toolbar>
 
       <Toolbar
         component='nav'
         variant='dense'
-        sx={{ justifyContent: 'space-between', overflowX: 'scroll' }}
+        sx={{
+          justifyContent: 'space-between',
+          overflowX: 'auto',
+          backgroundColor: 'white',
+          borderBottom: 1,
+          borderColor: 'divider',
+        }}
       >
         {SECTIONS.map((section) => (
           <Link
@@ -63,7 +77,7 @@ function Header(props) {
             key={section.title}
             variant='body2'
             href={section.url}
-            sx={{ p: 1, flexShrink: 0 }}
+            sx={{ p: 1, flexShrink: 0, textDecoration: 'none' }}
           >
             {section.title}
           </Link>
@@ -73,4 +87,4 @@ function Header(props) {
   );
 }
 
-export default Header;
+export default HeaderMUI;
