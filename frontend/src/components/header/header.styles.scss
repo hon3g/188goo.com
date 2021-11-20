@@ -1,4 +1,4 @@
-.navbar {
+.top-bar {
   background-color: #37475a;
   color: white;
   display: flex;
@@ -6,7 +6,7 @@
   align-items: center;
 
   .title-location {
-    margin: 0.5rem;
+    margin: 0.3rem 1rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -32,18 +32,13 @@
     }
   }
 
-  .sign-in {
-    font-size: 0.8rem;
-    margin-right: 0.5rem;
-    padding: 0.333rem 0.9rem;
-    border: 1px;
-    border-style: solid;
-    border-color: rgb(201, 201, 201);
-    border-radius: 5px;
+  .account {
+    position: relative;
+    margin: 0.3rem 1rem;
+    top: 0.2rem;
 
     &:hover {
       cursor: pointer;
-      border-color: rgb(255, 255, 255);
     }
   }
 }
