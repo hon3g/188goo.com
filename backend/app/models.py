@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE, PROTECT
 from django.utils.text import slugify
 from django.core.validators import RegexValidator
@@ -26,17 +27,11 @@ class City(models.Model):
         return self.name
 
 
-class User(models.Model):
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_num_regex = RegexValidator(regex=r"^\d{10}$")
-
-    uid = models.CharField(max_length=150, unique=True)
-    username = models.CharField(max_length=15, unique=True)
     phone_number = models.CharField(
-        validators=[phone_num_regex],
-        max_length=10, null=False, blank=False, unique=True)
-
-    def __str__(self):
-        return self.username
+        validators=[phone_num_regex], max_length=10)
 
 
 class Category(models.Model):
