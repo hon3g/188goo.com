@@ -25,7 +25,7 @@ const Sections = ({ sections }) => (
           p: 1,
           flexShrink: 0,
           textDecoration: 'none',
-          '&:hover': { textDecoration: 'underline' },
+          // '&:hover': { textDecoration: 'underline' },
         }}
       >
         {section.title}

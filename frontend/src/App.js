@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Header from './components/header/header.component';
 import Sections from './components/sections/sections.component';
+import Navbar from './components/navbar/navbar.component';
 
 import './App.css';
 
@@ -27,8 +28,9 @@ function App() {
 
   return (
     <div>
-      <Header title='美国同城' currentLocation='纽约' />
-      <Sections sections={SECTIONS} />
+      <Header title='华人同城网' currentLocation='纽约' />
+      {/* <Sections sections={SECTIONS} /> */}
+      <Navbar sections={SECTIONS} />
     </div>
   );
 }

@@ -1,22 +1,22 @@
 .top-bar {
-  background-color: #37475a;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid #f0f0f0;
 
   .title-location {
-    margin: 0.3rem 1rem;
+    margin: 0.6rem 1rem;
     display: flex;
     flex-direction: row;
     align-items: center;
 
     .title {
       font-size: 1.5rem;
+      color: #002766;
 
       &:hover {
         cursor: pointer;
-        text-decoration: underline;
+        color: #1890ff;
       }
     }
 
@@ -27,15 +27,23 @@
 
       &:hover {
         cursor: pointer;
-        text-decoration: underline;
+        color: #1890ff;
       }
     }
   }
 
+  .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .account {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     position: relative;
-    margin: 0.3rem 1rem;
-    top: 0.2rem;
+    margin: 0.6rem 1rem;
 
     &:hover {
       cursor: pointer;
