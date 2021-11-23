@@ -1,4 +1,4 @@
-.top-bar {
+.header {
   background-color: white;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -45,8 +45,11 @@
     position: relative;
     margin: 0.6rem 1rem;
 
-    &:hover {
-      cursor: pointer;
+    .account-icon {
+      &:hover {
+        cursor: pointer;
+        fill: #1890ff;
+      }
     }
   }
 }

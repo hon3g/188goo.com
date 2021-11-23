@@ -11,7 +11,7 @@ const onSearch = (value) => console.log(value);
 
 function Header({ currentLocation }) {
   return (
-    <nav className='top-bar'>
+    <nav className='header'>
       <div className='title-location'>
         <Tooltip title='首页'>
           <div className='title'>华人同城网</div>
@@ -27,13 +27,13 @@ function Header({ currentLocation }) {
           placeholder='搜索关键词'
           allowClear
           onSearch={onSearch}
-          style={{ width: 300 }}
+          style={{ width: '20vw' }}
         />
       </div>
 
       <div className='account'>
         <Tooltip title='个人中心'>
-          <AccountIcon />
+          <AccountIcon className='account-icon'/>
         </Tooltip>
       </div>
     </nav>

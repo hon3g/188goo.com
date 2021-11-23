@@ -6,7 +6,7 @@ import 'antd/dist/antd.css';
 const { SubMenu } = Menu;
 
 function Navbar({ sections }) {
-  const [current, setCurrent] = useState('mail0');
+  const [current, setCurrent] = useState(null);
 
   const handleClick = (e) => {
     console.log('click ', e);
@@ -25,7 +25,7 @@ function Navbar({ sections }) {
         <SubMenu
           key={section.title}
           title={section.title}
-          style={{ margin: 'auto 1rem' }}
+          style={{ margin: 'auto 1.8vw' }}
         >
           <Menu.Item key={`${section.title}:0`}>全部</Menu.Item>
           <Menu.Item key={`${section.title}:1`}>Option 1</Menu.Item>
