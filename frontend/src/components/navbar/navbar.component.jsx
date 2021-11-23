@@ -10,7 +10,7 @@ function Navbar({ sections }) {
 
   const handleClick = (e) => {
     console.log('click ', e);
-    setCurrent(e);
+    setCurrent(e.key);
   };
 
   return (

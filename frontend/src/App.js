@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import Header from './components/header/header.component';
-import Sections from './components/sections/sections.component';
 import Navbar from './components/navbar/navbar.component';
+import Content from './components/content/content.component'
 
 import './App.css';
 
@@ -14,9 +14,8 @@ const SECTIONS = [
   { title: '生意转让', url: '#' },
 ];
 
-
 function App() {
-  useEffect(() => {    
+  useEffect(() => {
     const baseApi = 'http://127.0.0.1:8000/api/';
     const fetchFunc = async () => {
       const response = await fetch(baseApi);
@@ -27,10 +26,10 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <Header title='华人同城网' currentLocation='纽约' />
-      {/* <Sections sections={SECTIONS} /> */}
+    <div style={{backgroundColor: '#efeff1'}}>
+      <Header currentLocation='纽约' />
       <Navbar sections={SECTIONS} />
+      <Content />
     </div>
   );
 }
