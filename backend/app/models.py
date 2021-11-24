@@ -60,8 +60,7 @@ class Post(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
-        self.title = de_emojified(self.title)
-        self.slug = slugify(self.title, allow_unicode=True)
+        self.slug = slugify(de_emojified(self.title), allow_unicode=True)
         super().save(*args, **kwargs)
 
     def __str__(self):

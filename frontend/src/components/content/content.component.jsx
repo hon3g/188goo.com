@@ -1,9 +1,8 @@
 import SlideShow from '../slideshow/slideshow.component';
 import CookieCrumb from '../cookiecrumb/cookiecrumb.component';
 import PostList from '../post-list/post-list.component';
-import RadioButton from '../radio-button/radio-button';
+import RadioGroup from '../radio-group/radio-group.component';
 
-import 'antd/dist/antd.css';
 
 function Content() {
   return (
@@ -15,7 +14,7 @@ function Content() {
         style={{ backgroundColor: 'white', maxWidth: '75%', padding: '1.5rem' }}
       >
         <CookieCrumb />
-        <RadioButton />
+        <RadioGroup />
         <PostList />
       </div>
       <br />

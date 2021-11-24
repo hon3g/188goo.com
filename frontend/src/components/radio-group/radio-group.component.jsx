@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { Radio } from 'antd';
 
 import 'antd/dist/antd.css';
+import './radio-group.styles.scss'
 
-const RadioButton = () => {
+
+const RadioGroup = () => {
   const [value, setValue] = useState(1);
 
   const onChange = (e) => {
@@ -16,7 +18,7 @@ const RadioButton = () => {
       onChange={onChange}
       value={value}
       optionType='button'
-      style={{ marginBottom: '2rem', fontSize: '1rem' }}
+      className='radio-group'
     >
       <Radio value={1} style={{ fontSize: '0.9rem' }}>全部</Radio>
       <Radio value={2} style={{ fontSize: '0.9rem' }}>曼哈顿</Radio>
@@ -26,4 +28,4 @@ const RadioButton = () => {
   );
 };
 
-export default RadioButton;
+export default RadioGroup;

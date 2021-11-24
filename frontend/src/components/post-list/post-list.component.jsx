@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { List } from 'antd';
 
+import 'antd/dist/antd.css';
+
 // const data = [];
 
 // for (let i = 0; i < 878978; i++) {

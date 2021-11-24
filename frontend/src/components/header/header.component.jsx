@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Tooltip, Input, Drawer } from 'antd';
 import { ReactComponent as LocationIcon } from '../../assets/location_on_black_24dp.svg';
 import { ReactComponent as AccountIcon } from '../../assets/person_outline_black_24dp.svg';
+import Locations from '../locations/locations.component';
 
 import './header.styles.scss';
 import 'antd/dist/antd.css';
@@ -53,13 +54,11 @@ function Header({ currentLocation }) {
       <Drawer
         title='切换地区'
         placement='left'
-        width='400'
+        width='375'
         onClose={closeLocationDrawer}
         visible={locationDrawerVisible}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <Locations />
       </Drawer>
     </nav>
   );

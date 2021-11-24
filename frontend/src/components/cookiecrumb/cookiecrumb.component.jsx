@@ -1,8 +1,11 @@
 import { Breadcrumb } from 'antd';
 
+import './cookiecrumb.styles.scss'
+import 'antd/dist/antd.css';
+
 function CookieCrumb() {
   return (
-    <Breadcrumb style={{ marginBottom: '2rem', fontSize: '0.9rem' }}>
+    <Breadcrumb className='breadcrumb'>
       <Breadcrumb.Item>
         <a href='/#'>全部信息</a>
       </Breadcrumb.Item>
