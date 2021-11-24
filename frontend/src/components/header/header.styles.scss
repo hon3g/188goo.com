@@ -16,7 +16,7 @@
 
       &:hover {
         cursor: pointer;
-        color: #1890ff;
+        color: var(--blue);
       }
     }
 
@@ -27,7 +27,7 @@
 
       &:hover {
         cursor: pointer;
-        color: #1890ff;
+        color: var(--blue);
       }
     }
   }
@@ -48,7 +48,7 @@
     .account-icon {
       &:hover {
         cursor: pointer;
-        fill: #1890ff;
+        fill: var(--blue);
       }
     }
   }
