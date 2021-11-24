@@ -1,6 +1,7 @@
+import { useState } from 'react';
+import { Tooltip, Input, Drawer } from 'antd';
 import { ReactComponent as LocationIcon } from '../../assets/location_on_black_24dp.svg';
 import { ReactComponent as AccountIcon } from '../../assets/person_outline_black_24dp.svg';
-import { Tooltip, Input } from 'antd';
 
 import './header.styles.scss';
 import 'antd/dist/antd.css';
@@ -10,13 +11,25 @@ const { Search } = Input;
 const onSearch = (value) => console.log(value);
 
 function Header({ currentLocation }) {
+  const [locationDrawerVisible, setLocationDrawerVisible] = useState(false);
+
+  const showLocationDrawer = () => {
+    console.log('change location clicked');
+    setLocationDrawerVisible(true);
+  };
+
+  const closeLocationDrawer = () => {
+    setLocationDrawerVisible(false);
+  };
+
   return (
     <nav className='header'>
       <div className='title-location'>
         <Tooltip title='首页'>
           <div className='title'>华人同城网</div>
         </Tooltip>
-        <Tooltip title='切换地区'>
+
+        <Tooltip title='切换地区' onClick={showLocationDrawer}>
           <div className='location'>
             <LocationIcon />[{currentLocation}]
           </div>
@@ -33,9 +46,21 @@ function Header({ currentLocation }) {
 
       <div className='account'>
         <Tooltip title='个人中心'>
-          <AccountIcon className='account-icon'/>
+          <AccountIcon className='account-icon' />
         </Tooltip>
       </div>
+
+      <Drawer
+        title='切换地区'
+        placement='left'
+        width='400'
+        onClose={closeLocationDrawer}
+        visible={locationDrawerVisible}
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Drawer>
     </nav>
   );
 }

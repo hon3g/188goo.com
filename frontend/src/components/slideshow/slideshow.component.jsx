@@ -6,7 +6,7 @@ function SlideShow() {
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',
-    height: '260px',
+    height: '360px',
     color: '#fff',
     textAlign: 'center',
     background: '#364d79',
@@ -14,7 +14,7 @@ function SlideShow() {
   };
 
   return (
-    <Carousel autoplay style={{ maxWidth: '50%' }}>
+    <Carousel autoplay style={{ maxWidth: '40%' }}>
       <div>
         <h3 style={contentStyle}>0</h3>
       </div>

@@ -1,37 +1,44 @@
+import { useEffect, useState } from 'react';
 import { List } from 'antd';
 
-const data = [
-  {
-    title: 'Ant Design Title 1',
-  },
-  {
-    title: 'Ant Design Title 2',
-  },
-  {
-    title: 'Ant Design Title 3',
-  },
-  {
-    title: 'Ant Design Title 4',
-  },
-];
+// const data = [];
+
+// for (let i = 0; i < 878978; i++) {
+//   data.push({
+//     title: `Ant Design Title ${i}`,
+//   });
+// }
 
 function PostList() {
+  const [postList, setPostList] = useState();
+
+  useEffect(() => {
+    const baseApi = 'http://127.0.0.1:8000/api/?';
+    const fetchFunc = async () => {
+      const response = await fetch(baseApi);
+      const resJson = await response.json();
+      console.log(resJson);
+      setPostList(resJson);
+    };
+    fetchFunc();
+  }, []);
+
   return (
     <List
-      style={{ backgroundColor: 'white', maxWidth: '80%', padding: '1rem' }}
       pagination={{
         onChange: (page) => {
           console.log(page);
         },
-        pageSize: 10,
+        pageSize: 20,
         showSizeChanger: false,
         showQuickJumper: true,
       }}
+      size='small'
       itemLayout='horizontal'
-      dataSource={data}
-      renderItem={(item) => (
+      dataSource={postList}
+      renderItem={(post) => (
         <List.Item>
-          <List.Item.Meta title={<a href='/#'>{item.title}</a>} />
+          <List.Item.Meta title={<a href='/#' style={{fontWeight: 'normal', fontSize: '1rem'}}>{post.title}</a>} />
         </List.Item>
       )}
     />

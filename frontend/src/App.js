@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Header from './components/header/header.component';
 import Navbar from './components/navbar/navbar.component';
 import Content from './components/content/content.component'
@@ -15,16 +14,6 @@ const SECTIONS = [
 ];
 
 function App() {
-  useEffect(() => {
-    const baseApi = 'http://127.0.0.1:8000/api/';
-    const fetchFunc = async () => {
-      const response = await fetch(baseApi);
-      const resJson = await response.json();
-      console.log(resJson);
-    };
-    fetchFunc();
-  }, []);
-
   return (
     <div style={{backgroundColor: '#efeff1'}}>
       <Header currentLocation='纽约' />

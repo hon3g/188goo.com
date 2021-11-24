@@ -10,8 +10,10 @@ class PostList(generics.ListAPIView):
     serializer_class = PostSerializer
     filter_backends = {DjangoFilterBackend}
     filterset_fields = {
-        'id',
-        'city__state__name', 'city__name',
-        'category__type', 'category__name',
-        'slug',
+        'id': ['exact'],
+        'city__state__name': ['exact'], 
+        'city__name': ['exact'],
+        'category__type': ['exact'], 
+        'category__name': ['exact'],
+        'slug': ['exact'],
     }
