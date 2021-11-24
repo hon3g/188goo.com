@@ -1,4 +1,9 @@
-.breadcrumb {
-    margin-bottom: 2rem;
+.post-list-top {
+  display: flex;
+  justify-content: space-between;
+  
+  .breadcrumb {
+    margin-bottom: 1.5rem;
     font-size: 0.9rem;
+  }
 }

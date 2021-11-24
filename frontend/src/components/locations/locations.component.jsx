@@ -97,13 +97,14 @@ function Locations() {
               }}
             >
               {region.map((state) => (
-                <span
+                <a
+                  href='/#'
                   className='state-name'
                   key={state}
                   onClick={handleClick(state)}
                 >
                   {state}
-                </span>
+                </a>
               ))}
             </div>
           </div>

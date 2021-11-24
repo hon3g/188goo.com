@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { List } from 'antd';
+import { List, Tag } from 'antd';
 
 import 'antd/dist/antd.css';
+import './post-list.styles.scss';
 
 // const data = [];
 
@@ -31,6 +32,7 @@ function PostList() {
         onChange: (page) => {
           console.log(page);
         },
+        total: 34325235,
         pageSize: 20,
         showSizeChanger: false,
         showQuickJumper: true,
@@ -40,7 +42,8 @@ function PostList() {
       dataSource={postList}
       renderItem={(post) => (
         <List.Item>
-          <List.Item.Meta title={<a href='/#' style={{fontWeight: 'normal', fontSize: '1rem'}}>{post.title}</a>} />
+          <List.Item.Meta title={<a href='/#'><span className='prefix'>- </span>{post.title}</a>} />
+          <Tag>{post.pub_date.slice(0, 10)}</Tag>
         </List.Item>
       )}
     />
