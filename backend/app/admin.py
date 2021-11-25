@@ -16,7 +16,7 @@ class UserAdmin(BaseUserAdmin):
 class PostAdmin(admin.ModelAdmin):
     ordering = ('-pub_date', )
     readonly_fields = ('slug', 'pub_date')
-    list_filter = ('category', 'city_id')
+    list_filter = ('city_id', 'category')
 
 
 admin.site.unregister(User)

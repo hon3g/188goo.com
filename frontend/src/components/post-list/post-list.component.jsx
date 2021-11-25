@@ -27,39 +27,41 @@ const colors = [
 ];
 
 function PostList() {
-  const [postList, setPostList] = useState();
+  const [data, setData] = useState({});
+  const [pageNum, setPageNum] = useState(1);
 
   useEffect(() => {
-    const baseApi = 'http://127.0.0.1:8000/api/?';
+    const api = `http://127.0.0.1:8000/api/?page=${pageNum}`;
     const fetchFunc = async () => {
-      const response = await fetch(baseApi);
+      const response = await fetch(api);
       const resJson = await response.json();
       console.log(resJson);
-      setPostList(resJson);
+      setData(resJson);
     };
     fetchFunc();
-  }, []);
+  }, [pageNum]);
 
   return (
     <List
       pagination={{
         onChange: (page) => {
-          console.log(page);
+          setPageNum(page);
         },
-        total: 34325235,
-        pageSize: 20,
+        total: data.count,
+        pageSize: 50,
         showSizeChanger: false,
         showQuickJumper: true,
       }}
       size='small'
       itemLayout='horizontal'
-      dataSource={postList}
-      bordered={true}
+      dataSource={data.results}
       renderItem={(post) => (
         <List.Item>
-          <div class='square'></div>
+          <div className='square'></div>
           <List.Item.Meta title={<a href='/#'>{post.title}</a>} />
-          <Tag color={colors[Math.floor(Math.random()*colors.length)]}>{post.slug.slice(0, 3)}</Tag>
+          <Tag color={colors[Math.floor(Math.random() * colors.length)]}>
+            {post.slug.slice(0, 3)}
+          </Tag>
           <Tag>
             {new Date(post.pub_date).toLocaleDateString().replace(/\//g, '-')}
           </Tag>
