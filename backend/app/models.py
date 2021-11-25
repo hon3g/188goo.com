@@ -5,12 +5,11 @@ from django.utils.text import slugify
 from django.core.validators import RegexValidator
 
 import re
-from .choices import CATEGORY_CHOICES, TYPE_CHOICES
 
 
 class State(models.Model):
     name = models.CharField(max_length=50, unique=True)
-    region = models.CharField(max_length=50)
+    region = models.CharField(max_length=50, unique=True, null=False)
 
     def __str__(self):
         return self.name
@@ -38,8 +37,8 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = "categories"
 
-    name = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
-    type = models.CharField(max_length=50, choices=TYPE_CHOICES)
+    name = models.CharField(max_length=50, unique=True)
+    type = models.CharField(max_length=50, unique=True, null=False)
 
     def __str__(self):
         return self.name

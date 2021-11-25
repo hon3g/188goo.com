@@ -54,6 +54,7 @@ function PostList() {
       size='small'
       itemLayout='horizontal'
       dataSource={postList}
+      bordered={true}
       renderItem={(post) => (
         <List.Item>
           <div class='square'></div>
