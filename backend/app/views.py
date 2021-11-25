@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from .models import Post
 
-# Create your views here.
+def _init_posts(request):
+    html = "<html><body>status</body></html>"
+    return HttpResponse(html)

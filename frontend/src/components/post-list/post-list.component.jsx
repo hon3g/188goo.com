@@ -58,7 +58,7 @@ function PostList() {
         <List.Item>
           <div class='square'></div>
           <List.Item.Meta title={<a href='/#'>{post.title}</a>} />
-          <Tag color={colors[Math.floor(Math.random()*colors.length)]}>{post.title.slice(0, 3)}</Tag>
+          <Tag color={colors[Math.floor(Math.random()*colors.length)]}>{post.slug.slice(0, 3)}</Tag>
           <Tag>
             {new Date(post.pub_date).toLocaleDateString().replace(/\//g, '-')}
           </Tag>
