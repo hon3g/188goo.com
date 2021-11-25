@@ -11,6 +11,7 @@ class PostList(generics.ListAPIView):
     filter_backends = {DjangoFilterBackend}
     filterset_fields = {
         'id': ['exact'],
+        'city__state__region': ['exact'], 
         'city__state__name': ['exact'], 
         'city__name': ['exact'],
         'category__type': ['exact'], 

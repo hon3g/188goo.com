@@ -1,4 +1,4 @@
-import { Breadcrumb, Button } from 'antd';
+import { Breadcrumb } from 'antd';
 
 import './cookiecrumb.styles.scss';
 import 'antd/dist/antd.css';
@@ -15,7 +15,6 @@ function CookieCrumb() {
         </Breadcrumb.Item>
         <Breadcrumb.Item>餐馆招聘</Breadcrumb.Item>
       </Breadcrumb>
-      <Button type='primary'>+ 发布广告</Button>
     </div>
   );
 }

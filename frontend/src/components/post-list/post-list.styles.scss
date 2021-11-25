@@ -1,7 +1,7 @@
 .ant-list-item-meta-title {
   font-weight: normal;
-  font-size: 1rem;
-  max-width: 70%;
+  font-size: 0.98rem;
+  max-width: 90%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -11,8 +11,13 @@
     transform: scale(1.005);
     text-decoration: underline;
   }
+}
 
-  .prefix {
-    color: var(--blue);
-  }
+.square {
+  height: 8px;
+  width: 8px;
+  background-color: #d0e8ff;
+  position: relative;
+  bottom: 1.8px;
+  margin-right: 0.5rem;
 }

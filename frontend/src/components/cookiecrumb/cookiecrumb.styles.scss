@@ -1,9 +1,8 @@
 .post-list-top {
-  display: flex;
-  justify-content: space-between;
-  
+  border-bottom: 1px solid #f0f0f0;
+
   .breadcrumb {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     font-size: 0.9rem;
   }
 }

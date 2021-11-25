@@ -12,6 +12,20 @@ import './post-list.styles.scss';
 //   });
 // }
 
+const colors = [
+  'magenta',
+  'red',
+  'volcano',
+  'orange',
+  'gold',
+  'lime',
+  'green',
+  'cyan',
+  'blue',
+  'geekblue',
+  'purple',
+];
+
 function PostList() {
   const [postList, setPostList] = useState();
 
@@ -42,8 +56,12 @@ function PostList() {
       dataSource={postList}
       renderItem={(post) => (
         <List.Item>
-          <List.Item.Meta title={<a href='/#'><span className='prefix'>- </span>{post.title}</a>} />
-          <Tag>{post.pub_date.slice(0, 10)}</Tag>
+          <div class='square'></div>
+          <List.Item.Meta title={<a href='/#'>{post.title}</a>} />
+          <Tag color={colors[Math.floor(Math.random()*colors.length)]}>{post.title.slice(0, 3)}</Tag>
+          <Tag>
+            {new Date(post.pub_date).toLocaleDateString().replace(/\//g, '-')}
+          </Tag>
         </List.Item>
       )}
     />
