@@ -1,5 +1,12 @@
-.hon {
+.list-content {
+  background-color: white;
+  max-width: 61.8%;
+  padding: 1.5rem;
+  border: 1px solid #f0f0f0;
+
+  .location-and-post {
     display: flex;
     justify-content: space-between;
     padding: 2rem 1rem;
+  }
 }
