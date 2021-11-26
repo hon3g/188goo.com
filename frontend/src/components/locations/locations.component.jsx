@@ -1,4 +1,5 @@
 import { Divider } from 'antd';
+import { Link } from 'react-router-dom';
 
 import './locations.styles.scss';
 import 'antd/dist/antd.css';
@@ -91,20 +92,20 @@ function Locations() {
             </Divider>
             <div
               key={`${region}-grid-container`}
-              style={{
+              style={{  
                 display: 'grid',
                 gridTemplateColumns: 'repeat(4, 1fr)',
               }}
             >
               {region.map((state) => (
-                <a
-                  href='/#'
+                <Link
+                  to={`/${state}`}
                   className='state-name'
                   key={state}
                   onClick={handleClick(state)}
                 >
                   {state}
-                </a>
+                </Link>
               ))}
             </div>
           </div>

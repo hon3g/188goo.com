@@ -1,7 +1,7 @@
 import TopBar from '../../components/topbar/topbar.component';
 import Navbar from '../../components/navbar/navbar.component';
 import Content from '../../components/content/content.component';
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 import './homepage.styles.scss';
 
@@ -18,7 +18,7 @@ function HomePage() {
   console.log(args);
   return (
     <div style={{ backgroundColor: '#efeff1' }}>
-      <TopBar currentLocation='纽约' />
+      <TopBar currentLocation={args} />
       <Navbar sections={SECTIONS} />
       <Content />
     </div>

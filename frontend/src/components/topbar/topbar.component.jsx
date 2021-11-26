@@ -27,7 +27,9 @@ function TopBar({ currentLocation }) {
     <header className='topbar'>
       <div className='title-location'>
         <Tooltip title='首页'>
-          <div className='title'><a href='/jhjhjhjhjhj'>华人同城网</a></div>
+          <div className='title'>
+            <a href='/home' className='a'>华人同城网</a>
+          </div>
         </Tooltip>
 
         <Tooltip title='切换地区' onClick={showLocationDrawer}>
