@@ -10,7 +10,7 @@ import './content.styles.scss';
 
 function Content() {
   return (
-    <div>
+    <section>
       <SlideShow />
       <div className='list-content'>
         <CookieCrumb />
@@ -26,7 +26,7 @@ function Content() {
       <br />
       <br />
       <br />
-    </div>
+    </section>
   );
 }
 
