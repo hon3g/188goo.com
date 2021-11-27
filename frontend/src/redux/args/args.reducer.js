@@ -1,25 +1,61 @@
-import { ArgsActionTypes } from "./args.types"
+import { ArgsActionTypes } from './args.types';
 
 const INIT_STATE = {
-    id: ['id', null],
-    region: ['city__state__region', null],
-    state: ['city__state__name', null],
-    city: ['city__name', null],
-    type: ['category__type', null],
-    category: ['category__name', null],
-    slug: ['slug', null],
-    page: ['page', null],
-}
+  id: null,
+  region: null,
+  state: null,
+  city: null,
+  type: null,
+  category: null,
+  slug: null,
+  page: null,
+};
 
-// const argsReducer = (state=INIT_STATE, action) => {
-//     switch (action.type) {
-//         case ArgsActionTypes.SET_ID:
-//             return {
-//                 ...state,
-//                 id[1] = action.payload
-//             };
-    
-//         default:
-//             break;
-//     }
-// }
+const argsReducer = (objState = INIT_STATE, action) => {
+  switch (action.type) {
+    case ArgsActionTypes.SET_ID:
+      return {
+        ...objState,
+        id: action.payload,
+      };
+    case ArgsActionTypes.SET_REGION:
+      return {
+        ...objState,
+        region: action.payload,
+      };
+    case ArgsActionTypes.SET_STATE:
+      return {
+        ...objState,
+        state: action.payload,
+      };
+    case ArgsActionTypes.SET_CITY:
+      return {
+        ...objState,
+        city: action.payload,
+      };
+    case ArgsActionTypes.SET_TYPE:
+      return {
+        ...objState,
+        type: action.payload,
+      };
+    case ArgsActionTypes.SET_CATEGORY:
+      return {
+        ...objState,
+        category: action.payload,
+      };
+    case ArgsActionTypes.SET_SLUG:
+      return {
+        ...objState,
+        SLUG: action.payload,
+      };
+    case ArgsActionTypes.SET_PAGE:
+      return {
+        ...objState,
+        page: action.payload,
+      };
+    default:
+      return objState;
+  }
+};
+
+export default argsReducer;
