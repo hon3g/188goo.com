@@ -1,14 +1,14 @@
 import { ArgsActionTypes } from './args.types';
 
 const INIT_STATE = {
-  id: null,
-  region: null,
-  state: null,
-  city: null,
-  type: null,
-  category: null,
-  slug: null,
-  page: null,
+  id: '',
+  region: '',
+  state: '',
+  city: '',
+  type: '',
+  category: '',
+  slug: '',
+  page: 1,
 };
 
 const argsReducer = (objState = INIT_STATE, action) => {

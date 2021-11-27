@@ -15,7 +15,6 @@ const SECTIONS = [
 
 function HomePage() {
   const { args } = useParams();
-  console.log(args);
   return (
     <div style={{ backgroundColor: '#efeff1' }}>
       <TopBar currentLocation={args} />
