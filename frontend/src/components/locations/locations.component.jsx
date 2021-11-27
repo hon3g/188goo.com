@@ -18,6 +18,23 @@ const REGIONED_STATES = [
     '佛蒙特',
     '新罕布什尔',
   ],
+  // 美国西部
+  [
+    '洛杉矶',
+    '南加州',
+    '犹他',
+    '内华达',
+    '蒙大拿',
+    '俄勒冈',
+    '爱达荷',
+    '怀俄明',
+    '科罗拉多',
+    '亚利桑那',
+    '阿拉斯加',
+    '新墨西哥',
+    '华盛顿州',
+    '夏威夷',
+  ],
   // 美国南部
   [
     '佛州',
@@ -52,26 +69,9 @@ const REGIONED_STATES = [
     '威斯康星',
     '内布拉斯加',
   ],
-  // 美国西部
-  [
-    '犹他',
-    '洛杉矶',
-    '南加州',
-    '夏威夷',
-    '内华达',
-    '蒙大拿',
-    '俄勒冈',
-    '爱达荷',
-    '怀俄明',
-    '科罗拉多',
-    '亚利桑那',
-    '阿拉斯加',
-    '新墨西哥',
-    '华盛顿州',
-  ],
 ];
 
-const REGIONS = ['东部', '南部', '中部', '西部'];
+const REGIONS = ['东部', '西部', '南部', '中部'];
 
 function Locations() {
   const handleClick = (value) => (_) => {
@@ -80,6 +80,14 @@ function Locations() {
 
   return (
     <div>
+      <Link
+        to='/'
+        key='全美'
+        onClick={handleClick('全美')}
+        className='state-name'
+      >
+        全美
+      </Link>
       {REGIONED_STATES.map((region, i) => {
         return (
           <div key={`${region}-container`}>
@@ -92,7 +100,7 @@ function Locations() {
             </Divider>
             <div
               key={`${region}-grid-container`}
-              style={{  
+              style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(4, 1fr)',
               }}

@@ -28,13 +28,13 @@ function TopBar({ currentLocation }) {
       <div className='title-location'>
         <Tooltip title='首页'>
           <div className='title'>
-            <a href='/home' className='a'>华人同城网</a>
+            <a href='/' className='a'>华人同城网</a>
           </div>
         </Tooltip>
 
         <Tooltip title='切换地区' onClick={showLocationDrawer}>
           <div className='location'>
-            <LocationIcon />[{currentLocation}]
+            <LocationIcon />[{currentLocation?currentLocation:'全美'}]
           </div>
         </Tooltip>
       </div>

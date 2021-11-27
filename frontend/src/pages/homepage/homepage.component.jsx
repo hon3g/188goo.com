@@ -9,7 +9,7 @@ const SECTIONS = [
   { title: '招聘求职', url: '#' },
   { title: '房屋租售', url: '#' },
   { title: '本地服务', url: '#' },
-  { title: '二手市场', url: '#' },
+  { title: '二手买卖', url: '#' },
   { title: '生意转让', url: '#' },
 ];
 

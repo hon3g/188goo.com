@@ -9,7 +9,7 @@ import re
 
 class State(models.Model):
     name = models.CharField(max_length=50, unique=True)
-    region = models.CharField(max_length=50, unique=True, null=False)
+    region = models.CharField(max_length=50, null=False)
 
     def __str__(self):
         return self.name
@@ -38,7 +38,7 @@ class Category(models.Model):
         verbose_name_plural = "categories"
 
     name = models.CharField(max_length=50, unique=True)
-    type = models.CharField(max_length=50, unique=True, null=False)
+    type = models.CharField(max_length=50, null=False)
 
     def __str__(self):
         return self.name
