@@ -22,24 +22,13 @@ const TAG_COLORS = [
   'purple',
 ];
 
-const PARAMS_TABLE = {
-  id: 'id=',
-  region: 'city__state__region=',
-  state: 'city__state__name=',
-  city: 'city__name=',
-  type: 'category__type=',
-  category: 'category__name=',
-  slug: 'slug=',
-  page: 'page=',
-};
-
 function PostList({ setPage, ...props }) {
   const { id, region, state, city, type, category, slug, page } = props;
   const [data, setData] = useState({});
   const loadingBar = useRef(null);
 
   useEffect(() => {
-    const api = `http://127.0.0.1:8000/api/?page=${page}&id=${id}&region=${region}&state=${state}&city=${city}`;
+    const api = `http://127.0.0.1:8000/api/?&id=${id}&city__state__region=${region}&city__state__name=${state}&city__name=${city}&category__type=${category}&slug=${slug}&page=${page}`;
     console.log(api);
     const fetchFunc = async () => {
       const response = await fetch(api);
