@@ -46,7 +46,7 @@ function PostList() {
       function timeout(delay) {
         return new Promise((res) => setTimeout(res, delay));
       }
-      await timeout(500);
+      await timeout(1);
 
       setData(resJson);
       setDim(false);
@@ -68,7 +68,7 @@ function PostList() {
             setPageNum(page);
           },
           total: data.count,
-          pageSize: 20,
+          pageSize: 30,
           showSizeChanger: false,
           showQuickJumper: true,
         }}
@@ -92,7 +92,7 @@ function PostList() {
           </List.Item>
         )}
       />
-      {dim?<div className='dim' />:null}
+      {dim ? <div className='dim' /> : null}
     </div>
   );
 }

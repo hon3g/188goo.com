@@ -82,7 +82,7 @@ function Locations({ setLocationDrawerVisible }) {
   return (
     <div>
       <Link
-        to='/?id=12&name=hong&hello=foo'
+        to='/'
         key='全美'
         onClick={handleClick('全美')}
         className='state-name'

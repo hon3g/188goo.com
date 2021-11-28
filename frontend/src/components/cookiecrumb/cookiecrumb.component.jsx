@@ -7,12 +7,8 @@ function CookieCrumb() {
   return (
     <div className='post-list-top'>
       <Breadcrumb className='breadcrumb'>
-        <Breadcrumb.Item>
-          <a href='/#'>全部信息</a>
-        </Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <a href='/#'>招聘求职</a>
-        </Breadcrumb.Item>
+        <Breadcrumb.Item>全部信息</Breadcrumb.Item>
+        <Breadcrumb.Item>招聘求职</Breadcrumb.Item>
         <Breadcrumb.Item>餐馆招聘</Breadcrumb.Item>
       </Breadcrumb>
     </div>

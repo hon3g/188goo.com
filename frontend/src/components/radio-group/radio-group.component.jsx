@@ -20,10 +20,10 @@ const RadioGroup = () => {
       optionType='button'
       className='radio-group'
     >
-      <Radio value={1} style={{ fontSize: '0.9rem' }}>全纽约</Radio>
-      <Radio value={2} style={{ fontSize: '0.9rem' }}>曼哈顿</Radio>
-      <Radio value={3} style={{ fontSize: '0.9rem' }}>布鲁克林</Radio>
-      <Radio value={4} style={{ fontSize: '0.9rem' }}>法拉盛</Radio>
+      <Radio.Button value={1} style={{ fontSize: '0.9rem' }}>全纽约</Radio.Button>
+      <Radio.Button value={2} style={{ fontSize: '0.9rem' }}>曼哈顿</Radio.Button>
+      <Radio.Button value={3} style={{ fontSize: '0.9rem' }}>布鲁克林</Radio.Button>
+      <Radio.Button value={4} style={{ fontSize: '0.9rem' }}>法拉盛</Radio.Button>
     </Radio.Group>
   );
 };

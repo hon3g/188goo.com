@@ -1,4 +1,3 @@
-import SlideShow from '../slideshow/slideshow.component';
 import CookieCrumb from '../cookiecrumb/cookiecrumb.component';
 import PostList from '../post-list/post-list.component';
 import RadioGroup from '../radio-group/radio-group.component';
@@ -11,7 +10,6 @@ import './content.styles.scss';
 function Content() {
   return (
     <section>
-      <SlideShow />
       <div className='list-content'>
         <CookieCrumb />
         <div className='location-and-post'>

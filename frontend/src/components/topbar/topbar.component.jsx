@@ -1,8 +1,13 @@
 import { useState } from 'react';
-import { Tooltip, Input, Drawer } from 'antd';
+import { useSearchParams } from 'react-router-dom';
+import { Tooltip, Input, Drawer, Button } from 'antd';
 import { ReactComponent as LocationIcon } from '../../assets/location_on_black_24dp.svg';
 import { ReactComponent as AccountIcon } from '../../assets/person_outline_black_24dp.svg';
+
 import Locations from '../locations/locations.component';
+import Navbar from '../navbar/navbar.component';
+
+import { Link, useLocation } from 'react-router-dom';
 
 import './topbar.styles.scss';
 import 'antd/dist/antd.css';
@@ -11,11 +16,13 @@ const { Search } = Input;
 
 const onSearch = (value) => console.log(value);
 
-function TopBar({ currentLocation }) {
+function TopBar() {
   const [locationDrawerVisible, setLocationDrawerVisible] = useState(false);
+  const [searchParams] = useSearchParams();
+  const currentLocation = searchParams.get('state');
+  const location = useLocation();
 
   const showLocationDrawer = () => {
-    console.log('change location clicked');
     setLocationDrawerVisible(true);
   };
 
@@ -33,19 +40,23 @@ function TopBar({ currentLocation }) {
         </Tooltip>
 
         <Tooltip title='切换地区' onClick={showLocationDrawer}>
-          <div className='location'>
+          <Link to={`${location.search}`} className='location'>
             <LocationIcon />[{currentLocation?currentLocation:'全美'}]
-          </div>
+          </Link>
         </Tooltip>
       </div>
-      <div className='search'>
+      <div className='menu'>
+      <Navbar />
+      </div>
+
+      {/* <div className='search'>
         <Search
           placeholder='搜索关键词'
           allowClear
           onSearch={onSearch}
-          style={{ width: '20vw' }}
+          style={{ width: '15vw' }}
         />
-      </div>
+      </div> */}
 
       <div className='account'>
         <Tooltip title='个人中心'>
