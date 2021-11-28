@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Menu } from 'antd';
-import { useLocation } from 'react-router';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import 'antd/dist/antd.css';
 import './navbar.styles.scss';
@@ -16,11 +16,11 @@ const SECTIONS = [
   },
   {
     type: '生意转让',
-    categories: ['全部买卖', '餐馆转让', '甲店转让', '按摩转让', '其他转让'],
+    categories: ['全部转让', '餐馆转让', '甲店转让', '按摩转让', '其他转让'],
   },
   {
     type: '二手买卖',
-    categories: ['全部转让', '二手物品', '二手汽车', '餐馆用具'],
+    categories: ['全部二手', '二手物品', '二手汽车', '餐馆用具'],
   },
 ];
 
@@ -28,19 +28,49 @@ const { SubMenu } = Menu;
 
 function Navbar() {
   const [current, setCurrent] = useState(null);
-  const { search } = useLocation();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const handleClick = (e) => {
-    console.log(search);
-    console.log('click ', e.key);
     setCurrent(e.key);
+    const state = searchParams.get('state') || '';
+
+    let type;
+    switch (e.key) {
+      case '全部招聘':
+        type = '招聘求职';
+        break;
+      case '全部房屋':
+        type = '房屋租售';
+        break;
+      case '全部转让':
+        type = '生意转让';
+        break;
+      case '全部二手':
+        type = '二手买卖';
+        break;
+      default:
+        type = null;
+        break;
+    }
+
+    if (type) {
+      navigate(`/?${state ? `state=${state}&` : ''}type=${type}`);
+      type = null;
+    } else {
+      navigate(`/?${state ? `state=${state}&` : ''}category=${e.key}`);
+    }
   };
 
   return (
     <Menu
       className='menu'
       onClick={handleClick}
-      selectedKeys={[current]}
+      selectedKeys={
+        searchParams.get('type') || searchParams.get('category')
+          ? [current]
+          : null
+      }
       mode='horizontal'
       style={{
         display: 'flex',
