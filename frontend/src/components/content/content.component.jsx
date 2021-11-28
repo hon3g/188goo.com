@@ -10,11 +10,11 @@ import './content.styles.scss';
 function Content() {
   return (
     <section>
-      <div className='list-content'>
+      <div className='content'>
         <CookieCrumb />
         <div className='location-and-post'>
           <RadioGroup />
-          <Button type='primary'>+ 发布广告</Button>
+          <Button type='primary' size='large'>+ 发布广告</Button>
         </div>
         <PostList />
       </div>

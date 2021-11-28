@@ -46,7 +46,7 @@ function PostList() {
       function timeout(delay) {
         return new Promise((res) => setTimeout(res, delay));
       }
-      await timeout(1);
+      await timeout(1000);
 
       setData(resJson);
       setDim(false);
@@ -76,7 +76,7 @@ function PostList() {
         itemLayout='horizontal'
         dataSource={data.results}
         renderItem={(post) => (
-          <List.Item>
+          <List.Item style={{paddingLeft: '0.5rem', paddingRight: '0rem'}}>
             <div className='square'></div>
             <List.Item.Meta
               title={<a href={`${post.slug}_${post.id}`}>{post.title}</a>}
