@@ -73,15 +73,16 @@ const REGIONED_STATES = [
 
 const REGIONS = ['东部', '西部', '南部', '中部'];
 
-function Locations() {
+function Locations({ setLocationDrawerVisible }) {
   const handleClick = (value) => (_) => {
+    setLocationDrawerVisible(false);
     console.log('clicked ', value);
   };
 
   return (
     <div>
       <Link
-        to='/'
+        to='/?id=12&name=hong&hello=foo'
         key='全美'
         onClick={handleClick('全美')}
         className='state-name'
@@ -107,7 +108,7 @@ function Locations() {
             >
               {region.map((state) => (
                 <Link
-                  to={`/${state}`}
+                  to={`/?state=${state}`}
                   className='state-name'
                   key={state}
                   onClick={handleClick(state)}

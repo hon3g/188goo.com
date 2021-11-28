@@ -60,7 +60,7 @@ function TopBar({ currentLocation }) {
         onClose={closeLocationDrawer}
         visible={locationDrawerVisible}
       >
-        <Locations />
+        <Locations setLocationDrawerVisible={setLocationDrawerVisible}/>
       </Drawer>
     </header>
   );

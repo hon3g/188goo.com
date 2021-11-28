@@ -1,9 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
-import { List, Tag } from 'antd';
+import { List, Tag, message } from 'antd';
 import LoadingBar from 'react-top-loading-bar';
-
-import { connect } from 'react-redux';
-import { setPage } from '../../redux/args/args.actions';
+import { useSearchParams } from 'react-router-dom';
 
 import 'antd/dist/antd.css';
 import './post-list.styles.scss';
@@ -22,23 +20,41 @@ const TAG_COLORS = [
   'purple',
 ];
 
-function PostList({ setPage, ...props }) {
-  const { id, region, state, city, type, category, slug, page } = props;
+function PostList() {
   const [data, setData] = useState({});
+  const [pageNum, setPageNum] = useState(1);
   const loadingBar = useRef(null);
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    const api = `http://127.0.0.1:8000/api/?&id=${id}&city__state__region=${region}&city__state__name=${state}&city__name=${city}&category__type=${category}&slug=${slug}&page=${page}`;
-    console.log(api);
-    const fetchFunc = async () => {
+    const params = ['region', 'state', 'city', 'type', 'category']; //  Meaningful indices!
+    const args = [];
+    for (const param of params) {
+      let arg = searchParams.get(param) || '';
+      args.push(arg);
+    }
+    const api = `http://127.0.0.1:8000/api/?city__state__region=${args[0]}&city__state__name=${args[1]}&city__name=${args[2]}&category__type=${args[3]}&category__name=${args[4]}&page=${pageNum}`;
+
+    const fetchData = async () => {
+      loadingBar.current.continuousStart();
+      message.loading('正在更新...', 168);
+
       const response = await fetch(api);
       const resJson = await response.json();
+
+      function timeout(delay) {
+        return new Promise((res) => setTimeout(res, delay));
+      }
+      await timeout(1000);
+
       setData(resJson);
+
+      loadingBar.current.complete();
+      message.destroy();
+      message.success('更新成功!', 1);
     };
-    loadingBar.current.staticStart();
-    fetchFunc();
-    loadingBar.current.complete();
-  }, [id, region, state, city, type, category, slug, page]);
+    fetchData();
+  }, [searchParams, pageNum]);
 
   return (
     <div>
@@ -46,10 +62,11 @@ function PostList({ setPage, ...props }) {
       <List
         pagination={{
           onChange: (page) => {
-            setPage(page);
+            window.scrollTo(0, 0);
+            setPageNum(page);
           },
           total: data.count,
-          pageSize: 50,
+          pageSize: 20,
           showSizeChanger: false,
           showQuickJumper: true,
         }}
@@ -77,19 +94,4 @@ function PostList({ setPage, ...props }) {
   );
 }
 
-const mapState = (storeState) => ({
-  id: storeState.args.id,
-  region: storeState.args.region,
-  state: storeState.args.state,
-  city: storeState.args.city,
-  type: storeState.args.type,
-  category: storeState.args.category,
-  slug: storeState.args.slug,
-  page: storeState.args.page,
-});
-
-const mapDispatch = (dispatch) => ({
-  setPage: (page) => dispatch(setPage(page)),
-});
-
-export default connect(mapState, mapDispatch)(PostList);
+export default PostList;
