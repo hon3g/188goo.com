@@ -23,11 +23,12 @@ const TAG_COLORS = [
 function PostList() {
   const [data, setData] = useState({});
   const [pageNum, setPageNum] = useState(1);
-  const loadingBar = useRef(null);
   const [searchParams] = useSearchParams();
+  const [dim, setDim] = useState(false);
+  const loadingBar = useRef(null);
 
   useEffect(() => {
-    const params = ['region', 'state', 'city', 'type', 'category']; //  Meaningful indices!
+    const params = ['region', 'state', 'city', 'type', 'category']; //  Meaningful indices! (api url)
     const args = [];
     for (const param of params) {
       let arg = searchParams.get(param) || '';
@@ -45,10 +46,10 @@ function PostList() {
       function timeout(delay) {
         return new Promise((res) => setTimeout(res, delay));
       }
-      await timeout(1000);
+      await timeout(500);
 
       setData(resJson);
-
+      setDim(false);
       loadingBar.current.complete();
       message.destroy();
       message.success('更新成功!', 1);
@@ -62,6 +63,7 @@ function PostList() {
       <List
         pagination={{
           onChange: (page) => {
+            setDim(true);
             window.scrollTo(0, 0);
             setPageNum(page);
           },
@@ -90,6 +92,7 @@ function PostList() {
           </List.Item>
         )}
       />
+      {dim?<div className='dim' />:null}
     </div>
   );
 }
