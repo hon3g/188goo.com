@@ -6,7 +6,7 @@ import './homepage.styles.scss';
 
 function HomePage() {
   return (
-    <div style={{ backgroundColor: '#efeff1' }}>
+    <div style={{ backgroundColor: '#f5f5f5' }}>
       <TopBar />
       <SlideShow />
       <Content />

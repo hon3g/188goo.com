@@ -9,7 +9,7 @@ import './content.styles.scss';
 
 function Content() {
   return (
-    <section>
+    <main>
       <div className='content'>
         <CookieCrumb />
         <div className='location-and-post-button'>
@@ -24,7 +24,7 @@ function Content() {
       <br />
       <br />
       <br />
-    </section>
+    </main>
   );
 }
 

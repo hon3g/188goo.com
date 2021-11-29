@@ -62,9 +62,23 @@ STATES = {
 }
 
 
-# def init_states(apps, schema_editor):
-#     State = apps.get_model('app', 'State')
-#     for region, states in STATES.items():
-#         for state in states:
-#             s = State(name=state, region=region)
-#             s.save()
+# from django.db import migrations
+# from app._state_data import STATES
+
+
+# class Migration(migrations.Migration):
+
+#     def init_states(apps, schema_editor):
+#         State = apps.get_model('app', 'State')
+#         for region, states in STATES.items():
+#             for state in states:
+#                 s = State(name=state, region=region)
+#                 s.save()
+
+#     dependencies = [
+#         ('app', '0001_initial'),
+#     ]
+
+#     operations = [
+#         migrations.RunPython(init_states),
+#     ]

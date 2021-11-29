@@ -4,10 +4,8 @@ import { useSearchParams } from 'react-router-dom';
 import { TAG_COLORS } from './tag-colors';
 import LoadingBar from 'react-top-loading-bar';
 
-
 import 'antd/dist/antd.css';
 import './post-list.styles.scss';
-
 
 function PostList() {
   const [data, setData] = useState({});
@@ -77,13 +75,14 @@ function PostList() {
         itemLayout='horizontal'
         dataSource={data.results}
         renderItem={(post) => (
-          <List.Item
-            onClick={() => setPostDetailVisible(true)}
-            style={{ paddingLeft: '0.5rem', paddingRight: '0rem' }}
-          >
+          <List.Item style={{ paddingLeft: '0.5rem', paddingRight: '0rem' }}>
             <div className='square'></div>
             <List.Item.Meta
-              title={<span onClick={handleClick(post)}>{post.title}</span>}
+              title={
+                <span onClick={handleClick(post)} className='post-title'>
+                  {post.title}
+                </span>
+              }
             />
             <Tag
               color={TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)]}
@@ -99,16 +98,17 @@ function PostList() {
         centered
         visible={postDetailVisible}
         onCancel={() => setPostDetailVisible(false)}
-        width={1000}
-        bodyStyle={{ minHeight: '80vh' }}
-        style={{ animationDuration: '0.7s' }}
+        width={800}
+        bodyStyle={{ minHeight: '50vh' }}
+        style={{ animationDuration: '0s' }}
         // mask={false}
+        maskStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }}
         destroyOnClose={true}
         footer={[
           <Button onClick={() => setPostDetailVisible(false)}>关闭</Button>,
         ]}
       >
-        <pre>{currentPost.content}</pre>
+        <pre style={{ whiteSpace: 'pre-line' }}>{currentPost.content}</pre>
         <p>{formatDate(currentPost.pub_date)}</p>
       </Modal>
       {dim ? <div className='dim' /> : null}
