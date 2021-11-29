@@ -14,7 +14,7 @@ function Content() {
         <CookieCrumb />
         <div className='location-and-post-button'>
           <RadioGroup />
-          <Button type='primary' size='large'>+ 发布广告</Button>
+          <Button type='primary'>+ 发布广告</Button>
         </div>
         <PostList />
       </div>

@@ -1,24 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
 import { List, Tag, message, Modal, Button } from 'antd';
-import LoadingBar from 'react-top-loading-bar';
 import { useSearchParams } from 'react-router-dom';
+import { TAG_COLORS } from './tag-colors';
+import LoadingBar from 'react-top-loading-bar';
+
 
 import 'antd/dist/antd.css';
 import './post-list.styles.scss';
 
-const TAG_COLORS = [
-  'magenta',
-  'red',
-  'volcano',
-  'orange',
-  'gold',
-  'lime',
-  'green',
-  'cyan',
-  'blue',
-  'geekblue',
-  'purple',
-];
 
 function PostList() {
   const [data, setData] = useState({});
@@ -55,10 +44,10 @@ function PostList() {
       const response = await fetch(api);
       const resJson = await response.json();
 
-      function timeout(delay) {
-        return new Promise((res) => setTimeout(res, delay));
-      }
-      await timeout(1000);
+      // function timeout(delay) {
+      //   return new Promise((res) => setTimeout(res, delay));
+      // }
+      // await timeout(1000);
 
       setData(resJson);
       setDim(false);
@@ -111,14 +100,15 @@ function PostList() {
         visible={postDetailVisible}
         onCancel={() => setPostDetailVisible(false)}
         width={1000}
-        bodyStyle={{ height: '75vh' }}
+        bodyStyle={{ minHeight: '80vh' }}
         style={{ animationDuration: '0.7s' }}
-        mask={false}
+        // mask={false}
+        destroyOnClose={true}
         footer={[
           <Button onClick={() => setPostDetailVisible(false)}>关闭</Button>,
         ]}
       >
-        <p>{currentPost.content}</p>
+        <pre>{currentPost.content}</pre>
         <p>{formatDate(currentPost.pub_date)}</p>
       </Modal>
       {dim ? <div className='dim' /> : null}
