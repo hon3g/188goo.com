@@ -1,9 +1,10 @@
 .radio-group {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
-    .radio-item {
-        font-size: 0.9rem;
-        overflow: hidden;
-    }
+  .radio-item {
+    font-size: 0.9rem;
+    display: inline-block;
+    white-space: nowrap;
+  }
 }

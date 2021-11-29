@@ -9,6 +9,8 @@
   &:hover {
     transform-origin: 0 0;
     transform: scale(1.005);
+    cursor: pointer;
+    color: var(--blue);
   }
 }
 

@@ -10,7 +10,15 @@ const NY = ['曼哈顿', '法拉盛', '布鲁伦', '皇后区', '布朗士', '�
 const RadioGroup = () => {
   const [value, setValue] = useState();
   const [searchParams] = useSearchParams();
-  const currentLocation = '全'.concat(searchParams.get('state') || '美');
+  let currentLocation = '全'.concat(searchParams.get('state') || '美');
+
+  if (!searchParams.get('state')) {
+    currentLocation = '全美';
+  } else if (searchParams.get('state') === '纽约') {
+    currentLocation = '全纽约';
+  } else {
+    currentLocation = searchParams.get('state');
+  }
 
   useEffect(() => setValue(currentLocation), [currentLocation]);
 

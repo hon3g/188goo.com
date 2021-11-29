@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { List, Tag, message } from 'antd';
+import { List, Tag, message, Modal, Button } from 'antd';
 import LoadingBar from 'react-top-loading-bar';
 import { useSearchParams } from 'react-router-dom';
 
@@ -23,9 +23,21 @@ const TAG_COLORS = [
 function PostList() {
   const [data, setData] = useState({});
   const [pageNum, setPageNum] = useState(1);
+  const [postDetailVisible, setPostDetailVisible] = useState(false);
+  const [currentPost, setCurrentPost] = useState({});
+
   const [searchParams] = useSearchParams();
   const [dim, setDim] = useState(false);
   const loadingBar = useRef(null);
+
+  const handleClick = (post) => (_) => {
+    console.log('clicked ', post);
+    setCurrentPost(post);
+    setPostDetailVisible(true);
+  };
+
+  const formatDate = (date) =>
+    new Date(date).toLocaleDateString().replace(/\//g, '-');
 
   useEffect(() => {
     const params = ['region', 'state', 'city', 'type', 'category']; //  Meaningful indices! (api url)
@@ -38,7 +50,7 @@ function PostList() {
 
     const fetchData = async () => {
       loadingBar.current.continuousStart();
-      message.loading('正在更新...', 168);
+      message.loading('正在刷新...', 168);
 
       const response = await fetch(api);
       const resJson = await response.json();
@@ -52,7 +64,7 @@ function PostList() {
       setDim(false);
       loadingBar.current.complete();
       message.destroy();
-      message.success('更新成功!', 1);
+      message.success('刷新成功!', 1);
     };
     fetchData();
   }, [searchParams, pageNum]);
@@ -76,22 +88,39 @@ function PostList() {
         itemLayout='horizontal'
         dataSource={data.results}
         renderItem={(post) => (
-          <List.Item style={{paddingLeft: '0.5rem', paddingRight: '0rem'}}>
+          <List.Item
+            onClick={() => setPostDetailVisible(true)}
+            style={{ paddingLeft: '0.5rem', paddingRight: '0rem' }}
+          >
             <div className='square'></div>
             <List.Item.Meta
-              title={<a href={`${post.slug}_${post.id}`}>{post.title}</a>}
+              title={<span onClick={handleClick(post)}>{post.title}</span>}
             />
             <Tag
               color={TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)]}
             >
               {post.slug.slice(0, 3)}
             </Tag>
-            <Tag>
-              {new Date(post.pub_date).toLocaleDateString().replace(/\//g, '-')}
-            </Tag>
+            <Tag>{formatDate(post.pub_date)}</Tag>
           </List.Item>
         )}
       />
+      <Modal
+        title={currentPost.title}
+        centered
+        visible={postDetailVisible}
+        onCancel={() => setPostDetailVisible(false)}
+        width={1000}
+        bodyStyle={{ height: '75vh' }}
+        style={{ animationDuration: '0.7s' }}
+        mask={false}
+        footer={[
+          <Button onClick={() => setPostDetailVisible(false)}>关闭</Button>,
+        ]}
+      >
+        <p>{currentPost.content}</p>
+        <p>{formatDate(currentPost.pub_date)}</p>
+      </Modal>
       {dim ? <div className='dim' /> : null}
     </div>
   );

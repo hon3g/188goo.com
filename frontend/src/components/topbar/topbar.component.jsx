@@ -66,7 +66,7 @@ function TopBar() {
       <Drawer
         title='切换地区'
         placement='left'
-        width='375'
+        width={375}
         onClose={closeLocationDrawer}
         visible={locationDrawerVisible}
       >
