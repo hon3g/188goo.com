@@ -12,7 +12,7 @@ function Content() {
     <section>
       <div className='content'>
         <CookieCrumb />
-        <div className='location-and-post'>
+        <div className='location-and-post-button'>
           <RadioGroup />
           <Button type='primary' size='large'>+ 发布广告</Button>
         </div>

@@ -56,7 +56,7 @@ function TopBar() {
       </div> */}
 
       <div className='account'>
-        <Tooltip title='无需注册'>
+        <Tooltip title='无需填写信息'>
           <Button type='primary' ghost>
             登陆
           </Button>
