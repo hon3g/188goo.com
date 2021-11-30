@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Menu } from 'antd';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import 'antd/dist/antd.css';
 import './navbar.styles.scss';
@@ -28,12 +28,12 @@ const { SubMenu } = Menu;
 
 function Navbar() {
   const [current, setCurrent] = useState(null);
+  const { state, category } = useParams();
+  const currentState = state || '全美';
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
 
   const handleClick = (e) => {
     setCurrent(e.key);
-    const state = searchParams.get('state') || '';
 
     let type;
     switch (e.key) {
@@ -55,10 +55,10 @@ function Navbar() {
     }
 
     if (type) {
-      navigate(`/?${state ? `state=${state}&` : ''}type=${type}`);
+      navigate(`/${currentState}/${type}`);
       type = null;
     } else {
-      navigate(`/?${state ? `state=${state}&` : ''}category=${e.key}`);
+      navigate(`/${currentState}/${e.key}`);
     }
   };
 
@@ -66,11 +66,7 @@ function Navbar() {
     <Menu
       className='menu'
       onClick={handleClick}
-      selectedKeys={
-        searchParams.get('type') || searchParams.get('category')
-          ? [current]
-          : null
-      }
+      selectedKeys={category?current:null}
       mode='horizontal'
       style={{
         display: 'flex',

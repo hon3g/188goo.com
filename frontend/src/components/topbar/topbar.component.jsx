@@ -1,21 +1,17 @@
 import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Tooltip, Drawer, Button } from 'antd';
 import { ReactComponent as LocationIcon } from '../../assets/location_on_black_24dp.svg';
 
 import Locations from '../locations/locations.component';
 import Navbar from '../navbar/navbar.component';
 
-import { Link, useLocation } from 'react-router-dom';
-
 import './topbar.styles.scss';
 import 'antd/dist/antd.css';
 
 function TopBar() {
   const [locationDrawerVisible, setLocationDrawerVisible] = useState(false);
-  const [searchParams] = useSearchParams();
-  const currentLocation = searchParams.get('state');
-  const location = useLocation();
+  const { state } = useParams();
 
   const showLocationDrawer = () => {
     setLocationDrawerVisible(true);
@@ -37,9 +33,9 @@ function TopBar() {
         </Tooltip>
 
         <Tooltip title='切换地区' onClick={showLocationDrawer}>
-          <Link to={`${location.search}`} className='location'>
-            <LocationIcon />[{currentLocation ? currentLocation : '全美'}]
-          </Link>
+          <span className='location'>
+            <LocationIcon />[{state || '全美'}]
+          </span>
         </Tooltip>
       </div>
       <div className='menu'>

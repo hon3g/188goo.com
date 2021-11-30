@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { List, Tag, message, Modal, Button } from 'antd';
-import { useSearchParams } from 'react-router-dom';
-import { TAG_COLORS } from './tag-colors';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { TAG_COLORS, STATES, CITIES, TYPES, CATEGORIES } from './constants';
 import LoadingBar from 'react-top-loading-bar';
 
 import 'antd/dist/antd.css';
@@ -12,8 +12,9 @@ function PostList() {
   const [pageNum, setPageNum] = useState(1);
   const [postDetailVisible, setPostDetailVisible] = useState(false);
   const [currentPost, setCurrentPost] = useState({});
-
+  const { state, category } = useParams();
   const [searchParams] = useSearchParams();
+
   const [dim, setDim] = useState(false);
   const loadingBar = useRef(null);
 
@@ -27,14 +28,27 @@ function PostList() {
     new Date(date).toLocaleDateString().replace(/\//g, '-');
 
   useEffect(() => {
-    const params = ['region', 'state', 'city', 'type', 'category']; //  Meaningful indices! (api url)
-    const args = [];
-    for (const param of params) {
-      let arg = searchParams.get(param) || '';
-      args.push(arg);
+    const args = {
+      state: '',
+      city: '',
+      type: '',
+      category: '',
+    };
+    if (STATES.has(state)) {
+      args.state = state;
     }
-    const api = `http://127.0.0.1:8000/api/?city__state__region=${args[0]}&city__state__name=${args[1]}&city__name=${args[2]}&category__type=${args[3]}&category__name=${args[4]}&page=${pageNum}`;
+    console.log(searchParams.get('city'));
+    if (CITIES.has(searchParams.get('city'))) {
+      args.city = searchParams.get('city');
+    }
+    if (TYPES.has(category)) {
+      args.type = category;
+    } else if (CATEGORIES.has(category)) {
+      args.category = category;
+    }
 
+    const api = `http://127.0.0.1:8000/api/?city__state__name=${args.state}&city__name=${args.city}&category__type=${args.type}&category__name=${args.category}&page=${pageNum}`;
+    console.log(args);
     const fetchData = async () => {
       loadingBar.current.continuousStart();
       message.loading('正在刷新...', 168);
@@ -54,7 +68,7 @@ function PostList() {
       message.success('刷新成功!', 1);
     };
     fetchData();
-  }, [searchParams, pageNum]);
+  }, [state, category, searchParams, pageNum]);
 
   return (
     <div>
@@ -94,22 +108,31 @@ function PostList() {
         )}
       />
       <Modal
-        title={currentPost.title}
+        title={[
+          <Button onClick={() => setPostDetailVisible(false)}>返回</Button>,
+        ]}
         centered
         visible={postDetailVisible}
         onCancel={() => setPostDetailVisible(false)}
-        width={800}
-        bodyStyle={{ minHeight: '50vh' }}
-        style={{ animationDuration: '0s' }}
-        // mask={false}
-        maskStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }}
+        width='65vw'
+        bodyStyle={{ height: '60vh' }}
+        // style={{ animationDuration: '0.5s' }}
+        mask={false}
+        // maskStyle={{ backgroundColor: 'rgba(0, 0, 0, 0.15)' }}
         destroyOnClose={true}
         footer={[
           <Button onClick={() => setPostDetailVisible(false)}>关闭</Button>,
         ]}
       >
-        <pre style={{ whiteSpace: 'pre-line' }}>{currentPost.content}</pre>
-        <p>{formatDate(currentPost.pub_date)}</p>
+        <pre
+          style={{
+            height: '100%',
+            whiteSpace: 'pre-line',
+            overflowY: 'scroll',
+          }}
+        >
+          {currentPost.content}
+        </pre>
       </Modal>
       {dim ? <div className='dim' /> : null}
     </div>
