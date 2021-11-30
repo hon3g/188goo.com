@@ -1,8 +1,10 @@
 .content {
   background-color: rgb(255, 255, 255);
-  max-width: 61.8%;
+  // max-width: 61.8%;
+  max-width: 65%;
   padding: 1rem;
   margin: 1.5%;
+  min-height: 1626.590px;
 
   .radio {
     display: flex;
@@ -16,9 +18,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 0.5rem;
+    padding: 0.5rem 0.5rem;
     overflow: scroll;
     border-bottom: 1px solid #f0f0f0;
     margin-bottom: 2rem;
   }
+}
+
+.ant-menu-title-content {
+  font-size: 0.95rem;
 }

@@ -109,15 +109,16 @@ function PostList() {
       />
       <Modal
         title={[
-          <Button onClick={() => setPostDetailVisible(false)}>返回</Button>,
+          <Button onClick={() => setPostDetailVisible(false)} style={{marginRight: '1rem'}}>返回</Button>,
+          currentPost.title,
         ]}
         centered
         visible={postDetailVisible}
         onCancel={() => setPostDetailVisible(false)}
-        width='65vw'
+        width={1000}
         bodyStyle={{ height: '60vh' }}
-        // style={{ animationDuration: '0.5s' }}
-        mask={false}
+        style={{ animationDuration: '0.5s' }}
+        // mask={false}
         // maskStyle={{ backgroundColor: 'rgba(0, 0, 0, 0.15)' }}
         destroyOnClose={true}
         footer={[
