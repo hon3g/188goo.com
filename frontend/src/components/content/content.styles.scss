@@ -1,13 +1,24 @@
 .content {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   max-width: 61.8%;
   padding: 1rem;
   margin: 1.5%;
 
-  .location-and-post-button {
+  .radio {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .menu-and-post-button {
     display: flex;
     justify-content: space-between;
-    padding: 2rem 0.5rem;
+    align-items: center;
+    padding: 0.8rem 0.5rem;
     overflow: scroll;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 2rem;
   }
 }

@@ -16,7 +16,7 @@ const RadioGroup = () => {
 
   if (state !== '纽约') {
     return (
-      <Radio.Button checked={true} className='radio-item'>{`${state || '全美'}`}</Radio.Button>
+      <Radio checked={true} className='radio-item'>{`${state || '全美'}`}</Radio>
     );
   }
   return (
@@ -25,11 +25,11 @@ const RadioGroup = () => {
       value={searchParams.get('city') || '全部'}
       className='radio-group'
     >
-    <Radio.Button value={'全部'} className='radio-item'>全部</Radio.Button>
+    <Radio value={'全部'} className='radio-item'>全部</Radio>
     {NY.map((city) => (
-            <Radio.Button key={city} value={city} className='radio-item'>
+            <Radio key={city} value={city} className='radio-item'>
               {city}
-            </Radio.Button>
+            </Radio>
           ))}
     </Radio.Group>
   );

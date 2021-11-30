@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Tooltip, Drawer, Button } from 'antd';
+import { Tooltip, Drawer, Button, Input } from 'antd';
 import { ReactComponent as LocationIcon } from '../../assets/location_on_black_24dp.svg';
 
 import Locations from '../locations/locations.component';
-import Navbar from '../navbar/navbar.component';
 
 import './topbar.styles.scss';
 import 'antd/dist/antd.css';
+
+const { Search } = Input;
 
 function TopBar() {
   const [locationDrawerVisible, setLocationDrawerVisible] = useState(false);
@@ -20,6 +21,8 @@ function TopBar() {
   const closeLocationDrawer = () => {
     setLocationDrawerVisible(false);
   };
+
+  const onSearch = (value) => console.log(value);
 
   return (
     <header className='topbar'>
@@ -38,18 +41,15 @@ function TopBar() {
           </span>
         </Tooltip>
       </div>
-      <div className='menu'>
-        <Navbar />
-      </div>
 
-      {/* <div className='search'>
+      <div className='search'>
         <Search
           placeholder='搜索关键词'
           allowClear
           onSearch={onSearch}
-          style={{ width: '15vw' }}
+          style={{ maxWidth: '25vw' }}
         />
-      </div> */}
+      </div>
 
       <div className='account'>
         <Tooltip title='无需填写信息'>
