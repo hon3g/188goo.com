@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Menu } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
+import { ReactComponent as ResumeSvg } from '../../assets/reshot-icon-resume-LAG8SUMQFZ.svg';
+import { ReactComponent as HouseSvg } from '../../assets/reshot-icon-house-YETFXZVNJK.svg';
+import { ReactComponent as GoodsSvg } from '../../assets/reshot-icon-goods-FB6K9RGEMX.svg';
+import { ReactComponent as StoreSvg } from '../../assets/reshot-icon-placeholder-on-a-store-A5XNC87JRF.svg';
 
 import 'antd/dist/antd.css';
 import './navbar.styles.scss';
@@ -35,7 +39,7 @@ function Navbar() {
 
   useEffect(() => {
     setCurrent(category);
-  }, [category])
+  }, [category]);
 
   const handleClick = (e) => {
     setCurrent(e.key);
@@ -82,7 +86,21 @@ function Navbar() {
       }}
     >
       {SECTIONS.map((section) => (
-        <SubMenu key={section.type} title={section.type}>
+        <SubMenu
+          icon={
+            section.type === '招聘求职' ? (
+              <ResumeSvg className='small-svg' />
+            ) : section.type === '房屋租售' ? (
+              <HouseSvg className='small-svg' />
+            ) : section.type === '二手买卖' ? (
+              <GoodsSvg className='small-svg' />
+            ) : section.type === '生意转让' ? (
+              <StoreSvg className='small-svg' />
+            ) : null
+          }
+          key={section.type}
+          title={section.type}
+        >
           {section.categories.map((category) => (
             <Menu.Item key={category}>{category}</Menu.Item>
           ))}
