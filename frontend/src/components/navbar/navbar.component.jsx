@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { AutoComplete, Menu } from 'antd';
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { Menu } from 'antd';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import 'antd/dist/antd.css';
 import './navbar.styles.scss';
@@ -28,9 +28,9 @@ const { SubMenu } = Menu;
 
 function Navbar() {
   const [current, setCurrent] = useState(null);
-  const { state, category } = useParams();
-  const [searchParams] = useSearchParams();
+  const { state, city, category } = useParams();
   const currentState = state || '全美';
+  const currentCity = city || '全部';
   const navigate = useNavigate();
 
   const handleClick = (e) => {
@@ -57,14 +57,10 @@ function Navbar() {
 
     let url = null;
     if (type) {
-      url = `/${currentState}/${type}`;
+      url = `/${currentState}/${currentCity}/${type}`;
       type = null;
     } else {
-      url = `/${currentState}/${e.key}`;
-    }
-    const city = searchParams.get('city');
-    if (city) {
-      url += `?city=${city}`;
+      url = `/${currentState}/${currentCity}/${e.key}`;
     }
     navigate(url);
   };

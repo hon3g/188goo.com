@@ -52,7 +52,7 @@ function TopBar() {
       </div>
 
       <div className='account'>
-        <Tooltip title='无需注册'>
+        <Tooltip title='快速登陆'>
           <Button type='primary' ghost>
             登陆
           </Button>

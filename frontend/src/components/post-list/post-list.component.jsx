@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { List, Tag, message, Modal, Button } from 'antd';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { TAG_COLORS, STATES, CITIES, TYPES, CATEGORIES } from './constants';
 import LoadingBar from 'react-top-loading-bar';
 
@@ -12,8 +12,8 @@ function PostList() {
   const [pageNum, setPageNum] = useState(1);
   const [postDetailVisible, setPostDetailVisible] = useState(false);
   const [currentPost, setCurrentPost] = useState({});
-  const { state, category } = useParams();
-  const [searchParams] = useSearchParams();
+
+  const { state, city, category } = useParams();
 
   const [dim, setDim] = useState(false);
   const loadingBar = useRef(null);
@@ -22,7 +22,7 @@ function PostList() {
     TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)];
 
   const handleClick = (post) => (_) => {
-    console.log('clicked ', post);
+    console.log('clicked post: ', post);
     setCurrentPost(post);
     setPostDetailVisible(true);
   };
@@ -40,9 +40,8 @@ function PostList() {
     if (STATES.has(state)) {
       args.state = state;
     }
-    console.log(searchParams.get('city'));
-    if (CITIES.has(searchParams.get('city'))) {
-      args.city = searchParams.get('city');
+    if (CITIES.has(city)) {
+      args.city = city;
     }
     if (TYPES.has(category)) {
       args.type = category;
@@ -71,7 +70,7 @@ function PostList() {
       message.success('刷新成功!', 1);
     };
     fetchData();
-  }, [state, category, searchParams, pageNum]);
+  }, [state, city, category, pageNum]);
 
   return (
     <div>
@@ -129,7 +128,7 @@ function PostList() {
         onCancel={() => setPostDetailVisible(false)}
         width={1000}
         bodyStyle={{ height: '60vh' }}
-        // style={{ animationDuration: '0.5s' }}
+        style={{ animationDuration: '0.5s' }}
         // mask={false}
         // maskStyle={{ backgroundColor: 'rgba(0, 0, 0, 0.15)' }}
         destroyOnClose={true}

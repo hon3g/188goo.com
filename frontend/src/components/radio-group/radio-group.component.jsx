@@ -1,5 +1,5 @@
 import { Radio } from 'antd';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import 'antd/dist/antd.css';
 import './radio-group.styles.scss';
@@ -7,27 +7,26 @@ import './radio-group.styles.scss';
 const NY = ['曼哈顿', '法拉盛', '布鲁伦', '皇后区', '布朗士', '长岛', '史登岛'];
 
 const RadioGroup = () => {
-  const { state } = useParams();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { state, city } = useParams();
+  const navigate = useNavigate();
 
   const onChange = (e) => {
-    setSearchParams({ city: e.target.value });
+    navigate(`/${state}/${e.target.value}`)
   };
 
   if (state !== '纽约') {
-    return (
-      <Radio checked={true}>{`${state || '全美'}`}</Radio>
-    );
+    return <Radio checked={true}>{`${state || '全美'}`}</Radio>;
   }
+
   return (
     <Radio.Group
       onChange={onChange}
-      value={searchParams.get('city') || '全部'}
+      value={city || '全部'}
     >
     <Radio value={'全部'}>全部</Radio>
-    {NY.map((city) => (
-            <Radio key={city} value={city}>
-              {city}
+    {NY.map((area) => (
+            <Radio key={area} value={area}>
+              {area}
             </Radio>
           ))}
     </Radio.Group>
