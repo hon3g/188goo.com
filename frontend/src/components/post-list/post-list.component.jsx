@@ -18,9 +18,9 @@ function PostList() {
   const [dim, setDim] = useState(false);
   const loadingBar = useRef(null);
 
-  const constantTagColor =
+  const sameTagColor =
     TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)];
-  const [trueCategory, setTrueCategory] = useState(false);
+  const [isSameCategory, setIsSameCategory] = useState(false);
 
   const handleClick = (post) => (_) => {
     console.log('clicked post: ', post);
@@ -44,14 +44,15 @@ function PostList() {
     }
     if (CITIES.has(city)) {
       args.city = city;
-      setTrueCategory(false);
     }
     if (TYPES.has(category)) {
       args.type = category;
-      setTrueCategory(false);
-    } else if (CATEGORIES.has(category)) {
+    }
+    if (CATEGORIES.has(category)) {
       args.category = category;
-      setTrueCategory(true);
+      setIsSameCategory(true);
+    } else {
+      setIsSameCategory(false);
     }
     console.log('page: ' + args.page);
     const api = `http://127.0.0.1:8000/api/?city__state__name=${args.state}&city__name=${args.city}&category__type=${args.type}&category__name=${args.category}&page=${args.page}`;
@@ -108,8 +109,8 @@ function PostList() {
             />
             <Tag
               color={
-                trueCategory
-                  ? constantTagColor
+                isSameCategory
+                  ? sameTagColor
                   : TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)]
               }
             >
