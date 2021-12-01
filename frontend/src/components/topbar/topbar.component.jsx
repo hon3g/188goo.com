@@ -27,10 +27,10 @@ function TopBar() {
   return (
     <header className='topbar'>
       <div className='title-location'>
-        <Tooltip title='首页'>
+        <Tooltip title='硬刷新'>
           <div className='title'>
             <a href='/' className='a'>
-              188同城网
+              美国188网
             </a>
           </div>
         </Tooltip>
