@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import argsReducer from './args/args.reducer';
+import locationDrawerReducer from './location-drawer/location-drawer.reducer';
 
 export default combineReducers({
-    args: argsReducer,
+    locationDrawer: locationDrawerReducer,
 });

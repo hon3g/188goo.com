@@ -3,12 +3,16 @@ import SlideShow from '../../components/slideshow/slideshow.component';
 import PostList from '../../components/post-list/post-list.component';
 import RadioGroup from '../../components/radio-group/radio-group.component';
 import Navbar from '../../components/navbar/navbar.component';
+import LocationDrawer from '../../components/location-drawer/location-drawer.component'
 import { Button } from 'antd';
+
+import { connect } from 'react-redux';
+import { setLocationDrawerVisible } from '../../redux/location-drawer/location-drawer.actions';
 
 import 'antd/dist/antd.css';
 import './homepage.styles.scss';
 
-function HomePage() {
+function HomePage({ setLocationDrawerVisible }) {
   return (
     <div style={{ backgroundColor: '#f9f9f9' }}>
       <TopBar />
@@ -16,7 +20,7 @@ function HomePage() {
       <div className='content'>
         <div className='radio-and-location-button'>
           <RadioGroup />
-          <Button type='primary' ghost>
+          <Button type='primary' ghost onClick={() => setLocationDrawerVisible(true)}>
             切换地区
           </Button>
         </div>
@@ -28,8 +32,13 @@ function HomePage() {
           <PostList />
         </div>
       </div>
+      <LocationDrawer />
     </div>
   );
 }
 
-export default HomePage;
+const mapDispatchToProps = (dispatch) => ({
+  setLocationDrawerVisible: (visible) => dispatch(setLocationDrawerVisible(visible))
+});
+
+export default connect(null, mapDispatchToProps)(HomePage);

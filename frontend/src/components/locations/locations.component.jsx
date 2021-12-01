@@ -2,6 +2,9 @@ import { Divider } from 'antd';
 import { Link } from 'react-router-dom';
 import { REGIONED_STATES, REGIONS } from './regioned-states';
 
+import { connect } from 'react-redux';
+import { setLocationDrawerVisible } from '../../redux/location-drawer/location-drawer.actions';
+
 import './locations.styles.scss';
 import 'antd/dist/antd.css';
 
@@ -50,4 +53,8 @@ function Locations({ setLocationDrawerVisible }) {
   );
 }
 
-export default Locations;
+const mapDispatchToProps = (dispatch) => ({
+  setLocationDrawerVisible: (visible) => dispatch(setLocationDrawerVisible(visible))
+});
+
+export default connect(null, mapDispatchToProps)(Locations);
