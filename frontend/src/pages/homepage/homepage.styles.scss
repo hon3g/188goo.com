@@ -6,3 +6,49 @@
     top: auto;
     overflow: hidden;
   }
+
+.content {
+  max-width: 75%;
+
+  .radio {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 3rem;
+    margin: 1.5%;
+    margin-bottom: 0.5%;
+    padding-left: 1.5rem;
+    border: 1px solid #f0f0f0;
+    white-space: nowrap;
+    overflow: scroll;
+  }
+  
+  .menu-and-post-button{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+    margin: 1.5%;
+    margin-bottom: 0.5%;
+    margin-top: 0.5%;
+    padding: 1.5rem;
+    padding-left: 0.5rem;
+    border: 1px solid #f0f0f0;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  
+  .post-list {
+    background-color: rgb(255, 255, 255);
+    padding: 1rem;
+    padding-bottom: 0.3rem;
+    margin: 1.5%;
+    margin-top: 0.5%;
+    border: 1px solid #f0f0f0;
+  }
+
+}
+

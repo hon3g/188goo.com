@@ -37,7 +37,7 @@ function TopBar() {
 
         <Tooltip title='切换地区' onClick={showLocationDrawer}>
           <span className='location'>
-            <LocationIcon />[{state || '全美'}]
+            <LocationIcon className='loc-icon'/>[{state || '全美'}]
           </span>
         </Tooltip>
       </div>

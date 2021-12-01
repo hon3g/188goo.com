@@ -18,6 +18,9 @@ function PostList() {
   const [dim, setDim] = useState(false);
   const loadingBar = useRef(null);
 
+  const constantTagColor =
+    TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)];
+
   const handleClick = (post) => (_) => {
     console.log('clicked ', post);
     setCurrentPost(post);
@@ -99,9 +102,13 @@ function PostList() {
               }
             />
             <Tag
-              color={TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)]}
+              color={
+                category
+                  ? constantTagColor
+                  : TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)]
+              }
             >
-              {post.slug.slice(0, 3)}
+              {post.category}
             </Tag>
             <Tag>{formatDate(post.pub_date)}</Tag>
           </List.Item>
@@ -109,7 +116,12 @@ function PostList() {
       />
       <Modal
         title={[
-          <Button onClick={() => setPostDetailVisible(false)} style={{marginRight: '1rem'}}>返回</Button>,
+          <Button
+            onClick={() => setPostDetailVisible(false)}
+            style={{ marginRight: '1rem' }}
+          >
+            返回
+          </Button>,
           currentPost.title,
         ]}
         centered
@@ -117,7 +129,7 @@ function PostList() {
         onCancel={() => setPostDetailVisible(false)}
         width={1000}
         bodyStyle={{ height: '60vh' }}
-        style={{ animationDuration: '0.5s' }}
+        // style={{ animationDuration: '0.5s' }}
         // mask={false}
         // maskStyle={{ backgroundColor: 'rgba(0, 0, 0, 0.15)' }}
         destroyOnClose={true}
