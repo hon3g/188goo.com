@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { List, Tag, message, Modal, Button } from 'antd';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { TAG_COLORS, STATES, CITIES, TYPES, CATEGORIES } from './constants';
 import LoadingBar from 'react-top-loading-bar';
 
@@ -9,17 +9,18 @@ import './post-list.styles.scss';
 
 function PostList() {
   const [data, setData] = useState({});
-  const [pageNum, setPageNum] = useState(1);
   const [postDetailVisible, setPostDetailVisible] = useState(false);
   const [currentPost, setCurrentPost] = useState({});
 
   const { state, city, category } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [dim, setDim] = useState(false);
   const loadingBar = useRef(null);
 
   const constantTagColor =
     TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)];
+  const [trueCategory, setTrueCategory] = useState(false);
 
   const handleClick = (post) => (_) => {
     console.log('clicked post: ', post);
@@ -36,20 +37,24 @@ function PostList() {
       city: '',
       type: '',
       category: '',
+      page: searchParams.get('p') || 1,
     };
     if (STATES.has(state)) {
       args.state = state;
     }
     if (CITIES.has(city)) {
       args.city = city;
+      setTrueCategory(false);
     }
     if (TYPES.has(category)) {
       args.type = category;
+      setTrueCategory(false);
     } else if (CATEGORIES.has(category)) {
       args.category = category;
+      setTrueCategory(true);
     }
-
-    const api = `http://127.0.0.1:8000/api/?city__state__name=${args.state}&city__name=${args.city}&category__type=${args.type}&category__name=${args.category}&page=${pageNum}`;
+    console.log('page: ' + args.page);
+    const api = `http://127.0.0.1:8000/api/?city__state__name=${args.state}&city__name=${args.city}&category__type=${args.type}&category__name=${args.category}&page=${args.page}`;
     console.log(args);
     const fetchData = async () => {
       loadingBar.current.continuousStart();
@@ -70,7 +75,7 @@ function PostList() {
       message.success('刷新成功!', 1);
     };
     fetchData();
-  }, [state, city, category, pageNum]);
+  }, [state, city, category, searchParams]);
 
   return (
     <div>
@@ -80,8 +85,9 @@ function PostList() {
           onChange: (page) => {
             setDim(true);
             window.scrollTo(0, 0);
-            setPageNum(page);
+            setSearchParams({ p: page });
           },
+          current: parseInt(searchParams.get('p')) || 1,
           total: data.count,
           pageSize: 30,
           showSizeChanger: false,
@@ -102,7 +108,7 @@ function PostList() {
             />
             <Tag
               color={
-                category
+                trueCategory
                   ? constantTagColor
                   : TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)]
               }
@@ -116,6 +122,8 @@ function PostList() {
       <Modal
         title={[
           <Button
+            type='primary'
+            ghost
             onClick={() => setPostDetailVisible(false)}
             style={{ marginRight: '1rem' }}
           >
@@ -126,14 +134,19 @@ function PostList() {
         centered
         visible={postDetailVisible}
         onCancel={() => setPostDetailVisible(false)}
-        width={1000}
-        bodyStyle={{ height: '60vh' }}
-        style={{ animationDuration: '0.5s' }}
-        // mask={false}
-        // maskStyle={{ backgroundColor: 'rgba(0, 0, 0, 0.15)' }}
+        width={'100vw'}
+        bodyStyle={{ height: '85vh' }}
+        mask={false}
+        // style={{ animationDuration: '0s' }}
         destroyOnClose={true}
         footer={[
-          <Button onClick={() => setPostDetailVisible(false)}>关闭</Button>,
+          <Button
+            type='primary'
+            ghost
+            onClick={() => setPostDetailVisible(false)}
+          >
+            关闭
+          </Button>,
         ]}
       >
         <pre

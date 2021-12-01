@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -32,6 +32,10 @@ function Navbar() {
   const currentState = state || '全美';
   const currentCity = city || '全部';
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setCurrent(category);
+  }, [category])
 
   const handleClick = (e) => {
     setCurrent(e.key);
@@ -69,7 +73,7 @@ function Navbar() {
     <Menu
       className='menu'
       onClick={handleClick}
-      selectedKeys={category ? current : null}
+      selectedKeys={current}
       mode='horizontal'
       style={{
         display: 'flex',
