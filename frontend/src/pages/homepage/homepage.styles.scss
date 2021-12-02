@@ -9,14 +9,14 @@
 
 .content {
   max-width: 72%;
+  margin: 1.5%;
 
   .radio-and-location-button {
-    background-color: rgb(255, 255, 255);
+    background: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 3rem;
-    margin: 1.5%;
     margin-bottom: 0.5%;
     padding: 1.5rem;
     border: 1px solid #e7e7e7;
@@ -27,12 +27,11 @@
   }
   
   .menu-and-post-button{
-    background-color: rgb(255, 255, 255);
+    background: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 3rem;
-    margin: 1.5%;
     margin-bottom: 0.5%;
     margin-top: 0.5%;
     padding: 1.5rem;
@@ -42,13 +41,16 @@
     white-space: nowrap;
     overflow-x: scroll;
     overflow-y: hidden;
+    // position: sticky;
+    // top: 0;
+    // z-index: 2;
   }
   
   .post-list {
-    background-color: rgb(255, 255, 255);
+    background: white;
     padding: 1rem;
+    padding-top: 2rem;
     padding-bottom: 0.3rem;
-    margin: 1.5%;
     margin-top: 0.5%;
     border: 1px solid #e7e7e7;
     border-radius: 3px;
