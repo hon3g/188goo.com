@@ -4,6 +4,8 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { TAG_COLORS, STATES, CITIES, TYPES, CATEGORIES } from './constants';
 import LoadingBar from 'react-top-loading-bar';
 
+import axios from 'axios';
+
 import 'antd/dist/antd.css';
 import './post-list.styles.scss';
 
@@ -54,22 +56,17 @@ function PostList() {
     } else {
       setIsSameCategory(false);
     }
-    console.log('page: ' + args.page);
     const api = `http://127.0.0.1:8000/api/?city__state__name=${args.state}&city__name=${args.city}&category__type=${args.type}&category__name=${args.category}&page=${args.page}`;
     console.log(args);
     const fetchData = async () => {
       loadingBar.current.continuousStart();
       message.loading('正在刷新...', 168);
-
-      const response = await fetch(api);
-      const resJson = await response.json();
-
+      const response = await axios(api);
       // function timeout(delay) {
       //   return new Promise((res) => setTimeout(res, delay));
       // }
       // await timeout(1000);
-
-      setData(resJson);
+      setData(response.data);
       setDim(false);
       loadingBar.current.complete();
       message.destroy();
@@ -93,6 +90,7 @@ function PostList() {
           pageSize: 30,
           showSizeChanger: false,
           showQuickJumper: true,
+          hideOnSinglePage: true,
         }}
         size='small'
         itemLayout='horizontal'

@@ -3,7 +3,8 @@ import SlideShow from '../../components/slideshow/slideshow.component';
 import PostList from '../../components/post-list/post-list.component';
 import RadioGroup from '../../components/radio-group/radio-group.component';
 import Navbar from '../../components/navbar/navbar.component';
-import LocationDrawer from '../../components/location-drawer/location-drawer.component'
+import LocationDrawer from '../../components/location-drawer/location-drawer.component';
+import Footer from '../../components/footer/footer.component';
 import { Button } from 'antd';
 
 import { connect } from 'react-redux';
@@ -14,31 +15,43 @@ import './homepage.styles.scss';
 
 function HomePage({ setLocationDrawerVisible }) {
   return (
-    <div style={{ backgroundColor: '#f9f9f9' }}>
-      <TopBar />
-      <SlideShow />
-      <div className='content'>
+    <div className='homepage'>
+      <div className='top'>
+        <TopBar />
+        <LocationDrawer />
+        <SlideShow />
+      </div>
+      <div className='middle'>
         <div className='radio-and-location-button'>
           <RadioGroup />
-          <Button type='primary' ghost onClick={() => setLocationDrawerVisible(true)}>
+          <Button
+            type='primary'
+            ghost
+            onClick={() => setLocationDrawerVisible(true)}
+          >
             切换地区
           </Button>
         </div>
         <div className='menu-and-post-button'>
           <Navbar />
-          <Button type='primary' style={{height: '2.1rem'}}>+发布广告</Button>
+          <Button type='primary'>
+            发布广告
+          </Button>
         </div>
         <div className='post-list'>
           <PostList />
         </div>
       </div>
-      <LocationDrawer />
+      <div className='bottom'>
+        <Footer />
+      </div>
     </div>
   );
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  setLocationDrawerVisible: (visible) => dispatch(setLocationDrawerVisible(visible))
+  setLocationDrawerVisible: (visible) =>
+    dispatch(setLocationDrawerVisible(visible)),
 });
 
 export default connect(null, mapDispatchToProps)(HomePage);

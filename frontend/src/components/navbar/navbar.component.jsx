@@ -38,7 +38,25 @@ function Navbar() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setCurrent(category);
+    let type;
+    switch (category) {
+      case '招聘求职':
+        type = '全部招聘';
+        break;
+      case '房屋租售':
+        type = '全部房屋';
+        break;
+      case '生意转让':
+        type = '全部转让';
+        break;
+      case '二手买卖':
+        type = '全部二手';
+        break;
+      default:
+        type = null;
+        break;
+    }
+    setCurrent(type || category);
   }, [category]);
 
   const handleClick = (e) => {
