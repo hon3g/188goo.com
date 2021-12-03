@@ -5,16 +5,22 @@ import { ReactComponent as PostSvg } from '../../assets/undraw_my_personal_files
 import { ReactComponent as HouseSvg } from '../../assets/undraw_choosing_house_v37h.svg';
 
 import 'antd/dist/antd.css';
-import './slideshow.styles.scss'
+import './slideshow.styles.scss';
 
 function SlideShow() {
   return (
     <Carousel autoplay>
       <div>
-        <span className='slide-content'><BrowsingSvg className='svg'/><JobSvg className='svg'/></span>
+        <span className='slide-content'>
+          <BrowsingSvg className='svg' />
+          <JobSvg className='svg' />
+        </span>
       </div>
       <div>
-        <span className='slide-content'><PostSvg className='svg'/><HouseSvg className='svg'/></span>
+        <span className='slide-content'>
+          <PostSvg className='svg' />
+          <HouseSvg className='svg' />
+        </span>
       </div>
     </Carousel>
   );

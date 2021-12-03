@@ -4,7 +4,7 @@ function Footer() {
     return (
         <footer className='footer'>
             <div className='footer-left'>
-            美国188网 © 2021. All Rights Reserved
+            美国188 © 2021. All Rights Reserved
             </div>
             <div className='footer-right'>
                 意见反馈

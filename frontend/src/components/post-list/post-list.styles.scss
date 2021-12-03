@@ -32,12 +32,13 @@
 }
 
 .square {
-  height: 8px;
-  width: 8px;
-  background-color: #cde7ff;
+  height: 6px;
+  width: 6px;
+  background-color: #7e7e7e;
   position: relative;
   bottom: 1.8px;
   margin-right: 0.5rem;
+  transform: rotate(45deg);
 }
 
 .dim {

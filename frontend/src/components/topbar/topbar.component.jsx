@@ -25,7 +25,7 @@ function TopBar({ setLocationDrawerVisible }) {
         <Tooltip title='硬刷新'>
           <div className='title'>
             <a href='/' className='a'>
-              美国188网
+              美国188
             </a>
           </div>
         </Tooltip>
