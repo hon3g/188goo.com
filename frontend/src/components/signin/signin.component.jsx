@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Input, Button } from 'antd';
-import ReactCodeInput from 'react-verification-code-input';
+// import ReactCodeInput from 'react-verification-code-input';
 
 import { auth } from '../../firebase/firebase';
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
@@ -37,39 +37,45 @@ function formatPhoneNumber(value) {
 
 function SignIn({ inputRef }) {
   const [inputValue, setInputValue] = useState();
+  const recaptchaVerifierRef = useRef();
 
   useEffect(() => {
-    const recaptchaVerifier = new RecaptchaVerifier(
+    recaptchaVerifierRef.current = new RecaptchaVerifier(
       'invisible-recaptcha',
       {
         size: 'invisible',
-        callback: (response) => {
+        callback: () => {
           // reCAPTCHA solved, allow signInWithPhoneNumber.
-          signInWithPhoneNumber(auth, '+16505553434', recaptchaVerifier)
-            .then((confirmationResult) => {
-              // SMS sent. Prompt user to type the code from the message, then sign the
-              // user in with confirmationResult.confirm(code).
-              // ...
-              confirmationResult.confirm('123456').then((result) => {
-                // User signed in successfully.
-                const user = result.user;
-                console.log(user)
-                // ...
-              }).catch((error) => {
-                // User couldn't sign in (bad verification code?)
-                // ...
-              });
-            })
-            .catch((error) => {
-              // Error; SMS not sent
-              // ...
-            });
+          onGetOTP();
         },
       },
       auth
     );
-    recaptchaVerifier.render();
+    recaptchaVerifierRef.current.render();
   }, []);
+
+  const onGetOTP = () => {
+    signInWithPhoneNumber(auth, '+16505553434', recaptchaVerifierRef.current)
+      .then((confirmationResult) => {
+        // SMS sent. Prompt user to type the code from the message, then sign the
+        // user in with confirmationResult.confirm(code).
+        confirmationResult
+          .confirm('123456')
+          .then((result) => {
+            // User signed in successfully.
+            const user = result.user;
+            console.log(user);
+          })
+          .catch((error) => {
+            // User couldn't sign in (bad verification code?)
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        // Error; SMS not sent
+        console.log(error);
+      });
+  };
 
   const handleInput = (e) => {
     // this is where we'll call the phoneNumberFormatter function
@@ -92,10 +98,10 @@ function SignIn({ inputRef }) {
       />
       <br />
       <br />
-      <div className='code-input'>
+      {/* <div className='code-input'>
         <ReactCodeInput fieldWidth={54} fieldHeight={45} />
       </div>
-      <br />
+      <br /> */}
       <div className='get-code-button'>
         <Button id='invisible-recaptcha' type='primary' ghost loading={false}>
           换取验证码
