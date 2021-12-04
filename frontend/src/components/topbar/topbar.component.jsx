@@ -4,20 +4,25 @@ import { ReactComponent as LocationIcon } from '../../assets/location_on_black_2
 
 import { connect } from 'react-redux';
 import { setLocationDrawerVisible } from '../../redux/location-drawer/location-drawer.actions';
+import { setSignInDrawerVisible } from '../../redux/signin-drawer/signin-drawer.actions';
 
 import './topbar.styles.scss';
 import 'antd/dist/antd.css';
 
 const { Search } = Input;
 
-function TopBar({ setLocationDrawerVisible }) {
+function TopBar({ setLocationDrawerVisible, setSignInDrawerVisible }) {
   const { state } = useParams();
 
   const onSearch = (value) => console.log(value);
 
   const handleChangeLocation = () => {
-    setLocationDrawerVisible(true)
-  }
+    setLocationDrawerVisible(true);
+  };
+
+  const handleSignIn = () => {
+    setSignInDrawerVisible(true);
+  };
 
   return (
     <header className='topbar'>
@@ -30,11 +35,8 @@ function TopBar({ setLocationDrawerVisible }) {
           </div>
         </Tooltip>
 
-        <Tooltip
-          title='切换地区'
-          onClick={handleChangeLocation}
-        >
-          <span className='location'>
+        <Tooltip title='切换地区'>
+          <span className='location' onClick={handleChangeLocation}>
             <LocationIcon className='loc-icon' />[{state || '全美'}]
           </span>
         </Tooltip>
@@ -50,8 +52,8 @@ function TopBar({ setLocationDrawerVisible }) {
       </div>
 
       <div className='account'>
-        <Tooltip title='快速登陆'>
-          <Button type='primary' ghost>
+        <Tooltip title='登陆'>
+          <Button type='primary' ghost onClick={handleSignIn}>
             登陆
           </Button>
         </Tooltip>
@@ -61,7 +63,10 @@ function TopBar({ setLocationDrawerVisible }) {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  setLocationDrawerVisible: (visible) => dispatch(setLocationDrawerVisible(visible))
+  setLocationDrawerVisible: (visible) =>
+    dispatch(setLocationDrawerVisible(visible)),
+  setSignInDrawerVisible: (visible) =>
+    dispatch(setSignInDrawerVisible(visible)),
 });
 
 export default connect(null, mapDispatchToProps)(TopBar);

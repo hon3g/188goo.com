@@ -136,7 +136,7 @@ function PostList() {
         width={'100vw'}
         bodyStyle={{ height: '85vh' }}
         mask={false}
-        // style={{ animationDuration: '0s' }}
+        style={{ animationDuration: '0s' }}
         destroyOnClose={true}
         footer={[
           <Button

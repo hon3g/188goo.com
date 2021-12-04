@@ -25,7 +25,8 @@ const mapSateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setLocationDrawerVisible: (visible) => dispatch(setLocationDrawerVisible(visible))
+  setLocationDrawerVisible: (visible) =>
+    dispatch(setLocationDrawerVisible(visible)),
 });
 
 export default connect(mapSateToProps, mapDispatchToProps)(LocationDrawer);

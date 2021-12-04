@@ -1,0 +1,24 @@
+.code-input {
+  display: flex;
+  justify-content: center;
+
+  .styles_react-code-input__CRulA > input:first-child {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+
+  .styles_react-code-input__CRulA > input:last-child {
+    border-right: solid 1px #a8adb7;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+
+  .styles_react-code-input__CRulA > input {
+      color: black;
+  }
+
+}
+
+.get-code-button {
+  float: right;
+}
