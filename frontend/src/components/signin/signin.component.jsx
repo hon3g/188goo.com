@@ -43,11 +43,27 @@ function SignIn({ inputRef, setSignInDrawerVisible }) {
   const recaptchaVerifierRef = useRef();
   const [confirmationResult, setConfirmationResult] = useState();
   const [phoneNumUI, setPhoneNumUI] = useState(true);
+  const [errMsg, setErrMsg] = useState(false);
+
+  const isValidPhoneNum = (phoneNum) => {
+    // Check (NXX) NXX-XXXX, N=digits 2–9, X=digits 0–9
+    const regex = new RegExp(/\([2-9]\d\d\) [2-9]\d\d-\d{4}/);
+    if (!regex.test(phoneNum)) return false;
+    // Check for at least 3 distinct numbers
+    const set = new Set(phoneNum.replace(/[^\d]/g, ''));
+    if (set.size <= 3) return false;
+
+    return true;
+  };
 
   const getOTP = () => {
-    if (inputValue.length !== 14) return;
-
+    if (!isValidPhoneNum(inputValue)) {
+      setErrMsg('电话号码格式不正确');
+      return;
+    }
+    setErrMsg(false);
     setPhoneNumUI(false);
+
     recaptchaVerifierRef.current = new RecaptchaVerifier(
       'recaptcha',
       {
@@ -75,9 +91,10 @@ function SignIn({ inputRef, setSignInDrawerVisible }) {
         // user in with confirmationResult.confirm(code).
         setConfirmationResult(confirmationResult);
       })
-      .catch((error) => {
+      .catch(() => {
         // Error; SMS not sent
-        console.log('SMS not sent: ' + error.message);
+        alert('\n验证码未能发送，请稍后尝试');
+        setSignInDrawerVisible(false);
       });
   };
 
@@ -91,9 +108,9 @@ function SignIn({ inputRef, setSignInDrawerVisible }) {
         const user = result.user;
         console.log(user);
       })
-      .catch((error) => {
+      .catch(() => {
         // User couldn't sign in (bad verification code?)
-        console.log("User couldn't sign in: " + error.message);
+        setErrMsg('验证码不正确');
       });
   };
 
@@ -141,7 +158,9 @@ function SignIn({ inputRef, setSignInDrawerVisible }) {
         </div>
       )}
       <br />
-      {/* <Alert message='Error' type='error' showIcon /> */}
+      {errMsg ? (
+        <Alert message={errMsg} type='error' showIcon/>
+      ) : null}
       <div id='recaptcha' />
     </form>
   );
