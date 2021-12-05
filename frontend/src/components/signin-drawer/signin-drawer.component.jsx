@@ -21,6 +21,7 @@ function SignInDrawer({ visible, setSignInDrawerVisible }) {
       onClose={() => setSignInDrawerVisible(false)}
       visible={visible}
       afterVisibleChange={setInputFocus}
+      destroyOnClose={true}
     >
       <SignIn inputRef={inputRef}/>
     </Drawer>

@@ -57,7 +57,7 @@ function PostList() {
       setIsSameCategory(false);
     }
     const api = `http://127.0.0.1:8000/api/?city__state__name=${args.state}&city__name=${args.city}&category__type=${args.type}&category__name=${args.category}&page=${args.page}`;
-    console.log(args);
+    // console.log(args);
     const fetchData = async () => {
       loadingBar.current.continuousStart();
       message.loading('正在刷新...', 168);

@@ -1,6 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
-import { Input, Button } from 'antd';
+import { useState, useRef } from 'react';
+import { Input, Button, message, Alert } from 'antd';
 import ReactCodeInput from 'react-verification-code-input';
+
+import { connect } from 'react-redux';
+import { setSignInDrawerVisible } from '../../redux/signin-drawer/signin-drawer.actions';
 
 import { auth } from '../../firebase/firebase';
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
@@ -35,15 +38,18 @@ function formatPhoneNumber(value) {
   )}-${phoneNumber.slice(6, 10)}`;
 }
 
-function SignIn({ inputRef }) {
+function SignIn({ inputRef, setSignInDrawerVisible }) {
   const [inputValue, setInputValue] = useState('');
   const recaptchaVerifierRef = useRef();
   const [confirmationResult, setConfirmationResult] = useState();
+  const [phoneNumUI, setPhoneNumUI] = useState(true);
 
-  useEffect(() => {
-    if (recaptchaVerifierRef.current) return;
+  const getOTP = () => {
+    if (inputValue.length !== 14) return;
+
+    setPhoneNumUI(false);
     recaptchaVerifierRef.current = new RecaptchaVerifier(
-      'invisible-recaptcha',
+      'recaptcha',
       {
         size: 'invisible',
         callback: () => {
@@ -54,12 +60,14 @@ function SignIn({ inputRef }) {
       auth
     );
     recaptchaVerifierRef.current.render();
-  });
+    recaptchaVerifierRef.current.verify();
+  };
 
   const onSignInSubmit = () => {
+    console.log('inputValue: ' + inputValue);
     signInWithPhoneNumber(
       auth,
-      '+1(650) 555-3434',
+      `+1 ${inputValue}`,
       recaptchaVerifierRef.current
     )
       .then((confirmationResult) => {
@@ -69,22 +77,23 @@ function SignIn({ inputRef }) {
       })
       .catch((error) => {
         // Error; SMS not sent
-        console.log(error.message);
+        console.log('SMS not sent: ' + error.message);
       });
   };
 
   const confirmCode = (code) => {
-    console.log(code);
     confirmationResult
       .confirm(code)
       .then((result) => {
         // User signed in successfully.
+        setSignInDrawerVisible(false);
+        message.success('登陆成功!', 5);
         const user = result.user;
         console.log(user);
       })
       .catch((error) => {
         // User couldn't sign in (bad verification code?)
-        console.log(error.message);
+        console.log("User couldn't sign in: " + error.message);
       });
   };
 
@@ -96,34 +105,51 @@ function SignIn({ inputRef }) {
   };
 
   return (
-    <form>
-      <div>输入您的手机号码</div>
+    <form className='signin-form'>
+      {phoneNumUI ? (
+        <div>
+          <h2>输入您的手机号码</h2>
+          <br />
+          <Input
+            ref={inputRef}
+            size='large'
+            placeholder='手机号码'
+            prefix='🇺🇸 +1'
+            onChange={(e) => handleInput(e)}
+            value={inputValue}
+            onPressEnter={getOTP}
+          />
+          <br />
+          <br />
+          <div className='get-code-button'>
+            <Button type='primary' ghost loading={false} onClick={getOTP}>
+              换取验证码
+            </Button>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <h2>输入6位数验证码</h2>
+          <br />
+          <div className='code-input'>
+            <ReactCodeInput
+              fieldWidth={54}
+              fieldHeight={45}
+              onComplete={confirmCode}
+            />
+          </div>
+        </div>
+      )}
       <br />
-      <Input
-        ref={inputRef}
-        size='large'
-        placeholder='手机号码'
-        prefix='🇺🇸 +1'
-        onChange={(e) => handleInput(e)}
-        value={inputValue}
-      />
-      <br />
-      <br />
-      <div className='code-input'>
-        <ReactCodeInput
-          fieldWidth={54}
-          fieldHeight={45}
-          onComplete={confirmCode}
-        />
-      </div>
-      <br />
-      <div className='get-code-button'>
-        <Button id='invisible-recaptcha' type='primary' ghost loading={false}>
-          换取验证码
-        </Button>
-      </div>
+      {/* <Alert message='Error' type='error' showIcon /> */}
+      <div id='recaptcha' />
     </form>
   );
 }
 
-export default SignIn;
+const mapDispatchToProps = (dispatch) => ({
+  setSignInDrawerVisible: (visible) =>
+    dispatch(setSignInDrawerVisible(visible)),
+});
+
+export default connect(null, mapDispatchToProps)(SignIn);
