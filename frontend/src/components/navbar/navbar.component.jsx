@@ -6,7 +6,6 @@ import home from '../../assets/home.png';
 import buying from '../../assets/buying.png';
 import shop from '../../assets/shop.png';
 
-
 import './navbar.styles.scss';
 
 const SECTIONS = [
@@ -93,13 +92,11 @@ function Navbar() {
 
   return (
     <Menu
-      className='menu'
       onClick={handleClick}
       selectedKeys={current}
       mode='horizontal'
+      disabledOverflow={true}
       style={{
-        display: 'flex',
-        justifyContent: 'center',
         borderBottom: 'none',
       }}
     >
@@ -107,13 +104,13 @@ function Navbar() {
         <SubMenu
           icon={
             section.type === '招聘求职' ? (
-              <img src={resume} className='icon' alt=''/>
+              <img src={resume} className='icon' alt='' />
             ) : section.type === '房屋租售' ? (
-              <img src={home} className='icon' alt=''/>
+              <img src={home} className='icon' alt='' />
             ) : section.type === '二手买卖' ? (
-              <img src={buying} className='icon' alt=''/>
+              <img src={buying} className='icon' alt='' />
             ) : section.type === '生意转让' ? (
-              <img src={shop} className='icon' alt=''/>
+              <img src={shop} className='icon' alt='' />
             ) : null
           }
           key={section.type}

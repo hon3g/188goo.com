@@ -1,6 +1,4 @@
 .ant-list-item-meta-title {
-  font-weight: normal;
-  font-size: 0.96rem;
   max-width: 90%;
   white-space: nowrap;
   overflow: hidden;
@@ -12,6 +10,8 @@
   }
 
   .post-title {
+    color: rgb(66, 66, 66);
+    font-size: 1rem;
     &:hover {
       cursor: pointer;
       color: var(--blue);
@@ -34,7 +34,7 @@
 .square {
   height: 6px;
   width: 6px;
-  background-color: #7e7e7e;
+  background-color: #bbbbbb;
   position: relative;
   bottom: 1.8px;
   margin-right: 0.5rem;
