@@ -93,7 +93,7 @@ function SignIn({ inputRef, setSignInDrawerVisible }) {
       .catch((error) => {
         // Error; SMS not sent
         console.log(error.message);
-        alert('\n验证码未能发送，请稍后再尝试');
+        alert('\n验证码未能发送, 请稍后再尝试');
         setSignInDrawerVisible(false);
       });
   };
@@ -104,7 +104,7 @@ function SignIn({ inputRef, setSignInDrawerVisible }) {
       .then((result) => {
         // User signed in successfully.
         setSignInDrawerVisible(false);
-        message.success('登陆成功!', 5);
+        message.success('登陆成功!');
         const user = result.user;
         console.log(user);
       })
