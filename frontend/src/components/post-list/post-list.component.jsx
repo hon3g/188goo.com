@@ -6,7 +6,7 @@ import LoadingBar from 'react-top-loading-bar';
 
 import axios from 'axios';
 
-import 'antd/dist/antd.css';
+
 import './post-list.styles.scss';
 
 function PostList() {

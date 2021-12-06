@@ -5,6 +5,7 @@ import RadioGroup from '../../components/radio-group/radio-group.component';
 import Navbar from '../../components/navbar/navbar.component';
 import LocationDrawer from '../../components/location-drawer/location-drawer.component';
 import SignInDrawer from '../../components/signin-drawer/signin-drawer.component';
+import AccountDrawer from '../../components/account-drawer/account-drawer.component'
 import Footer from '../../components/footer/footer.component';
 import { Button } from 'antd';
 
@@ -21,6 +22,7 @@ function HomePage({ setLocationDrawerVisible }) {
         <TopBar />
         <LocationDrawer />
         <SignInDrawer />
+        <AccountDrawer />
         <SlideShow />
       </div>
       <div className='middle'>

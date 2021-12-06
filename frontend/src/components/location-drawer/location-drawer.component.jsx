@@ -4,7 +4,7 @@ import Locations from '../locations/locations.component';
 import { connect } from 'react-redux';
 import { setLocationDrawerVisible } from '../../redux/location-drawer/location-drawer.actions';
 
-import 'antd/dist/antd.css';
+
 
 function LocationDrawer({ visible, setLocationDrawerVisible }) {
   return (

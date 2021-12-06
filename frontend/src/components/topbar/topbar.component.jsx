@@ -5,13 +5,19 @@ import { ReactComponent as LocationIcon } from '../../assets/location_on_black_2
 import { connect } from 'react-redux';
 import { setLocationDrawerVisible } from '../../redux/location-drawer/location-drawer.actions';
 import { setSignInDrawerVisible } from '../../redux/signin-drawer/signin-drawer.actions';
+import { setAccountDrawerVisible } from '../../redux/account-drawer/account-drawer.actions';
 
 import './topbar.styles.scss';
-import 'antd/dist/antd.css';
+
 
 const { Search } = Input;
 
-function TopBar({ setLocationDrawerVisible, setSignInDrawerVisible }) {
+function TopBar({
+  setLocationDrawerVisible,
+  setSignInDrawerVisible,
+  setAccountDrawerVisible,
+  currentUser,
+}) {
   const { state } = useParams();
 
   const onSearch = (value) => console.log(value);
@@ -22,6 +28,10 @@ function TopBar({ setLocationDrawerVisible, setSignInDrawerVisible }) {
 
   const handleSignIn = () => {
     setSignInDrawerVisible(true);
+  };
+
+  const handleAccount = () => {
+    setAccountDrawerVisible(true);
   };
 
   return (
@@ -52,21 +62,33 @@ function TopBar({ setLocationDrawerVisible, setSignInDrawerVisible }) {
       </div>
 
       <div className='account'>
-        <Tooltip title='登陆'>
-          <Button type='primary' ghost onClick={handleSignIn}>
-            登陆
-          </Button>
-        </Tooltip>
+        {!currentUser ? (
+          <Tooltip title='登陆'>
+            <Button type='primary' ghost onClick={handleSignIn}>
+              登陆
+            </Button>
+          </Tooltip>
+        ) : (
+          <Tooltip title='个人中心'>
+            <Button type='primary' ghost onClick={handleAccount}>
+              个人中心
+            </Button>
+          </Tooltip>
+        )}
       </div>
     </header>
   );
 }
+
+const mapSateToProps = (state) => ({ currentUser: state.user.currentUser });
 
 const mapDispatchToProps = (dispatch) => ({
   setLocationDrawerVisible: (visible) =>
     dispatch(setLocationDrawerVisible(visible)),
   setSignInDrawerVisible: (visible) =>
     dispatch(setSignInDrawerVisible(visible)),
+  setAccountDrawerVisible: (visible) =>
+  dispatch(setAccountDrawerVisible(visible)),
 });
 
-export default connect(null, mapDispatchToProps)(TopBar);
+export default connect(mapSateToProps, mapDispatchToProps)(TopBar);

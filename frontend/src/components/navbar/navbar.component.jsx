@@ -6,7 +6,7 @@ import home from '../../assets/home.png';
 import buying from '../../assets/buying.png';
 import shop from '../../assets/shop.png';
 
-import 'antd/dist/antd.css';
+
 import './navbar.styles.scss';
 
 const SECTIONS = [

@@ -1,7 +1,7 @@
 import { Radio } from 'antd';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import 'antd/dist/antd.css';
+
 import './radio-group.styles.scss';
 
 const NY = ['曼哈顿', '法拉盛', '布鲁伦', '皇后区', '布朗士', '长岛', '史登岛'];

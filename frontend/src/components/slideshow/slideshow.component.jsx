@@ -4,7 +4,7 @@ import { ReactComponent as JobSvg } from '../../assets/undraw_job_offers_kw5d.sv
 import { ReactComponent as PostSvg } from '../../assets/undraw_my_personal_files_8krs.svg';
 import { ReactComponent as HouseSvg } from '../../assets/undraw_choosing_house_v37h.svg';
 
-import 'antd/dist/antd.css';
+
 import './slideshow.styles.scss';
 
 function SlideShow() {

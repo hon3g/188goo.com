@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setSignInDrawerVisible } from '../../redux/signin-drawer/signin-drawer.actions';
 import SignIn from '../signin/signin.component';
 
-import 'antd/dist/antd.css';
+
 
 function SignInDrawer({ visible, setSignInDrawerVisible }) {
   const inputRef = createRef();

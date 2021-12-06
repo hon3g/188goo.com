@@ -80,7 +80,6 @@ function SignIn({ inputRef, setSignInDrawerVisible }) {
   };
 
   const onSignInSubmit = () => {
-    console.log('inputValue: ' + inputValue);
     signInWithPhoneNumber(
       auth,
       `+1 ${inputValue}`,
@@ -91,9 +90,10 @@ function SignIn({ inputRef, setSignInDrawerVisible }) {
         // user in with confirmationResult.confirm(code).
         setConfirmationResult(confirmationResult);
       })
-      .catch(() => {
+      .catch((error) => {
         // Error; SMS not sent
-        alert('\n验证码未能发送，请稍后尝试');
+        console.log(error.message);
+        alert('\n验证码未能发送，请稍后再尝试');
         setSignInDrawerVisible(false);
       });
   };
@@ -158,9 +158,7 @@ function SignIn({ inputRef, setSignInDrawerVisible }) {
         </div>
       )}
       <br />
-      {errMsg ? (
-        <Alert message={errMsg} type='error' showIcon/>
-      ) : null}
+      {errMsg ? <Alert message={errMsg} type='error' showIcon /> : null}
       <div id='recaptcha' />
     </form>
   );
