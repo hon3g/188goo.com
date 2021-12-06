@@ -5,7 +5,7 @@ import RadioGroup from '../../components/radio-group/radio-group.component';
 import Navbar from '../../components/navbar/navbar.component';
 import LocationDrawer from '../../components/location-drawer/location-drawer.component';
 import SignInDrawer from '../../components/signin-drawer/signin-drawer.component';
-import AccountDrawer from '../../components/account-drawer/account-drawer.component'
+import AccountDrawer from '../../components/account-drawer/account-drawer.component';
 import Footer from '../../components/footer/footer.component';
 import { Button } from 'antd';
 
@@ -23,27 +23,30 @@ function HomePage({ setLocationDrawerVisible }) {
         <LocationDrawer />
         <SignInDrawer />
         <AccountDrawer />
-        <SlideShow />
       </div>
       <div className='middle'>
-        <div className='radio-and-location-button shadow'>
-          <RadioGroup />
-          <Button
-            type='primary'
-            ghost
-            onClick={() => setLocationDrawerVisible(true)}
-          >
-            切换地区
-          </Button>
+        <div className='middle-left'>
+          <SlideShow />
+          <div className='radio-and-location-button shadow'>
+            <RadioGroup />
+            <Button
+              type='primary'
+              ghost
+              onClick={() => setLocationDrawerVisible(true)}
+            >
+              切换地区
+            </Button>
+          </div>
+          <div className='menu-and-post-button shadow'>
+            <Navbar />
+            <Button type='primary'>发布广告</Button>
+          </div>
+          <div className='post-list shadow'>
+            <PostList />
+          </div>
         </div>
-        <div className='menu-and-post-button shadow'>
-          <Navbar />
-          <Button type='primary'>
-            发布广告
-          </Button>
-        </div>
-        <div className='post-list shadow'>
-          <PostList />
+        <div className='middle-right shadow'>
+          hello world!
         </div>
       </div>
       <div className='bottom'>

@@ -19,8 +19,7 @@ function PostList() {
   const [dim, setDim] = useState(false);
   const loadingBar = useRef(null);
 
-  const sameTagColor =
-    TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)];
+  const [sameTagColor, setSameTagColor] = useState(null);
   const [isSameCategory, setIsSameCategory] = useState(false);
 
   const handleClick = (post) => (_) => {
@@ -31,6 +30,10 @@ function PostList() {
 
   const formatDate = (date) =>
     new Date(date).toLocaleDateString().replace(/\//g, '-');
+
+  useEffect(() => {
+    setSameTagColor(TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)]);
+  }, [state, city, category]);
 
   useEffect(() => {
     const args = {
@@ -51,6 +54,9 @@ function PostList() {
     }
     if (CATEGORIES.has(category)) {
       args.category = category;
+      setIsSameCategory(true);
+    } else {
+      setIsSameCategory(false);
     }
     const api = `http://127.0.0.1:8000/api/?state__name=${args.state}&city__name=${args.city}&category__type=${args.type}&category__name=${args.category}&page=${args.page}`;
     // console.log(args);
@@ -61,7 +67,7 @@ function PostList() {
       // function timeout(delay) {
       //   return new Promise((res) => setTimeout(res, delay));
       // }
-      // await timeout(1000);
+      // await timeout(700);
       setData(response.data);
       setDim(false);
       loadingBar.current.complete();
@@ -102,11 +108,11 @@ function PostList() {
               }
             />
             <Tag
-            color={
-              isSameCategory
-                ? sameTagColor
-                : TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)]
-            }
+              color={
+                isSameCategory
+                  ? sameTagColor
+                  : TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)]
+              }
             >
               {post.city ? post.city : post.state}
             </Tag>
@@ -129,9 +135,9 @@ function PostList() {
         centered
         visible={postDetailVisible}
         onCancel={() => setPostDetailVisible(false)}
-        width={'100vw'}
-        bodyStyle={{ height: '85vh' }}
-        mask={false}
+        width={'75vw'}
+        bodyStyle={{ height: '75vh' }}
+        maskStyle={{ background: 'rgba(255, 255, 255, 0.5)' }}
         style={{ animationDuration: '0s' }}
         destroyOnClose={true}
         footer={[

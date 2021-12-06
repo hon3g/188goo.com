@@ -18,52 +18,63 @@
   }
 
   .middle {
-    max-width: 72%;
     margin: 1.5%;
     flex-grow: 1;
+    display: grid;
+    grid-template-columns: 72% auto;
 
-    .radio-and-location-button {
-      background: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 3rem;
-      margin-bottom: 0.5%;
-      padding: 1.5rem;
-      border-radius: 3px;
-      white-space: nowrap;
-      overflow-x: scroll;
-      overflow-y: hidden;
+    .middle-left {
+      .radio-and-location-button {
+        background: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 3rem;
+        margin-top: 0.5%;
+        margin-bottom: 0.5%;
+        padding: 1.5rem;
+        border-radius: 3px;
+        white-space: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+      }
+
+      .menu-and-post-button {
+        background: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 3rem;
+        margin-bottom: 0.5%;
+        margin-top: 0.5%;
+        padding: 1.5rem;
+        padding-left: 0.5rem;
+        border-radius: 3px;
+        white-space: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+      }
+
+      .post-list {
+        background: white;
+        padding: 1rem;
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+        margin-top: 0.5%;
+        border-radius: 3px;
+      }
     }
 
-    .menu-and-post-button {
-      background: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 3rem;
-      margin-bottom: 0.5%;
-      margin-top: 0.5%;
-      padding: 1.5rem;
-      padding-left: 0.5rem;
-      border-radius: 3px;
-      white-space: nowrap;
-      overflow-x: scroll;
-      overflow-y: hidden;
-      // position: sticky;
-      // top: 0;
-      // z-index: 2;
-    }
-
-    .post-list {
-      background: white;
-      padding: 1rem;
-      padding-top: 2rem;
-      padding-bottom: 1rem;
-      margin-top: 0.5%;
-      border-radius: 3px;
+    .middle-right {
+      background-color: rgb(255, 255, 255);
+      max-height: 548px;
+      margin-left: 3%;
+      position: sticky;
+      top: 0;
+      z-index: 2;
     }
   }
+
   .bottom {
     flex-grow: 0;
   }

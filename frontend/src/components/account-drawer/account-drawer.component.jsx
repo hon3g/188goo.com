@@ -6,7 +6,7 @@ import { signOut } from 'firebase/auth';
 
 import './account-drawer.styles.scss';
 
-function AccountDrawer({ visible, setAccountDrawerVisible }) {
+function AccountDrawer({ visible, setAccountDrawerVisible, currentUser }) {
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -29,7 +29,10 @@ function AccountDrawer({ visible, setAccountDrawerVisible }) {
       visible={visible}
     >
       <div className='account-content'>
-        <div className='top'></div>
+        <div className='top'>
+          <h3>{currentUser?currentUser.phoneNumber:null}</h3>
+          <Button type='primary'>免费发布广告</Button>
+        </div>
         <div className='middle'></div>
         <div className='bottom'>
           <Button className='signout-button' onClick={handleSignOut}>
@@ -43,6 +46,7 @@ function AccountDrawer({ visible, setAccountDrawerVisible }) {
 
 const mapSateToProps = (state) => ({
   visible: state.accountDrawer.visible,
+  currentUser: state.user.currentUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({

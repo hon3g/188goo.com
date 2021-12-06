@@ -11,7 +11,7 @@ import './navbar.styles.scss';
 const SECTIONS = [
   {
     type: '招聘求职',
-    categories: ['全部招聘', '餐饮招聘', '美甲招聘', '文职招聘', '其他招聘'],
+    categories: ['全部招聘', '餐饮招聘', '美甲招聘', '按摩招聘', '文职招聘', '其他招聘'],
   },
   {
     type: '房屋租售',

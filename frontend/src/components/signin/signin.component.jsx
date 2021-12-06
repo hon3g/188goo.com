@@ -99,14 +99,15 @@ function SignIn({ inputRef, setSignInDrawerVisible }) {
   };
 
   const confirmCode = (code) => {
+    if (!confirmationResult) return;
+
     confirmationResult
       .confirm(code)
       .then((result) => {
         // User signed in successfully.
         setSignInDrawerVisible(false);
         message.success('登陆成功!');
-        const user = result.user;
-        console.log(user);
+        console.log(result.user);
       })
       .catch(() => {
         // User couldn't sign in (bad verification code?)
