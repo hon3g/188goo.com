@@ -48,7 +48,8 @@ class Post(models.Model):
     class Meta:
         ordering = ['-pub_date']
 
-    city = models.ForeignKey(City, on_delete=PROTECT)
+    state = models.ForeignKey(State, on_delete=PROTECT)
+    city = models.ForeignKey(City, on_delete=PROTECT, null=True)
     category = models.ForeignKey(Category, on_delete=PROTECT)
 
     user = models.ForeignKey(User, on_delete=CASCADE)

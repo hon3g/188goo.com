@@ -28,9 +28,15 @@ function AccountDrawer({ visible, setAccountDrawerVisible }) {
       onClose={() => setAccountDrawerVisible(false)}
       visible={visible}
     >
-      <Button className='signout-button' onClick={handleSignOut}>
-        注销
-      </Button>
+      <div className='account-content'>
+        <div className='top'></div>
+        <div className='middle'></div>
+        <div className='bottom'>
+          <Button className='signout-button' onClick={handleSignOut}>
+            注销
+          </Button>
+        </div>
+      </div>
     </Drawer>
   );
 }

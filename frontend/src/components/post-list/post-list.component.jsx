@@ -6,7 +6,6 @@ import LoadingBar from 'react-top-loading-bar';
 
 import axios from 'axios';
 
-
 import './post-list.styles.scss';
 
 function PostList() {
@@ -52,11 +51,8 @@ function PostList() {
     }
     if (CATEGORIES.has(category)) {
       args.category = category;
-      setIsSameCategory(true);
-    } else {
-      setIsSameCategory(false);
     }
-    const api = `http://127.0.0.1:8000/api/?city__state__name=${args.state}&city__name=${args.city}&category__type=${args.type}&category__name=${args.category}&page=${args.page}`;
+    const api = `http://127.0.0.1:8000/api/?state__name=${args.state}&city__name=${args.city}&category__type=${args.type}&category__name=${args.category}&page=${args.page}`;
     // console.log(args);
     const fetchData = async () => {
       loadingBar.current.continuousStart();
@@ -106,13 +102,13 @@ function PostList() {
               }
             />
             <Tag
-              color={
-                isSameCategory
-                  ? sameTagColor
-                  : TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)]
-              }
+            color={
+              isSameCategory
+                ? sameTagColor
+                : TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)]
+            }
             >
-              {post.category}
+              {post.city ? post.city : post.state}
             </Tag>
             <Tag>{formatDate(post.pub_date)}</Tag>
           </List.Item>
