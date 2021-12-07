@@ -1,17 +1,18 @@
 import { useEffect, useState, useRef } from 'react';
-import { List, Tag, message, Modal, Button } from 'antd';
+import { List, Tag, message } from 'antd';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { TAG_COLORS, STATES, CITIES, TYPES, CATEGORIES } from './constants';
 import LoadingBar from 'react-top-loading-bar';
-
 import axios from 'axios';
+
+import { connect } from 'react-redux';
+import { setPostDetailModalVisible } from '../../redux/post-detail-modal/post-detail-modal.actions';
+import { setCurrentPost } from '../../redux/current-post/current-post.actions';
 
 import './post-list.styles.scss';
 
-function PostList() {
+function PostList({ setPostDetailModalVisible, setCurrentPost }) {
   const [data, setData] = useState({});
-  const [postDetailVisible, setPostDetailVisible] = useState(false);
-  const [currentPost, setCurrentPost] = useState({});
 
   const { state, city, category } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -25,7 +26,7 @@ function PostList() {
   const handleClick = (post) => (_) => {
     console.log('clicked post: ', post);
     setCurrentPost(post);
-    setPostDetailVisible(true);
+    setPostDetailModalVisible(true);
   };
 
   const formatDate = (date) =>
@@ -120,49 +121,15 @@ function PostList() {
           </List.Item>
         )}
       />
-      <Modal
-        title={[
-          <Button
-            type='primary'
-            ghost
-            onClick={() => setPostDetailVisible(false)}
-            style={{ marginRight: '1rem' }}
-          >
-            返回
-          </Button>,
-          currentPost.title,
-        ]}
-        centered
-        visible={postDetailVisible}
-        onCancel={() => setPostDetailVisible(false)}
-        width={'75vw'}
-        bodyStyle={{ height: '75vh' }}
-        maskStyle={{ background: 'rgba(255, 255, 255, 0.5)' }}
-        style={{ animationDuration: '0s' }}
-        destroyOnClose={true}
-        footer={[
-          <Button
-            type='primary'
-            ghost
-            onClick={() => setPostDetailVisible(false)}
-          >
-            关闭
-          </Button>,
-        ]}
-      >
-        <pre
-          style={{
-            height: '100%',
-            whiteSpace: 'pre-line',
-            overflowY: 'scroll',
-          }}
-        >
-          {currentPost.content}
-        </pre>
-      </Modal>
       {dim ? <div className='dim' /> : null}
     </div>
   );
 }
 
-export default PostList;
+const mapDispatchToProps = (dispatch) => ({
+  setPostDetailModalVisible: (visible) =>
+    dispatch(setPostDetailModalVisible(visible)),
+  setCurrentPost: (post) => dispatch(setCurrentPost(post)),
+});
+
+export default connect(null, mapDispatchToProps)(PostList);

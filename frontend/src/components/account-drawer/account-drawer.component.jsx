@@ -24,7 +24,7 @@ function AccountDrawer({ visible, setAccountDrawerVisible, currentUser }) {
     <Drawer
       title='个人中心'
       placement='right'
-      width={375}
+      width={750}
       onClose={() => setAccountDrawerVisible(false)}
       visible={visible}
     >
