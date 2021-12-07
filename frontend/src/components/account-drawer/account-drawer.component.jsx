@@ -3,6 +3,7 @@ import { Drawer, Button, message } from 'antd';
 import { connect } from 'react-redux';
 import { setAccountDrawerVisible } from '../../redux/account-drawer/account-drawer.actions';
 import { setPostFormModalVisible } from '../../redux/post-form-modal/post-form-modal.actions';
+import { setCurrentUser } from '../../redux/user/user.actions';
 
 import { auth } from '../../firebase/firebase';
 import { signOut } from 'firebase/auth';
@@ -21,14 +22,16 @@ function formatedPhoneNum(numStr) {
 function AccountDrawer({
   visible,
   setAccountDrawerVisible,
-  currentUser,
   setPostFormModalVisible,
+  currentUser,
+  setCurrentUser,
 }) {
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
         setAccountDrawerVisible(false);
+        setCurrentUser(null);
         message.success('注销成功!');
       })
       .catch(() => {
@@ -57,7 +60,7 @@ function AccountDrawer({
         <div className='middle'></div>
         <div className='bottom'>
           <Button className='signout-button' onClick={handleSignOut}>
-            注销
+            注销账号
           </Button>
         </div>
       </div>
@@ -75,6 +78,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(setAccountDrawerVisible(visible)),
   setPostFormModalVisible: (visible) =>
     dispatch(setPostFormModalVisible(visible)),
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
 export default connect(mapSateToProps, mapDispatchToProps)(AccountDrawer);

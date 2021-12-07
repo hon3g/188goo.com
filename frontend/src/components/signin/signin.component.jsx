@@ -4,6 +4,7 @@ import ReactCodeInput from 'react-verification-code-input';
 
 import { connect } from 'react-redux';
 import { setSignInDrawerVisible } from '../../redux/signin-drawer/signin-drawer.actions';
+import { setAccountDrawerVisible } from '../../redux/account-drawer/account-drawer.actions';
 
 import { auth } from '../../firebase/firebase';
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
@@ -38,7 +39,7 @@ function formatPhoneNumber(value) {
   )}-${phoneNumber.slice(6, 10)}`;
 }
 
-function SignIn({ inputRef, setSignInDrawerVisible }) {
+function SignIn({ inputRef, setSignInDrawerVisible, setAccountDrawerVisible }) {
   const [inputValue, setInputValue] = useState('');
   const recaptchaVerifierRef = useRef();
   const [confirmationResult, setConfirmationResult] = useState();
@@ -106,6 +107,7 @@ function SignIn({ inputRef, setSignInDrawerVisible }) {
       .then((result) => {
         // User signed in successfully.
         setSignInDrawerVisible(false);
+        setAccountDrawerVisible(true);
         message.success('登陆成功!');
         console.log(result.user);
       })
@@ -168,6 +170,8 @@ function SignIn({ inputRef, setSignInDrawerVisible }) {
 const mapDispatchToProps = (dispatch) => ({
   setSignInDrawerVisible: (visible) =>
     dispatch(setSignInDrawerVisible(visible)),
+    setAccountDrawerVisible: (visible) =>
+    dispatch(setAccountDrawerVisible(visible)),
 });
 
 export default connect(null, mapDispatchToProps)(SignIn);

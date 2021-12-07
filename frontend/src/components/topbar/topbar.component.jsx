@@ -9,7 +9,6 @@ import { setAccountDrawerVisible } from '../../redux/account-drawer/account-draw
 
 import './topbar.styles.scss';
 
-
 const { Search } = Input;
 
 function TopBar({
@@ -88,7 +87,7 @@ const mapDispatchToProps = (dispatch) => ({
   setSignInDrawerVisible: (visible) =>
     dispatch(setSignInDrawerVisible(visible)),
   setAccountDrawerVisible: (visible) =>
-  dispatch(setAccountDrawerVisible(visible)),
+    dispatch(setAccountDrawerVisible(visible)),
 });
 
 export default connect(mapSateToProps, mapDispatchToProps)(TopBar);
