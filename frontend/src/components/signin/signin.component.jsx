@@ -93,7 +93,7 @@ function SignIn({ inputRef, setSignInDrawerVisible }) {
       .catch((error) => {
         // Error; SMS not sent
         console.log(error.message);
-        alert('\n验证码未能发送, 请稍后再尝试');
+        alert('验证码未能发送, 请稍后再尝试');
         setSignInDrawerVisible(false);
       });
   };

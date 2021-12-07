@@ -1,12 +1,29 @@
 import { Drawer, Button, message } from 'antd';
+
 import { connect } from 'react-redux';
 import { setAccountDrawerVisible } from '../../redux/account-drawer/account-drawer.actions';
+import { setPostFormModalVisible } from '../../redux/post-form-modal/post-form-modal.actions';
+
 import { auth } from '../../firebase/firebase';
 import { signOut } from 'firebase/auth';
 
 import './account-drawer.styles.scss';
 
-function AccountDrawer({ visible, setAccountDrawerVisible, currentUser }) {
+function formatedPhoneNum(numStr) {
+  // Input: +13475557048
+  const partOne = numStr.slice(2, 5); // 347
+  const partTwo = numStr.slice(5, 8); // 555
+  const partThree = numStr.slice(8); // 7048
+  // Output: +1 (347) 555-7048
+  return `+1 (${partOne}) ${partTwo}-${partThree}`;
+}
+
+function AccountDrawer({
+  visible,
+  setAccountDrawerVisible,
+  currentUser,
+  setPostFormModalVisible,
+}) {
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -24,14 +41,18 @@ function AccountDrawer({ visible, setAccountDrawerVisible, currentUser }) {
     <Drawer
       title='个人中心'
       placement='right'
-      width={750}
+      width={375}
       onClose={() => setAccountDrawerVisible(false)}
       visible={visible}
     >
       <div className='account-content'>
         <div className='top'>
-          <h3>{currentUser?currentUser.phoneNumber:null}</h3>
-          <Button type='primary'>免费发布广告</Button>
+          <h3>
+            {currentUser ? formatedPhoneNum(currentUser.phoneNumber) : null}
+          </h3>
+          <Button type='primary' onClick={() => setPostFormModalVisible(true)}>
+            免费发布信息
+          </Button>
         </div>
         <div className='middle'></div>
         <div className='bottom'>
@@ -52,6 +73,8 @@ const mapSateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   setAccountDrawerVisible: (visible) =>
     dispatch(setAccountDrawerVisible(visible)),
+  setPostFormModalVisible: (visible) =>
+    dispatch(setPostFormModalVisible(visible)),
 });
 
 export default connect(mapSateToProps, mapDispatchToProps)(AccountDrawer);

@@ -24,13 +24,13 @@
     grid-template-columns: 72% auto;
 
     .middle-left {
+      
       .radio-and-location-button {
         background: white;
         display: flex;
         justify-content: space-between;
         align-items: center;
         height: 3rem;
-        margin-top: 0.5%;
         margin-bottom: 0.5%;
         padding: 1.5rem;
         border-radius: 3px;
@@ -67,11 +67,11 @@
 
     .middle-right {
       background-color: rgb(255, 255, 255);
-      max-height: 548px;
+      max-height: 525px;
       margin-left: 3%;
-      position: sticky;
-      top: 0;
-      z-index: 2;
+      // position: sticky;
+      // top: 0;
+      // z-index: 2;
     }
   }
 
