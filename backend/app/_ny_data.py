@@ -1,7 +1,7 @@
 # from django.db import migrations
 
 
-# NY = ['曼哈顿', '布鲁伦', '法拉盛', '皇后区', '布朗士', '长岛', '史登岛']
+NY = ['曼哈顿', '布鲁伦', '法拉盛', '皇后区', '布朗士', '长岛', '史登岛']
 
 
 # class Migration(migrations.Migration):

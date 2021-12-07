@@ -1,0 +1,33 @@
+.ant-cascader-menu {
+  height: fit-content !important;
+}
+
+.ant-cascader-picker {
+  font-size: 16px !important;
+}
+
+.ant-cascader-menus {
+  font-size: 16px !important;
+}
+
+.post-form {
+  max-width: 600px;
+  height: 100%;
+  overflow: scroll;
+
+  .selections {
+    margin: 1rem auto;
+  }
+
+  .title {
+    margin: 1rem auto;
+  }
+
+  .description {
+    margin: 1rem auto;
+  }
+
+  .phone {
+    margin: 1rem auto;
+  }
+}

@@ -11,7 +11,7 @@ import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 
 import './signin.styles.scss';
 
-function formatPhoneNumber(value) {
+export function formatPhoneNumber(value) {
   // if input value is falsy eg if the user deletes the input, then just return
   if (!value) return value;
 
@@ -117,7 +117,7 @@ function SignIn({ inputRef, setSignInDrawerVisible, setAccountDrawerVisible }) {
       });
   };
 
-  const handleInput = (e) => {
+  const handlePhoneNumInput = (e) => {
     // this is where we'll call the phoneNumberFormatter function
     const formattedPhoneNumber = formatPhoneNumber(e.target.value);
     // we'll set the input value using our setInputValue
@@ -135,7 +135,7 @@ function SignIn({ inputRef, setSignInDrawerVisible, setAccountDrawerVisible }) {
             size='large'
             placeholder='手机号码'
             prefix='🇺🇸 +1'
-            onChange={(e) => handleInput(e)}
+            onChange={handlePhoneNumInput}
             value={inputValue}
             onPressEnter={getOTP}
           />
