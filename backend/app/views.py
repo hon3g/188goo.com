@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from .models import Post, State, City, User, Category
-from ._state_data import STATES
+from ._states import STATES
 import random
 
 

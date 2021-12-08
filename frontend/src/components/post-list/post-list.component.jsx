@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { List, Tag, message } from 'antd';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams, useNavigate } from 'react-router-dom';
 import { TAG_COLORS, STATES, CITIES, TYPES, CATEGORIES } from './constants';
 import LoadingBar from 'react-top-loading-bar';
 import axios from 'axios';
@@ -16,6 +16,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
 
   const { state, city, category } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const [dim, setDim] = useState(false);
   const loadingBar = useRef(null);
@@ -37,6 +38,11 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
   }, [state, city, category]);
 
   useEffect(() => {
+    if (!STATES.has(state) && state !== '全美') {
+      navigate('/全美');
+      return;
+    }
+
     const args = {
       state: '',
       city: '',
@@ -44,6 +50,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
       category: '',
       page: searchParams.get('p') || 1,
     };
+
     if (STATES.has(state)) {
       args.state = state;
     }
@@ -59,8 +66,8 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
     } else {
       setIsSameCategory(false);
     }
+
     const api = `http://127.0.0.1:8000/api/?state__name=${args.state}&city__name=${args.city}&category__type=${args.type}&category__name=${args.category}&page=${args.page}`;
-    // console.log(args);
     const fetchData = async () => {
       loadingBar.current.continuousStart();
       message.loading('正在刷新...', 168);
