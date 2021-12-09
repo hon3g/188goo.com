@@ -29,7 +29,7 @@ function PostFormModal({ visible, setPostFormModalVisible, currentUser }) {
 
   const handleFormSubmit = () => {
     currentUser
-      .getIdToken()
+      .getIdToken(true)
       .then((idToken) => {
         // Send token to backend via HTTPS
         console.log(idToken);
