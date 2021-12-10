@@ -31,12 +31,12 @@ function PostForm() {
     console.log(value);
   };
 
-  const onTitleChange = (value) => {
-    console.log(value);
+  const onTitleChange = (e) => {
+    console.log(e.target.value);
   };
 
-  const onDescriptionChange = (value) => {
-    console.log(value);
+  const onDescriptionChange = (e) => {
+    console.log(e.target.value);
   };
 
   const getPresignedUrl = async () => {

@@ -20,7 +20,7 @@ CATEGORIES = {
 #                 c.save()
 
 #     dependencies = [
-#         ('app', '0003_auto_20211125_1701'),
+#         ('app', '0003_auto_20211125_1701'), # Change parent reference
 #     ]
 
 #     operations = [

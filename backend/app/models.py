@@ -8,7 +8,7 @@ import re
 
 class State(models.Model):
     name = models.CharField(max_length=50, unique=True)
-    region = models.CharField(max_length=50, null=False)
+    region = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
@@ -30,7 +30,7 @@ class Category(models.Model):
         verbose_name_plural = "categories"
 
     name = models.CharField(max_length=50, unique=True)
-    type = models.CharField(max_length=50, null=False)
+    type = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
@@ -40,17 +40,17 @@ class Post(models.Model):
     class Meta:
         ordering = ['-pub_date']
 
-    contact_num = models.CharField(max_length=20, null=True)
+    contact_num = models.CharField(max_length=20)
 
     state = models.ForeignKey(State, on_delete=PROTECT)
-    city = models.ForeignKey(City, on_delete=PROTECT, null=True)
+    city = models.ForeignKey(City, on_delete=PROTECT, blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=PROTECT)
 
     user = models.ForeignKey(User, on_delete=CASCADE)
-    title = models.CharField(max_length=50, blank=False, null=False)
-    content = models.TextField(blank=False)
+    title = models.CharField(max_length=50)
+    content = models.TextField()
 
-    slug = models.SlugField(blank=True, null=False, editable=False)
+    slug = models.SlugField(blank=True, editable=False)
     pub_date = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
@@ -65,8 +65,8 @@ class Image(models.Model):
     class Meta:
         ordering = ['-pub_date']
 
-    url = models.CharField(max_length=500)
     post = models.ForeignKey(Post, on_delete=CASCADE)
+    img_url = models.CharField(max_length=500)
     pub_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

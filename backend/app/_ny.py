@@ -15,7 +15,7 @@ NY = ['曼哈顿', '布鲁伦', '法拉盛', '皇后区', '布朗士', '长岛',
 #             c.save()
 
 #     dependencies = [
-#         ('app', '0002_auto_20211125_1646'),
+#         ('app', '0002_auto_20211125_1646'), # Change parent reference
 #     ]
 
 #     operations = [

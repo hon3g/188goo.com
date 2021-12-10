@@ -29,7 +29,6 @@ const RadioGroup = () => {
     <Radio.Group
       onChange={onChange}
       value={city || '全部'}
-      style={{ overflowX: 'scroll' }}
     >
       <Radio value={'全部'}>全部</Radio>
       {NY.map((area) => (

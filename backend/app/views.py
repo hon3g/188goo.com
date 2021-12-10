@@ -27,22 +27,22 @@ CONTENT = "滚滚长江东逝水，浪花淘尽英雄。是非成败转头空，
 
 
 def _fake_posts(request):
-    for _ in range(888):
+    for _ in range(88):
         state = State.objects.get(name='纽约')
         city = City.objects.get(name=random.choice(NY))
         category = Category.objects.get(name=random.choice(CATEGORIES))
         user = User.objects.get(username='hongzhao')
-        p = Post(state=state, city=city, category=category, user=user, title=random.choice(TITLES), content=CONTENT)
+        p = Post(contact_num='3475557048', state=state, city=city, category=category, user=user, title=random.choice(TITLES), content=CONTENT)
         p.save()
 
     for region in STATES:
         for state_name in STATES[region]:
-            for _ in range(88):
+            for _ in range(8):
                 print('\033[91m' + state_name + '\033[0m')
                 state = State.objects.get(name=state_name)
                 category = Category.objects.get(name=random.choice(CATEGORIES))
                 user = User.objects.get(username='hongzhao')
-                p = Post(state=state, category=category, user=user, title=random.choice(TITLES), content=CONTENT)
+                p = Post(contact_num='3475557048', state=state, category=category, user=user, title=random.choice(TITLES), content=CONTENT)
                 p.save()
 
     html = "<html><body>Fake posts created!</body></html>"

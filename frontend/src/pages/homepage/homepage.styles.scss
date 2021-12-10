@@ -24,20 +24,6 @@
     grid-template-columns: 72% auto;
 
     .middle-left {
-      
-      .radio-and-location-button {
-        background: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 3rem;
-        margin-bottom: 0.5%;
-        padding: 1.5rem;
-        border-radius: 3px;
-        white-space: nowrap;
-        overflow-x: scroll;
-        overflow-y: hidden;
-      }
 
       .menu-and-post-button {
         background: white;
@@ -48,6 +34,20 @@
         margin-bottom: 0.5%;
         padding: 1.5rem;
         padding-left: 0.5rem;
+        border-radius: 3px;
+        white-space: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+      }
+      
+      .radio-and-location-button {
+        background: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 3rem;
+        margin-bottom: 0.5%;
+        padding: 1.5rem;
         border-radius: 3px;
         white-space: nowrap;
         overflow-x: scroll;
