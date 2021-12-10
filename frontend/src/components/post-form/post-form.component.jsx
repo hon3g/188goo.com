@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import { Cascader, Input, Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
@@ -16,15 +16,27 @@ function PostForm() {
   const [imageUploadUrl, setImageUploadUrl] = useState();
   const [imageMap, setImageMap] = useState(new Map());
 
-  const onSelectLocationChange = (value) => {
-    console.log(value);
-  };
-
   const handlePhoneNumInput = (e) => {
     // this is where we'll call the phoneNumberFormatter function
     const formattedPhoneNumber = formatPhoneNumber(e.target.value);
     // we'll set the input value using our setInputValue
     setPhoneNumInput(formattedPhoneNumber);
+  };
+
+  const onSelectLocationChange = (value) => {
+    console.log(value);
+  };
+
+  const onSelectCategoryChange = (value) => {
+    console.log(value);
+  };
+
+  const onTitleChange = (value) => {
+    console.log(value);
+  };
+
+  const onDescriptionChange = (value) => {
+    console.log(value);
   };
 
   const getPresignedUrl = async () => {
@@ -89,12 +101,12 @@ function PostForm() {
             size='large'
             style={{ width: '50%' }}
             options={CATEGORY_OPTIONS}
-            onChange={onSelectLocationChange}
+            onChange={onSelectCategoryChange}
             placeholder='请选择类型'
           />
         </div>
         <div className='title'>
-          <Input size='large' placeholder='标题' />
+          <Input size='large' placeholder='标题' onChange={onTitleChange} />
         </div>
         <div className='description'>
           <TextArea
@@ -104,6 +116,7 @@ function PostForm() {
             maxLength={200}
             rows={10}
             style={{ width: '100%' }}
+            onChange={onDescriptionChange}
           />
         </div>
       </div>
@@ -112,12 +125,12 @@ function PostForm() {
         <Upload
           listType='picture'
           maxCount={5}
-          accept='image/*,.heic'
+          accept='image/*'
           beforeUpload={getPresignedUrl}
           customRequest={handleImageUpload}
           onRemove={handleRemoveImage}
           onPreview={() => {
-            console.log(imageMap);
+            return null;
           }}
         >
           <Button icon={<UploadOutlined />} style={{ width: '100%' }}>

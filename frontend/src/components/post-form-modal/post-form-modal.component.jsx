@@ -14,7 +14,6 @@ function PostFormModal({ visible, setPostFormModalVisible, currentUser }) {
       .then((idToken) => {
         // Send token to backend via HTTPS
         console.log(idToken);
-        console.log(currentUser.accessToken);
       })
       .catch((error) => {
         // Handle error

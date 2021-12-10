@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE, PROTECT
 from django.utils.text import slugify
-from django.core.validators import RegexValidator
 
 import re
 
@@ -26,13 +25,6 @@ class City(models.Model):
         return self.name
 
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone_num_regex = RegexValidator(regex=r"^\d{10}$")
-    phone_number = models.CharField(
-        validators=[phone_num_regex], max_length=10)
-
-
 class Category(models.Model):
     class Meta:
         verbose_name_plural = "categories"
@@ -47,6 +39,8 @@ class Category(models.Model):
 class Post(models.Model):
     class Meta:
         ordering = ['-pub_date']
+
+    contact_num = models.CharField(max_length=20, null=True)
 
     state = models.ForeignKey(State, on_delete=PROTECT)
     city = models.ForeignKey(City, on_delete=PROTECT, null=True)
@@ -71,12 +65,12 @@ class Image(models.Model):
     class Meta:
         ordering = ['-pub_date']
 
-    link = models.CharField(max_length=500)
+    url = models.CharField(max_length=500)
     post = models.ForeignKey(Post, on_delete=CASCADE)
     pub_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.link
+        return self.url
 
 
 def de_emojified(text):

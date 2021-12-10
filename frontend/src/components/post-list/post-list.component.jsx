@@ -92,7 +92,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
           },
           current: parseInt(searchParams.get('p')) || 1,
           total: data.count,
-          pageSize: 30,
+          pageSize: 50,
           showSizeChanger: false,
           showQuickJumper: true,
           hideOnSinglePage: true,

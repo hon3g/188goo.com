@@ -16,12 +16,12 @@ function SlideShow() {
           <JobSvg className='svg' />
         </span>
       </div>
-      <div>
+      {/* <div>
         <span className='slide-content'>
           <PostSvg className='svg' />
           <HouseSvg className='svg' />
         </span>
-      </div>
+      </div> */}
     </Carousel>
   );
 }
