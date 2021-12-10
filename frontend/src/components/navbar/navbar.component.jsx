@@ -98,6 +98,7 @@ function Navbar() {
       disabledOverflow={true}
       style={{
         borderBottom: 'none',
+        overflowX: 'scroll',
       }}
     >
       {SECTIONS.map((section) => (

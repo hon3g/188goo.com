@@ -9,12 +9,15 @@ import { setPostFormModalVisible } from '../../redux/post-form-modal/post-form-m
 import { LOCATION_OPTIONS, CATEGORY_OPTIONS } from './options';
 import { formatPhoneNumber } from '../signin/signin.component';
 
+import axios from 'axios';
+
 import './post-form-modal.styles.scss';
 
 const { TextArea } = Input;
 
 function PostFormModal({ visible, setPostFormModalVisible, currentUser }) {
   const [phoneNumInput, setPhoneNumInput] = useState();
+  const [imageUploadUrl, setImageUploadUrl] = useState();
 
   const onSelectLocationChange = (value) => {
     console.log(value);
@@ -39,6 +42,11 @@ function PostFormModal({ visible, setPostFormModalVisible, currentUser }) {
         // Handle error
         console.log(error);
       });
+  };
+
+  const handleImageUpload = async () => {
+    const response = await axios('http://localhost:8000/get_presigned_url');
+    setImageUploadUrl(response.data);
   };
 
   return (
@@ -104,15 +112,16 @@ function PostFormModal({ visible, setPostFormModalVisible, currentUser }) {
             listType='picture'
             maxCount={5}
             accept='image/*,.heic'
-            action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
+            beforeUpload={handleImageUpload}
+            action={imageUploadUrl}
             method='put'
+            headers={{ 'Content-Type': 'multipart/form-data' }}
           >
             <Button icon={<UploadOutlined />} style={{ width: '100%' }}>
               上传照片 (可选)
             </Button>
           </Upload>
         </div>
-        <span />
       </form>
     </Modal>
   );

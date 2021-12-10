@@ -1,6 +1,7 @@
 import { Radio } from 'antd';
 import { useParams, useNavigate } from 'react-router-dom';
 
+import { STATES } from '../post-list/constants';
 
 import './radio-group.styles.scss';
 
@@ -12,28 +13,30 @@ const RadioGroup = () => {
 
   const onChange = (e) => {
     if (category) {
-      navigate(`/${state}/${e.target.value}/${category}`)
-    }
-    else {
-      navigate(`/${state}/${e.target.value}`)
+      navigate(`/${state}/${e.target.value}/${category}`);
+    } else {
+      navigate(`/${state}/${e.target.value}`);
     }
   };
 
   if (state !== '纽约') {
-    return <Radio checked={true}>{`${state || '全美'}`}</Radio>;
+    return (
+      <Radio checked={true}>{`${STATES.has(state) ? state : '全美'}`}</Radio>
+    );
   }
 
   return (
     <Radio.Group
       onChange={onChange}
       value={city || '全部'}
+      style={{ overflowX: 'scroll' }}
     >
-    <Radio value={'全部'}>全部</Radio>
-    {NY.map((area) => (
-            <Radio key={area} value={area}>
-              {area}
-            </Radio>
-          ))}
+      <Radio value={'全部'}>全部</Radio>
+      {NY.map((area) => (
+        <Radio key={area} value={area}>
+          {area}
+        </Radio>
+      ))}
     </Radio.Group>
   );
 };

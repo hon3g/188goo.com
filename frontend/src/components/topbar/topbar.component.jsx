@@ -7,6 +7,8 @@ import { setLocationDrawerVisible } from '../../redux/location-drawer/location-d
 import { setSignInDrawerVisible } from '../../redux/signin-drawer/signin-drawer.actions';
 import { setAccountDrawerVisible } from '../../redux/account-drawer/account-drawer.actions';
 
+import { STATES } from '../post-list/constants';
+
 import './topbar.styles.scss';
 
 const { Search } = Input;
@@ -46,7 +48,8 @@ function TopBar({
 
         <Tooltip title='切换地区'>
           <span className='location' onClick={handleChangeLocation}>
-            <LocationIcon className='loc-icon' />[{state || '全美'}]
+            <LocationIcon className='loc-icon' />[
+            {STATES.has(state) ? state : '全美'}]
           </span>
         </Tooltip>
       </div>

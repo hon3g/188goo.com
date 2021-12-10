@@ -38,11 +38,6 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
   }, [state, city, category]);
 
   useEffect(() => {
-    if (!STATES.has(state) && state !== '全美') {
-      navigate('/全美');
-      return;
-    }
-
     const args = {
       state: '',
       city: '',
@@ -83,7 +78,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
       message.success('刷新成功!', 1);
     };
     fetchData();
-  }, [state, city, category, searchParams]);
+  }, [state, city, category, searchParams, navigate]);
 
   return (
     <div>

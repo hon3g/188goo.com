@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, response
 from .models import Post, State, City, User, Category
 from ._states import STATES
 import random
@@ -35,3 +35,11 @@ def _fake_posts(request):
 
     html = "<html><body>Fake posts created!</body></html>"
     return HttpResponse(html)
+
+
+from .aws_s3 import create_presigned_url
+
+
+def get_presigned_url(request):
+    response = create_presigned_url()
+    return HttpResponse(response)
