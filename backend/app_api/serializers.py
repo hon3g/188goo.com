@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from app.models import Post, State, City, Category
+from app.models import Post, State, City, Category, Image
 from django.contrib.auth.models import User
 
 
@@ -13,7 +13,21 @@ class PostSerializer(serializers.ModelSerializer):
     category = serializers.SlugRelatedField(
         slug_field='name', queryset=Category.objects.all())
 
+    images = serializers.SerializerMethodField()
+
     class Meta:
         model = Post
         fields = ('id', 'user', 'contact_num', 'state', 'city',
-                  'category', 'title', 'slug', 'content', 'pub_date')
+                  'category', 'title', 'slug', 'content', 'images', 'pub_date')
+
+    def get_images(self, post):
+        queryset = Image.objects.filter(post=post.id)
+        img_urls = queryset.values_list('img_url', flat=True)
+        return list(img_urls)
+
+
+class ImageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Image
+        fields = ('post', 'img_url')

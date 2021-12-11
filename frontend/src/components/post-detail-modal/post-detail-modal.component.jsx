@@ -1,4 +1,4 @@
-import { Modal, Button } from 'antd';
+import { Modal, Button, Image } from 'antd';
 
 import { connect } from 'react-redux';
 import { setPostDetailModalVisible } from '../../redux/post-detail-modal/post-detail-modal.actions';
@@ -15,7 +15,7 @@ function PostDetailModal({ visible, setPostDetailModalVisible, currentPost }) {
         >
           返回
         </Button>,
-        currentPost?currentPost.title:null,
+        currentPost.title,
       ]}
       centered
       visible={visible}
@@ -23,7 +23,6 @@ function PostDetailModal({ visible, setPostDetailModalVisible, currentPost }) {
       width={'75vw'}
       bodyStyle={{ height: '75vh' }}
       maskStyle={{ background: 'rgba(255, 255, 255, 0.5)' }}
-      style={{ animationDuration: '0s' }}
       destroyOnClose={true}
       footer={[
         <Button
@@ -42,16 +41,19 @@ function PostDetailModal({ visible, setPostDetailModalVisible, currentPost }) {
           overflowY: 'scroll',
         }}
       >
-        {currentPost?currentPost.content:null}
+        {currentPost.content}
+        {currentPost.images?currentPost.images.map((imgUrl) => (
+          <Image width={150} src={imgUrl} />
+        )):null}
       </pre>
     </Modal>
   );
 }
 
-const mapSateToProps = (state) => ({ 
-    visible: state.postDetailModal.visible,
-    currentPost: state.currentPost.post,
- });
+const mapSateToProps = (state) => ({
+  visible: state.postDetailModal.visible,
+  currentPost: state.currentPost.post,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   setPostDetailModalVisible: (visible) =>

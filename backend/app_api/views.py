@@ -1,8 +1,9 @@
 from rest_framework import generics
+from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 
-from app.models import Post
-from .serializers import PostSerializer
+from app.models import Post, Image
+from .serializers import PostSerializer, ImageSerializer
 
 
 class PostList(generics.ListAPIView):
@@ -24,7 +25,17 @@ class PostCreate(generics.CreateAPIView):
     serializer_class = PostSerializer
 
 
+class ImageCreate(generics.CreateAPIView):
+    queryset = Image.objects.all()
+    serializer_class = ImageSerializer
 
+    def create(self, request, *args, **kwargs):
+        many = isinstance(request.data, list)
+        serializer = self.get_serializer(data=request.data, many=many)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, headers=headers)
 
 
 """ Concrete View Classes

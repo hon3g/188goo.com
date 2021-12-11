@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  post: null,
+  post: {},
 };
 
 const currentPostReducer = (state = INITIAL_STATE, action) => {
