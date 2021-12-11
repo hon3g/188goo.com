@@ -19,6 +19,14 @@ class PostList(generics.ListAPIView):
     }
 
 
+class PostCreate(generics.CreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+
+
+
+
 """ Concrete View Classes
 # CreateAPIView
 Used for create-only endpoints.

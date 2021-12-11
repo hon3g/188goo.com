@@ -62,7 +62,12 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
       setIsSameCategory(false);
     }
 
-    const api = `http://127.0.0.1:8000/api/?state__name=${args.state}&city__name=${args.city}&category__type=${args.type}&category__name=${args.category}&page=${args.page}`;
+    const api = `http://127.0.0.1:8000/api/list/?
+                                                state__name=${args.state}&
+                                                city__name=${args.city}&
+                                                category__type=${args.type}&
+                                                category__name=${args.category}&
+                                                page=${args.page}`;
     const fetchData = async () => {
       loadingBar.current.continuousStart();
       message.loading('正在刷新...', 168);

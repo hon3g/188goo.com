@@ -40,7 +40,7 @@ function PostForm() {
   };
 
   const getPresignedUrl = async () => {
-    const response = await axios('http://localhost:8000/get_presigned_url');
+    const response = await axios('http://127.0.0.1:8000/get_presigned_url');
     setImageUploadUrl(response.data);
   };
 
