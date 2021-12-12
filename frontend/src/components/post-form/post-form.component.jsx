@@ -7,7 +7,7 @@ import { formatPhoneNumber } from '../signin/signin.component';
 
 import { connect } from 'react-redux';
 import {
-  setPhoneNumber,
+  setContactNum,
   setState,
   setCity,
   setCategory,
@@ -23,7 +23,7 @@ import './post-form.styles.scss';
 const { TextArea } = Input;
 
 function PostForm({
-  setPhoneNumber,
+  setContactNum,
   setState,
   setCity,
   setCategory,
@@ -40,7 +40,7 @@ function PostForm({
     const formattedPhoneNumber = formatPhoneNumber(e.target.value);
     // we'll set the input value using our setInputValue
     setPhoneNumInput(formattedPhoneNumber);
-    setPhoneNumber(formattedPhoneNumber);
+    setContactNum(formattedPhoneNumber);
   };
 
   const onSelectLocationChange = (value) => {
@@ -101,7 +101,7 @@ function PostForm({
   };
 
   return (
-    <form className='post-form'>
+    <form className='post-form' onSubmit={(e) => e.preventDefault()}>
       <span />
       <div className='form-left'>
         <div className='phone'>
@@ -167,7 +167,7 @@ function PostForm({
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  setPhoneNumber: (phoneNumber) => dispatch(setPhoneNumber(phoneNumber)),
+  setContactNum: (contactNum) => dispatch(setContactNum(contactNum)),
 
   setState: (state) => dispatch(setState(state)),
 

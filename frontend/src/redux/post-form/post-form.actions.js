@@ -1,9 +1,9 @@
 import { PostFormActionTypes } from './post-form.types';
 
-export function setPhoneNumber(phoneNumber) {
+export function setContactNum(contactNum) {
   return {
-    type: PostFormActionTypes.SET_PHONE_NUMBER,
-    payload: phoneNumber,
+    type: PostFormActionTypes.SET_CONTACT_NUM,
+    payload: contactNum,
   };
 }
 

@@ -1,7 +1,7 @@
 import { PostFormActionTypes } from './post-form.types';
 
 const INITIAL_STATE = {
-  phoneNumber: null,
+  contactNum: null,
   state: null,
   city: null,
   category: null,
@@ -12,10 +12,10 @@ const INITIAL_STATE = {
 
 const postFormReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case PostFormActionTypes.SET_PHONE_NUMBER:
+    case PostFormActionTypes.SET_CONTACT_NUM:
       return {
         ...state,
-        phoneNumber: action.payload,
+        contactNum: action.payload,
       };
     case PostFormActionTypes.SET_STATE:
       return {
@@ -31,6 +31,16 @@ const postFormReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         category: action.payload,
+      };
+    case PostFormActionTypes.SET_TITLE:
+      return {
+        ...state,
+        title: action.payload,
+      };
+    case PostFormActionTypes.SET_DESCRIPTION:
+      return {
+        ...state,
+        description: action.payload,
       };
     case PostFormActionTypes.SET_IMAGES:
       return {

@@ -1,5 +1,5 @@
 export const PostFormActionTypes = {
-    SET_PHONE_NUMBER: 'SET_PHONE_NUMBER',
+    SET_CONTACT_NUM: 'SET_CONTACT_NUM',
     SET_STATE: 'SET_STATE',
     SET_CITY: 'SET_CITY',
     SET_CATEGORY: 'SET_CATEGORY',

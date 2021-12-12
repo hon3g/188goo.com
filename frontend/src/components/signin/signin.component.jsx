@@ -59,7 +59,7 @@ function SignIn({ inputRef, setSignInDrawerVisible, setAccountDrawerVisible }) {
 
   const getOTP = () => {
     if (!isValidPhoneNum(inputValue)) {
-      setErrMsg('电话号码格式不正确');
+      setErrMsg('号码格式不正确');
       return;
     }
     setErrMsg(false);
