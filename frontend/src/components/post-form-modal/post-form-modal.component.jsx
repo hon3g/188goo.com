@@ -7,7 +7,18 @@ import PostForm from '../post-form/post-form.component';
 
 import './post-form-modal.styles.scss';
 
-function PostFormModal({ visible, setPostFormModalVisible, currentUser }) {
+function PostFormModal({
+  visible,
+  setPostFormModalVisible,
+  currentUser,
+  phoneNumber,
+  state,
+  city,
+  category,
+  title,
+  description,
+  images,
+}) {
   const handleFormSubmit = () => {
     currentUser
       .getIdToken(true)
@@ -44,6 +55,13 @@ function PostFormModal({ visible, setPostFormModalVisible, currentUser }) {
 const mapSateToProps = (state) => ({
   visible: state.postFormModal.visible,
   currentUser: state.user.currentUser,
+  phoneNumber: state.postForm.phoneNumber,
+  state: state.postForm.state,
+  city: state.postForm.city,
+  category: state.postForm.category,
+  title: state.postForm.title,
+  description: state.postForm.description,
+  images: state.postForm.images,
 });
 
 const mapDispatchToProps = (dispatch) => ({

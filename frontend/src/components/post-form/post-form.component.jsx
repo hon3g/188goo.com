@@ -5,13 +5,32 @@ import { UploadOutlined } from '@ant-design/icons';
 import { LOCATION_OPTIONS, CATEGORY_OPTIONS } from './options';
 import { formatPhoneNumber } from '../signin/signin.component';
 
+import { connect } from 'react-redux';
+import {
+  setPhoneNumber,
+  setState,
+  setCity,
+  setCategory,
+  setTitle,
+  setDescription,
+  setImages,
+} from '../../redux/post-form/post-form.actions';
+
 import axios from 'axios';
 
 import './post-form.styles.scss';
 
 const { TextArea } = Input;
 
-function PostForm() {
+function PostForm({
+  setPhoneNumber,
+  setState,
+  setCity,
+  setCategory,
+  setTitle,
+  setDescription,
+  setImages,
+}) {
   const [phoneNumInput, setPhoneNumInput] = useState();
   const [imageUploadUrl, setImageUploadUrl] = useState();
   const [imageMap, setImageMap] = useState(new Map());
@@ -21,22 +40,26 @@ function PostForm() {
     const formattedPhoneNumber = formatPhoneNumber(e.target.value);
     // we'll set the input value using our setInputValue
     setPhoneNumInput(formattedPhoneNumber);
+    setPhoneNumber(formattedPhoneNumber);
   };
 
   const onSelectLocationChange = (value) => {
-    console.log(value);
+    setState(value[1]);
+    if (value[2] !== '其他') {
+      setCity(value[2]);
+    }
   };
 
   const onSelectCategoryChange = (value) => {
-    console.log(value);
+    setCategory(value[1]);
   };
 
   const onTitleChange = (e) => {
-    console.log(e.target.value);
+    setTitle(e.target.value);
   };
 
   const onDescriptionChange = (e) => {
-    console.log(e.target.value);
+    setDescription(e.target.value);
   };
 
   const getPresignedUrl = async () => {
@@ -61,7 +84,8 @@ function PostForm() {
         },
       });
       const imageUrl = imageUploadUrl.split('?')[0];
-      setImageMap((prev) => new Map([...prev, [file.uid, imageUrl]]));
+      setImageMap((prev) => prev.set(file.uid, imageUrl));
+      setImages([...imageMap.values()]);
       onSuccess(response);
     } catch (error) {
       onError({ error });
@@ -70,10 +94,10 @@ function PostForm() {
 
   const handleRemoveImage = (file) => {
     setImageMap((prev) => {
-      const newImageMap = new Map(prev);
-      newImageMap.delete(file.uid);
-      return newImageMap;
+      prev.delete(file.uid);
+      return prev;
     });
+    setImages([...imageMap.values()]);
   };
 
   return (
@@ -142,4 +166,20 @@ function PostForm() {
   );
 }
 
-export default PostForm;
+const mapDispatchToProps = (dispatch) => ({
+  setPhoneNumber: (phoneNumber) => dispatch(setPhoneNumber(phoneNumber)),
+
+  setState: (state) => dispatch(setState(state)),
+
+  setCity: (city) => dispatch(setCity(city)),
+
+  setCategory: (category) => dispatch(setCategory(category)),
+
+  setTitle: (title) => dispatch(setTitle(title)),
+
+  setDescription: (description) => dispatch(setDescription(description)),
+
+  setImages: (images) => dispatch(setImages(images)),
+});
+
+export default connect(null, mapDispatchToProps)(PostForm);

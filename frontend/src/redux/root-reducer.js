@@ -7,13 +7,15 @@ import signInDrawerReducer from './signin-drawer/signin-drawer.reducer';
 import accountDrawerReducer from './account-drawer/account-drawer.reducer';
 import userReducer from './user/user.reducer';
 import currentPostReducer from './current-post/current-post.reducer';
+import postFormReducer from './post-form/post-form.reducer';
 
 export default combineReducers({
-    postFormModal: postFormModalReducer,
-    postDetailModal: postDetailModalReducer,
-    locationDrawer: locationDrawerReducer,
-    signInDrawer: signInDrawerReducer,
-    accountDrawer: accountDrawerReducer,
-    user: userReducer,
-    currentPost: currentPostReducer,
+  postDetailModal: postDetailModalReducer,
+  locationDrawer: locationDrawerReducer,
+  signInDrawer: signInDrawerReducer,
+  accountDrawer: accountDrawerReducer,
+  user: userReducer,
+  currentPost: currentPostReducer,
+  postFormModal: postFormModalReducer,
+  postForm: postFormReducer,
 });

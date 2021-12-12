@@ -39,23 +39,23 @@ export function formatPhoneNumber(value) {
   )}-${phoneNumber.slice(6, 10)}`;
 }
 
+export function isValidPhoneNum(phoneNum) {
+  // Check (NXX) NXX-XXXX, N=digits 2–9, X=digits 0–9
+  const regex = new RegExp(/\([2-9]\d\d\) [2-9]\d\d-\d{4}/);
+  if (!regex.test(phoneNum)) return false;
+  // Check for at least 3 distinct numbers
+  const set = new Set(phoneNum.replace(/[^\d]/g, ''));
+  if (set.size <= 3) return false;
+
+  return true;
+}
+
 function SignIn({ inputRef, setSignInDrawerVisible, setAccountDrawerVisible }) {
   const [inputValue, setInputValue] = useState('');
   const recaptchaVerifierRef = useRef();
   const [confirmationResult, setConfirmationResult] = useState();
   const [phoneNumUI, setPhoneNumUI] = useState(true);
   const [errMsg, setErrMsg] = useState(false);
-
-  const isValidPhoneNum = (phoneNum) => {
-    // Check (NXX) NXX-XXXX, N=digits 2–9, X=digits 0–9
-    const regex = new RegExp(/\([2-9]\d\d\) [2-9]\d\d-\d{4}/);
-    if (!regex.test(phoneNum)) return false;
-    // Check for at least 3 distinct numbers
-    const set = new Set(phoneNum.replace(/[^\d]/g, ''));
-    if (set.size <= 3) return false;
-
-    return true;
-  };
 
   const getOTP = () => {
     if (!isValidPhoneNum(inputValue)) {
@@ -125,7 +125,7 @@ function SignIn({ inputRef, setSignInDrawerVisible, setAccountDrawerVisible }) {
   };
 
   return (
-    <form className='signin-form'>
+    <form className='signin-form' onSubmit={(e) => e.preventDefault()}>
       {phoneNumUI ? (
         <div>
           <h2>输入您的手机号码</h2>
@@ -170,7 +170,7 @@ function SignIn({ inputRef, setSignInDrawerVisible, setAccountDrawerVisible }) {
 const mapDispatchToProps = (dispatch) => ({
   setSignInDrawerVisible: (visible) =>
     dispatch(setSignInDrawerVisible(visible)),
-    setAccountDrawerVisible: (visible) =>
+  setAccountDrawerVisible: (visible) =>
     dispatch(setAccountDrawerVisible(visible)),
 });
 

@@ -48,7 +48,7 @@ class Post(models.Model):
 
     user = models.ForeignKey(User, on_delete=CASCADE)
     title = models.CharField(max_length=50)
-    content = models.TextField()
+    description = models.TextField()
 
     slug = models.SlugField(blank=True, editable=False)
     pub_date = models.DateTimeField(auto_now_add=True)

@@ -18,7 +18,7 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ('id', 'user', 'contact_num', 'state', 'city',
-                  'category', 'title', 'slug', 'content', 'images', 'pub_date')
+                  'category', 'title', 'slug', 'description', 'images', 'pub_date')
 
     def get_images(self, post):
         queryset = Image.objects.filter(post=post.id)

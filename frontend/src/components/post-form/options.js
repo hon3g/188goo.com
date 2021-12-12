@@ -14,6 +14,7 @@ export const LOCATION_OPTIONS = [
           { value: '布朗士', label: '布朗士' },
           { value: '长岛', label: '长岛' },
           { value: '史登岛', label: '史登岛' },
+          { value: '其他', label: '其他' },
         ],
       },
       { value: '上州', label: '上州' },
