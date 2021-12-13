@@ -1,4 +1,6 @@
-import { Modal, Button, message } from 'antd';
+import { useState } from 'react';
+
+import { Modal, Button, message, Result, Spin } from 'antd';
 
 import { connect } from 'react-redux';
 import { setPostFormModalVisible } from '../../redux/post-form-modal/post-form-modal.actions';
@@ -22,6 +24,9 @@ function PostFormModal({
   description,
   images,
 }) {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [spinning, setSpinning] = useState(false);
+
   const IsValidForm = () => {
     if (!isValidPhoneNum(contactNum)) {
       message.error('号码格式不正确', 5);
@@ -53,27 +58,83 @@ function PostFormModal({
     if (!IsValidForm()) {
       return;
     }
+    setSpinning(true);
     currentUser
       .getIdToken(true)
       .then((idToken) => {
         // Send token to backend via HTTPS
-        console.log(idToken);
+        // Setup axios
         const url = 'http://localhost:8000/api/create/';
         const data = {
           user: currentUser.uid,
           contact_num: contactNum,
           state: state,
-          city: city,
+          city: city || null,
           category: category,
           title: title,
           description: description,
         };
-        const config = {headers: {}}
+        const config = {
+          headers: {
+            Authorization: `Bearer ${idToken}`,
+            'Content-Type': 'application/json',
+          },
+        };
+        // Send text data
+        axios
+          .post(url, data, config)
+          .then((response) => {
+            // Send image urls
+            // Create a list of objects
+            if (images) {
+              const json = [];
+              for (const url of images) {
+                let obj = {
+                  post: response.data.id,
+                  img_url: url,
+                };
+                json.push(obj);
+              }
+              // Setup axios
+              const url = 'http://localhost:8000/api/images/';
+              const data = json;
+              const config = {
+                headers: {
+                  Authorization: `Bearer ${idToken}`,
+                  'Content-Type': 'application/json',
+                },
+              };
+              axios
+                .post(url, data, config)
+                .then(() => {
+                  setIsSubmitted(true);
+                })
+                .catch(() => {
+                  // Images create error
+                  setIsSubmitted(true);
+                  message.error('照片提交失败', 5);
+                });
+            } else {
+              setIsSubmitted(true);
+            }
+          })
+          .catch(() => {
+            // Post create error
+            message.error('发布失败，稍后再试', 5);
+            setSpinning(false);
+          });
       })
-      .catch((error) => {
-        // Handle error
-        console.log(error);
+      .catch(() => {
+        // Firebase error
+        message.error('发布失败，稍后再试', 5);
+        setSpinning(false);
       });
+  };
+
+  const handleCloseFormModal = () => {
+    setPostFormModalVisible(false);
+    setIsSubmitted(false);
+    setSpinning(false);
   };
 
   return (
@@ -81,17 +142,34 @@ function PostFormModal({
       title={'免费发布信息'}
       centered
       visible={visible}
-      onCancel={() => setPostFormModalVisible(false)}
+      onCancel={handleCloseFormModal}
       width={'75vw'}
       bodyStyle={{ height: '75vh' }}
       destroyOnClose={true}
       footer={
-        <Button type='primary' onClick={handleFormSubmit}>
-          确认发布
-        </Button>
+        !isSubmitted ? (
+          <Button type='primary' onClick={handleFormSubmit}>
+            确认发布
+          </Button>
+        ) : null
       }
     >
-      <PostForm />
+      {!isSubmitted ? (
+        <Spin tip='正在提交...' spinning={spinning}>
+          <PostForm />
+        </Spin>
+      ) : (
+        <Result
+          status='success'
+          title='发布成功!'
+          subTitle='刷新便可看见你的新帖子'
+          extra={
+            <Button type='primary'>
+              <a href='/'>刷新</a>
+            </Button>
+          }
+        />
+      )}
     </Modal>
   );
 }

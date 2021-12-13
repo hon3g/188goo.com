@@ -24,7 +24,6 @@
     grid-template-columns: 72% auto;
 
     .middle-left {
-
       .menu-and-post-button {
         background: white;
         display: flex;
@@ -39,7 +38,7 @@
         overflow-x: scroll;
         overflow-y: hidden;
       }
-      
+
       .radio-and-location-button {
         background: white;
         display: flex;
@@ -57,7 +56,6 @@
       .post-list {
         background: white;
         padding: 1rem;
-        padding-top: 1.5rem;
         border-radius: 3px;
       }
     }

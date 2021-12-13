@@ -97,7 +97,6 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
           showQuickJumper: true,
           hideOnSinglePage: true,
         }}
-        size='small'
         itemLayout='horizontal'
         dataSource={data.results}
         renderItem={(post) => (
