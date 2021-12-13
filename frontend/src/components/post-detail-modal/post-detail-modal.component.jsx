@@ -42,9 +42,14 @@ function PostDetailModal({ visible, setPostDetailModalVisible, currentPost }) {
         }}
       >
         {currentPost.description}
-        {currentPost.images?currentPost.images.map((imgUrl) => (
-          <Image width={150} src={imgUrl} />
-        )):null}
+        {currentPost.images
+          ? currentPost.images.map((imgUrl) => (
+              <Image
+                width={150}
+                src={imgUrl}
+              />
+            ))
+          : null}
       </pre>
     </Modal>
   );

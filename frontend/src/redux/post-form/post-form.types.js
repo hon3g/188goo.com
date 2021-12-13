@@ -6,4 +6,5 @@ export const PostFormActionTypes = {
     SET_TITLE: 'SET_TITLE',
     SET_DESCRIPTION: 'SET_DESCRIPTION',
     SET_IMAGES: 'SET_IMAGES',
+    SET_FORM_INIT: 'SET_FORM_INIT',
 }

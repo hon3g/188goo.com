@@ -4,6 +4,7 @@ import { Modal, Button, message, Result, Spin } from 'antd';
 
 import { connect } from 'react-redux';
 import { setPostFormModalVisible } from '../../redux/post-form-modal/post-form-modal.actions';
+import { setFormInit } from '../../redux/post-form/post-form.actions';
 
 import PostForm from '../post-form/post-form.component';
 import { isValidPhoneNum } from '../signin/signin.component';
@@ -23,6 +24,7 @@ function PostFormModal({
   title,
   description,
   images,
+  setFormInit,
 }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [spinning, setSpinning] = useState(false);
@@ -59,6 +61,7 @@ function PostFormModal({
       return;
     }
     setSpinning(true);
+
     currentUser
       .getIdToken(true)
       .then((idToken) => {
@@ -135,6 +138,7 @@ function PostFormModal({
     setPostFormModalVisible(false);
     setIsSubmitted(false);
     setSpinning(false);
+    setFormInit();
   };
 
   return (
@@ -148,7 +152,7 @@ function PostFormModal({
       destroyOnClose={true}
       footer={
         !isSubmitted ? (
-          <Button type='primary' onClick={handleFormSubmit}>
+          <Button type='primary' onClick={handleFormSubmit} disabled={spinning}>
             确认发布
           </Button>
         ) : null
@@ -189,6 +193,7 @@ const mapSateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   setPostFormModalVisible: (visible) =>
     dispatch(setPostFormModalVisible(visible)),
+  setFormInit: () => dispatch(setFormInit()),
 });
 
 export default connect(mapSateToProps, mapDispatchToProps)(PostFormModal);

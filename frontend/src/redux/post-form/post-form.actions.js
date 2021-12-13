@@ -48,3 +48,9 @@ export function setImages(images) {
     payload: images,
   };
 }
+
+export function setFormInit() {
+  return {
+    type: PostFormActionTypes.SET_FORM_INIT,
+  }
+}

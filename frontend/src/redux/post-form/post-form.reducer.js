@@ -47,6 +47,9 @@ const postFormReducer = (state = INITIAL_STATE, action) => {
         ...state,
         images: action.payload,
       };
+    case PostFormActionTypes.SET_FORM_INIT:
+      return { ...INITIAL_STATE };
+
     default:
       return state;
   }
