@@ -45,6 +45,9 @@ function PostFormModal({
     } else if (title.length <= 4) {
       message.error('标题最少4个字', 5);
       return false;
+    } else if (title.length > 50) {
+      message.error('标题最多50个字', 5);
+      return false;
     } else if (!description) {
       message.error('描述不能空', 5);
       return false;
@@ -61,7 +64,10 @@ function PostFormModal({
       return;
     }
     setSpinning(true);
-
+    // function timeout(delay) {
+    //   return new Promise((res) => setTimeout(res, delay));
+    // }
+    // timeout(10000).then(() => {
     currentUser
       .getIdToken(true)
       .then((idToken) => {
@@ -111,14 +117,17 @@ function PostFormModal({
                 .post(url, data, config)
                 .then(() => {
                   setIsSubmitted(true);
+                  setSpinning(false);
                 })
                 .catch(() => {
                   // Images create error
                   setIsSubmitted(true);
+                  setSpinning(false);
                   message.error('照片提交失败', 5);
                 });
             } else {
               setIsSubmitted(true);
+              setSpinning(false);
             }
           })
           .catch(() => {
@@ -132,12 +141,12 @@ function PostFormModal({
         message.error('发布失败，稍后再试', 5);
         setSpinning(false);
       });
+    // });
   };
 
   const handleCloseFormModal = () => {
     setPostFormModalVisible(false);
     setIsSubmitted(false);
-    setSpinning(false);
     setFormInit();
   };
 
@@ -159,9 +168,7 @@ function PostFormModal({
       }
     >
       {!isSubmitted ? (
-        <Spin tip='正在提交...' spinning={spinning}>
-          <PostForm />
-        </Spin>
+        <PostForm />
       ) : (
         <Result
           status='success'
@@ -174,6 +181,11 @@ function PostFormModal({
           }
         />
       )}
+      {spinning ? (
+        <div className='dim'>
+          <Spin className='spin' size='large' tip='正在提交...' />
+        </div>
+      ) : null}
     </Modal>
   );
 }

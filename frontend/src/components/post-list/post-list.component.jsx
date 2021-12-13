@@ -95,7 +95,6 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
           pageSize: 50,
           showSizeChanger: false,
           showQuickJumper: true,
-          hideOnSinglePage: true,
         }}
         itemLayout='horizontal'
         dataSource={data.results}

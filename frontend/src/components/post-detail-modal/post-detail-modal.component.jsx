@@ -22,7 +22,7 @@ function PostDetailModal({ visible, setPostDetailModalVisible, currentPost }) {
       onCancel={() => setPostDetailModalVisible(false)}
       width={'75vw'}
       bodyStyle={{ height: '75vh' }}
-      maskStyle={{ background: 'rgba(255, 255, 255, 0.5)' }}
+      // maskStyle={{ background: 'rgba(255, 255, 255, 0.5)' }}
       destroyOnClose={true}
       footer={[
         <Button
@@ -45,7 +45,7 @@ function PostDetailModal({ visible, setPostDetailModalVisible, currentPost }) {
         {currentPost.images
           ? currentPost.images.map((imgUrl) => (
               <Image
-                width={150}
+                width={200}
                 src={imgUrl}
               />
             ))

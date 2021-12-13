@@ -16,6 +16,8 @@ import {
   setImages,
 } from '../../redux/post-form/post-form.actions';
 
+import { resizeFile } from './image-resizer';
+
 import axios from 'axios';
 
 import './post-form.styles.scss';
@@ -74,19 +76,25 @@ function PostForm({
     onError,
   }) => {
     try {
-      const response = await axios({
-        method: 'PUT',
-        url: imageUploadUrl,
-        headers: { 'Content-Type': 'multipart/form-data' },
-        data: file,
-        onUploadProgress: ({ total, loaded }) => {
-          onProgress({ percent: (loaded / total) * 100 });
-        },
-      });
-      const imageUrl = imageUploadUrl.split('?')[0];
-      setImageMap((prev) => prev.set(file.uid, imageUrl));
-      setImages([...imageMap.values()]);
-      onSuccess(response);
+      const image = await resizeFile(file);
+      console.log(image);
+      try {
+        const response = await axios({
+          method: 'PUT',
+          url: imageUploadUrl,
+          headers: { 'Content-Type': 'multipart/form-data' },
+          data: image,
+          onUploadProgress: ({ total, loaded }) => {
+            onProgress({ percent: (loaded / total) * 100 });
+          },
+        });
+        const imageUrl = imageUploadUrl.split('?')[0];
+        setImageMap((prev) => prev.set(file.uid, imageUrl));
+        setImages([...imageMap.values()]);
+        onSuccess(response);
+      } catch (error) {
+        onError({ error });
+      }
     } catch (error) {
       onError({ error });
     }
@@ -153,6 +161,7 @@ function PostForm({
           beforeUpload={getPresignedUrl}
           customRequest={handleImageUpload}
           onRemove={handleRemoveImage}
+          disabled={imageMap.size >= 4 ? true : false}
           onPreview={() => {
             return null;
           }}
