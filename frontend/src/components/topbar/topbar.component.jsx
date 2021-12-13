@@ -1,17 +1,16 @@
 import { useParams } from 'react-router-dom';
-import { Tooltip, Button, Input } from 'antd';
+import { Tooltip, Button } from 'antd';
 import { ReactComponent as LocationIcon } from '../../assets/location_on_black_24dp.svg';
 
 import { connect } from 'react-redux';
 import { setLocationDrawerVisible } from '../../redux/location-drawer/location-drawer.actions';
 import { setSignInDrawerVisible } from '../../redux/signin-drawer/signin-drawer.actions';
 import { setAccountDrawerVisible } from '../../redux/account-drawer/account-drawer.actions';
+import Navbar from '../navbar/navbar.component';
 
 import { STATES } from '../post-list/constants';
 
 import './topbar.styles.scss';
-
-const { Search } = Input;
 
 function TopBar({
   setLocationDrawerVisible,
@@ -20,8 +19,6 @@ function TopBar({
   currentUser,
 }) {
   const { state } = useParams();
-
-  const onSearch = (value) => console.log(value);
 
   const handleChangeLocation = () => {
     setLocationDrawerVisible(true);
@@ -54,13 +51,8 @@ function TopBar({
         </Tooltip>
       </div>
 
-      <div className='search'>
-        <Search
-          placeholder='搜索关键词'
-          allowClear
-          onSearch={onSearch}
-          style={{ maxWidth: '25vw' }}
-        />
+      <div className='navbar'>
+        <Navbar />
       </div>
 
       <div className='account'>

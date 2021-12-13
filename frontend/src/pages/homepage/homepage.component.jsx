@@ -2,7 +2,6 @@ import TopBar from '../../components/topbar/topbar.component';
 import SlideShow from '../../components/slideshow/slideshow.component';
 import PostList from '../../components/post-list/post-list.component';
 import RadioGroup from '../../components/radio-group/radio-group.component';
-import Navbar from '../../components/navbar/navbar.component';
 import LocationDrawer from '../../components/location-drawer/location-drawer.component';
 import SignInDrawer from '../../components/signin-drawer/signin-drawer.component';
 import AccountDrawer from '../../components/account-drawer/account-drawer.component';
@@ -48,22 +47,25 @@ function HomePage({
 
       <div className='middle'>
         <div className='middle-left'>
-          <div className='menu-and-post-button shadow'>
-            <Navbar />
-            <Button type='primary' onClick={handlePostAd}>
-              发布信息
-            </Button>
-          </div>
-
-          <div className='radio-and-location-button shadow'>
+          <div className='radios-and-buttons shadow'>
             <RadioGroup />
-            <Button
-              type='primary'
-              ghost
-              onClick={() => setLocationDrawerVisible(true)}
-            >
-              切换地区
-            </Button>
+            <div>
+              <Button
+                type='primary'
+                ghost
+                onClick={() => setLocationDrawerVisible(true)}
+                style={{ marginLeft: '1rem' }}
+              >
+                切换地区
+              </Button>
+              <Button
+                type='primary'
+                onClick={handlePostAd}
+                style={{ marginLeft: '1rem' }}
+              >
+                发布信息
+              </Button>
+            </div>
           </div>
 
           <div className='post-list shadow'>

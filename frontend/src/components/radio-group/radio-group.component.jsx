@@ -29,6 +29,7 @@ const RadioGroup = () => {
     <Radio.Group
       onChange={onChange}
       value={city || '全部'}
+      className='radio-group'
     >
       <Radio value={'全部'}>全部</Radio>
       {NY.map((area) => (
