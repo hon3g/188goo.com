@@ -11,6 +11,10 @@ import { setCurrentPost } from '../../redux/current-post/current-post.actions';
 
 import './post-list.styles.scss';
 
+export function formattedDate(date) {
+  return new Date(date).toLocaleDateString().replace(/\//g, '-');
+}
+
 function PostList({ setPostDetailModalVisible, setCurrentPost }) {
   const [data, setData] = useState({});
 
@@ -29,9 +33,6 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
     setCurrentPost(post);
     setPostDetailModalVisible(true);
   };
-
-  const formatDate = (date) =>
-    new Date(date).toLocaleDateString().replace(/\//g, '-');
 
   useEffect(() => {
     setSameTagColor(TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)]);
@@ -115,9 +116,9 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
                   : TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)]
               }
             >
-              {post.city ? post.city : post.state}
+              {post.category}
             </Tag>
-            <Tag>{formatDate(post.pub_date)}</Tag>
+            <Tag>{formattedDate(post.pub_date)}</Tag>
           </List.Item>
         )}
       />

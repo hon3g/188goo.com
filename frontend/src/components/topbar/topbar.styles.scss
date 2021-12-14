@@ -12,6 +12,7 @@
     .title {
       font-size: 1.5rem;
       white-space: nowrap;
+      font-weight: bold;
       &:hover {
         cursor: pointer;
         color: var(--blue);
@@ -53,5 +54,4 @@
 
 .a {
   color: black;
-  font-weight: bold;
 }

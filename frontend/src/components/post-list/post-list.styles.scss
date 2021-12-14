@@ -10,7 +10,6 @@
   }
 
   .post-title {
-    // color: rgb(66, 66, 66);
     font-size: 1rem;
     &:hover {
       cursor: pointer;
@@ -32,13 +31,12 @@
 }
 
 .square {
-  height: 6px;
-  width: 6px;
-  background-color: #bbbbbb;
+  height: 8px;
+  width: 3px;
+  background-color: var(--blue);
   position: relative;
   bottom: 1.8px;
   margin-right: 0.5rem;
-  transform: rotate(45deg);
   border-radius: 2px;
 }
 
