@@ -15,7 +15,6 @@ export const TAG_COLORS = [
   '#98c379',
   '#E5C07B',
   '#C678DD',
-  '#ABB2BF',
 ];
 
 export const STATES = new Set([

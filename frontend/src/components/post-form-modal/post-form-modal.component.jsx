@@ -42,7 +42,7 @@ function PostFormModal({
     } else if (!title) {
       message.error('标题不能空', 5);
       return false;
-    } else if (title.length <= 4) {
+    } else if (title.length < 4) {
       message.error('标题最少4个字', 5);
       return false;
     } else if (title.length > 50) {
@@ -51,7 +51,7 @@ function PostFormModal({
     } else if (!description) {
       message.error('描述不能空', 5);
       return false;
-    } else if (description.length <= 10) {
+    } else if (description.length < 10) {
       message.error('描述最少10个字', 5);
       return false;
     } else {
@@ -173,7 +173,7 @@ function PostFormModal({
         <Result
           status='success'
           title='发布成功!'
-          subTitle='刷新便可看见你的新帖子'
+          subTitle='刷新便可看到你的帖子'
           extra={
             <Button type='primary'>
               <a href='/'>刷新</a>
