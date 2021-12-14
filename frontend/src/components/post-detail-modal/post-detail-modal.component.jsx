@@ -73,7 +73,7 @@ function PostDetailModal({ visible, setPostDetailModalVisible, currentPost }) {
                 <Image width={200} src={imgUrl} />
               ))
             ) : (
-              <ImageSvg className='svg' />
+              <ImageSvg className='image-holder' />
             )}
           </div>
         </div>

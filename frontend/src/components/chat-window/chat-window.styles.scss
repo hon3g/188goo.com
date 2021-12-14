@@ -1,0 +1,22 @@
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+  .chat-content {
+    flex-grow: 1;
+    overflow-wrap: break-word;
+    overflow-y: scroll;
+  }
+  .chat-bottom {
+    flex-grow: 0;
+  }
+}
+
+.e {
+    fill: #1890ff;
+  &:hover {
+    cursor: pointer;
+  }
+}

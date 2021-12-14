@@ -25,9 +25,11 @@
   }
 
   .detail-right {
-    .svg {
+    .image-holder {
       width: 300px;
       height: 300px;
+      position: relative;
+      left: 50px;
 
       &:hover {
         transform: scale(1.1);

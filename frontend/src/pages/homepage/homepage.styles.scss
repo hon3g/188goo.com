@@ -21,7 +21,7 @@
     margin: 1.5%;
     flex-grow: 1;
     display: grid;
-    grid-template-columns: 72% auto;
+    grid-template-columns: 72% 28%;
 
     .middle-left {
       .radios-and-buttons {
@@ -36,7 +36,6 @@
         white-space: nowrap;
         overflow-x: scroll;
         overflow-y: hidden;
-        
       }
 
       .post-list {
@@ -48,7 +47,8 @@
 
     .middle-right {
       background-color: rgb(255, 255, 255);
-      max-height: 525px;
+      height: 500px;
+      width: 100%;
       margin-left: 0.5rem;
       border-radius: 3px;
       position: sticky;

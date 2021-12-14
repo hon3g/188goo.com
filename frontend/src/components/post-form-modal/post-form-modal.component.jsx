@@ -182,7 +182,7 @@ function PostFormModal({
         />
       )}
       {spinning ? (
-        <div className='dim'>
+        <div className='form-dim'>
           <Spin className='spin' size='large' tip='正在提交...' />
         </div>
       ) : null}

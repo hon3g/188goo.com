@@ -49,7 +49,7 @@ function AccountDrawer({
       visible={visible}
     >
       <div className='account-content'>
-        <div className='top'>
+        <div className='acc-top'>
           <h3>
             {currentUser ? formatedPhoneNum(currentUser.phoneNumber) : null}
           </h3>
@@ -57,8 +57,8 @@ function AccountDrawer({
             免费发布信息
           </Button>
         </div>
-        <div className='middle'></div>
-        <div className='bottom'>
+        <div className='acc-middle'></div>
+        <div className='acc-bottom'>
           <Button className='signout-button' onClick={handleSignOut}>
             注销账号
           </Button>

@@ -8,6 +8,8 @@ import AccountDrawer from '../../components/account-drawer/account-drawer.compon
 import PostDetailModal from '../../components/post-detail-modal/post-detail-modal.component';
 import PostFormModal from '../../components/post-form-modal/post-form-modal.component';
 import Footer from '../../components/footer/footer.component';
+import ChatWindow from '../../components/chat-window/chat-window.component';
+
 import { Button } from 'antd';
 
 import { connect } from 'react-redux';
@@ -72,7 +74,9 @@ function HomePage({
             <PostList />
           </div>
         </div>
-        <div className='middle-right shadow'>hello world!</div>
+        <div className='middle-right shadow'>
+          <ChatWindow />
+        </div>
       </div>
 
       <div className='bottom'>

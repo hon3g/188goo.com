@@ -71,7 +71,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
       // function timeout(delay) {
       //   return new Promise((res) => setTimeout(res, delay));
       // }
-      // await timeout(700);
+      // await timeout(5000);
       setData(response.data);
       setDim(false);
       loadingBar.current.complete();
@@ -122,7 +122,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
           </List.Item>
         )}
       />
-      {dim ? <div className='dim' /> : null}
+      {dim ? <div className='page-dim' /> : null}
     </div>
   );
 }
