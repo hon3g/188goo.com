@@ -77,7 +77,6 @@ function PostForm({
   }) => {
     try {
       const image = await resizeFile(file);
-      console.log(image);
       try {
         const response = await axios({
           method: 'PUT',
@@ -93,9 +92,11 @@ function PostForm({
         setImages([...imageMap.values()]);
         onSuccess(response);
       } catch (error) {
+        // Upload to s3
         onError({ error });
       }
     } catch (error) {
+      // Resize file
       onError({ error });
     }
   };

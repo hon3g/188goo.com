@@ -64,84 +64,90 @@ function PostFormModal({
       return;
     }
     setSpinning(true);
-    // function timeout(delay) {
-    //   return new Promise((res) => setTimeout(res, delay));
-    // }
-    // timeout(10000).then(() => {
+    getUserIdToken();
+  };
+
+  const getUserIdToken = () => {
     currentUser
       .getIdToken(true)
       .then((idToken) => {
-        // Send token to backend via HTTPS
-        // Setup axios
-        const url = 'http://localhost:8000/api/create/';
-        const data = {
-          user: currentUser.uid,
-          contact_num: contactNum,
-          state: state,
-          city: city || null,
-          category: category,
-          title: title,
-          description: description,
-        };
-        const config = {
-          headers: {
-            Authorization: `Bearer ${idToken}`,
-            'Content-Type': 'application/json',
-          },
-        };
-        // Send text data
-        axios
-          .post(url, data, config)
-          .then((response) => {
-            // Send image urls
-            // Create a list of objects
-            if (images) {
-              const json = [];
-              for (const url of images) {
-                let obj = {
-                  post: response.data.id,
-                  img_url: url,
-                };
-                json.push(obj);
-              }
-              // Setup axios
-              const url = 'http://localhost:8000/api/images/';
-              const data = json;
-              const config = {
-                headers: {
-                  Authorization: `Bearer ${idToken}`,
-                  'Content-Type': 'application/json',
-                },
-              };
-              axios
-                .post(url, data, config)
-                .then(() => {
-                  setIsSubmitted(true);
-                  setSpinning(false);
-                })
-                .catch(() => {
-                  // Images create error
-                  setIsSubmitted(true);
-                  setSpinning(false);
-                  message.error('照片提交失败', 5);
-                });
-            } else {
-              setIsSubmitted(true);
-              setSpinning(false);
-            }
-          })
-          .catch(() => {
-            // Post create error
-            message.error('发布失败，稍后再试', 5);
-            setSpinning(false);
-          });
+        // Post text data
+        postTextData(idToken);
       })
       .catch(() => {
         // Firebase error
         message.error('发布失败，稍后再试', 5);
         setSpinning(false);
       });
-    // });
+  };
+
+  const postTextData = (idToken) => {
+    // Setup axios
+    const url = 'http://localhost:8000/api/create/';
+    const data = {
+      user: currentUser.uid,
+      contact_num: contactNum,
+      state: state,
+      city: city || null,
+      category: category,
+      title: title,
+      description: description,
+    };
+    const config = {
+      headers: {
+        Authorization: `Bearer ${idToken}`,
+        'Content-Type': 'application/json',
+      },
+    };
+    // Post text data
+    axios
+      .post(url, data, config)
+      .then((response) => {
+        // Create a list of objects
+        if (images) {
+          postImageUrls(idToken, response, images);
+        } else {
+          setIsSubmitted(true);
+          setSpinning(false);
+        }
+      })
+      .catch(() => {
+        // Post create error
+        message.error('发布失败，稍后再试', 5);
+        setSpinning(false);
+      });
+  };
+
+  const postImageUrls = (idToken, response, images) => {
+    const json = [];
+    for (const url of images) {
+      let obj = {
+        post: response.data.id,
+        img_url: url,
+      };
+      json.push(obj);
+    }
+    // Setup axios
+    const url = 'http://localhost:8000/api/images/';
+    const data = json;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${idToken}`,
+        'Content-Type': 'application/json',
+      },
+    };
+    axios
+      .post(url, data, config)
+      .then(() => {
+        setIsSubmitted(true);
+        setSpinning(false);
+      })
+      .catch(() => {
+        // Images create error
+        setIsSubmitted(true);
+        setSpinning(false);
+        message.error('照片提交失败', 5);
+      });
   };
 
   const handleCloseFormModal = () => {

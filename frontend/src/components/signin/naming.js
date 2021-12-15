@@ -1,4 +1,4 @@
-ADJS = [
+const ADJS = [
   '大方',
   '年轻',
   '聪明',
@@ -95,10 +95,9 @@ ADJS = [
   '迷茫',
   '困惑',
   '乏困',
-  '疲倦',
 ];
 
-ANIS = [
+const ANIS = [
   '老虎',
   '豺狼',
   '老鼠',
@@ -173,3 +172,11 @@ ANIS = [
   '天鹅',
   '白鹭',
 ];
+
+export function randomDisplayName() {
+  const adj = ADJS[Math.floor(Math.random() * ADJS.length)];
+  const ani = ANIS[Math.floor(Math.random() * ANIS.length)];
+  return `${adj}的${ani}`
+}
+
+console.log(randomDisplayName());

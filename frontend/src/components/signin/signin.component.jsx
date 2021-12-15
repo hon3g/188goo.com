@@ -109,7 +109,6 @@ function SignIn({ inputRef, setSignInDrawerVisible, setAccountDrawerVisible }) {
         setSignInDrawerVisible(false);
         setAccountDrawerVisible(true);
         message.success('登陆成功!');
-        console.log(result.user);
       })
       .catch(() => {
         // User couldn't sign in (bad verification code?)
