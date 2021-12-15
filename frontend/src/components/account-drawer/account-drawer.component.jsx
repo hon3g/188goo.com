@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-import { Drawer, Button, message, Avatar, Popover } from 'antd';
+import { Drawer, Button, message, Avatar, Popover, Input } from 'antd';
 
 import { connect } from 'react-redux';
 import { setAccountDrawerVisible } from '../../redux/account-drawer/account-drawer.actions';
@@ -18,6 +18,7 @@ import { resizeFile } from '../post-form/image-resizer';
 import outlinePerson from '../../assets/outline_person_white_36dp.png';
 
 import './account-drawer.styles.scss';
+import { useState } from 'react';
 
 function formatedPhoneNum(numStr) {
   // Input: +13475557048
@@ -36,6 +37,7 @@ function AccountDrawer({
   setCurrentUser,
 }) {
   const inputProfilePhoto = useRef();
+  const [inputUsername, setInputUsername] = useState();
 
   useEffect(() => {
     if (auth.currentUser && !auth.currentUser.displayName) {
@@ -78,7 +80,25 @@ function AccountDrawer({
       setAccountDrawerVisible(true);
       message.success('头像修改成功!');
     } catch (error) {
-      message.error(error.code);
+      message.error('修改失败，请稍后再试');
+    }
+  };
+
+  const handleEditUsername = async () => {
+    try {
+      await updateProfile(auth.currentUser, {
+        displayName: inputUsername,
+      });
+      setAccountDrawerVisible(false);
+      function timeout(delay) {
+        return new Promise((res) => setTimeout(res, delay));
+      }
+      await timeout(500);
+      setAccountDrawerVisible(true);
+      message.success('昵称修改成功!');
+      setInputUsername(null);
+    } catch (error) {
+      message.error('修改失败，请稍后再试');
     }
   };
 
@@ -89,6 +109,7 @@ function AccountDrawer({
       width={375}
       onClose={() => setAccountDrawerVisible(false)}
       visible={visible}
+      destroyOnClose={true}
     >
       <div className='account-content'>
         <div className='acc-top'>
@@ -134,7 +155,30 @@ function AccountDrawer({
               </div>
               <div className='sec-right'>
                 <span className='edit'>
-                  <Popover content={'hello world'} title='新昵称' trigger='click' placement='left'>
+                  <Popover
+                    content={
+                      <div>
+                        <Input
+                          style={{ width: '130px' }}
+                          size='small'
+                          maxLength={5}
+                          onChange={(e) => setInputUsername(e.target.value)}
+                        />
+                        <Button
+                          type='primary'
+                          ghost
+                          size='small'
+                          onClick={handleEditUsername}
+                          disabled={!inputUsername}
+                        >
+                          确认
+                        </Button>
+                      </div>
+                    }
+                    title='新昵称'
+                    trigger='click'
+                    placement='left'
+                  >
                     修改
                   </Popover>
                 </span>
