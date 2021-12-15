@@ -12,6 +12,32 @@
 
   .acc-middle {
     flex-grow: 1;
+    margin: 8rem auto;
+
+    .photo-and-name {
+      .photo-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        .profile-photo {
+          height: 66px;
+          width: 66px;
+          background: linear-gradient(90deg, #afd2ff 0%, #ddd7ff 69%);
+          margin: auto;
+        }
+      }
+
+      .name-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 2rem;
+
+        .display-name {
+          font-size: 1rem;
+          margin: auto;
+        }
+      }
+    }
   }
 
   .acc-bottom {
@@ -20,5 +46,26 @@
     .signout-button {
       float: right;
     }
+  }
+}
+
+.sec-left {
+  float: left;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.sec-right {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+  justify-content: flex-end;
+}
+
+.edit {
+  color: var(--blue);
+  
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
   }
 }

@@ -104,10 +104,9 @@ function SignIn({ inputRef, setSignInDrawerVisible, setAccountDrawerVisible }) {
 
     confirmationResult
       .confirm(code)
-      .then((result) => {
+      .then(() => {
         // User signed in successfully.
         setSignInDrawerVisible(false);
-        setAccountDrawerVisible(true);
         message.success('登陆成功!');
       })
       .catch(() => {

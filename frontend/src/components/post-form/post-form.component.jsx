@@ -76,7 +76,7 @@ function PostForm({
     onError,
   }) => {
     try {
-      const image = await resizeFile(file);
+      const image = await resizeFile(file, 861, 861);
       try {
         const response = await axios({
           method: 'PUT',

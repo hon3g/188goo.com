@@ -178,5 +178,3 @@ export function randomDisplayName() {
   const ani = ANIS[Math.floor(Math.random() * ANIS.length)];
   return `${adj}的${ani}`
 }
-
-console.log(randomDisplayName());
