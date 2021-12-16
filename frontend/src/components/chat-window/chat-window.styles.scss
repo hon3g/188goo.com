@@ -8,14 +8,32 @@
     flex-grow: 1;
     overflow-wrap: break-word;
     overflow-y: scroll;
+    overflow-x: hidden;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    .chat-msg {
+      margin: 1rem auto;
+
+      .chat-photo {
+        background: linear-gradient(90deg, #afd2ff 0%, #ddd7ff 69%);
+        margin: auto;
+      }
+
+      .chat-name {
+        color: rgba(0, 0, 0, 0.5);
+        margin: auto 0.5rem;
+      }
+    }
   }
+
   .chat-bottom {
     flex-grow: 0;
   }
 }
 
 .e {
-    fill: #1890ff;
+  fill: #1890ff;
   &:hover {
     cursor: pointer;
   }

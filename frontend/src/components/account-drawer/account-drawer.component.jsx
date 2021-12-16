@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Drawer, Button, message, Avatar, Popover, Input } from 'antd';
 
@@ -15,10 +15,9 @@ import { randomDisplayName } from '../signin/naming';
 
 import { resizeFile } from '../post-form/image-resizer';
 
-import outlinePerson from '../../assets/outline_person_white_36dp.png';
+import UserIcon from '../../assets/user.png';
 
 import './account-drawer.styles.scss';
-import { useState } from 'react';
 
 function formatedPhoneNum(numStr) {
   // Input: +13475557048
@@ -64,13 +63,13 @@ function AccountDrawer({
   const handleEditPhoto = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    let fileName = file.name.split('.')[0] + new Date().getTime();
-    const storageRef = ref(storage, `profile-images/${fileName}`);
+    let fileName = currentUser.uid + new Date().getTime();
+    const storageRef = ref(storage, `profileImages/${fileName}`);
     const photo = await resizeFile(file, 150, 150);
     try {
       await uploadBytes(storageRef, photo);
       await updateProfile(auth.currentUser, {
-        photoURL: `https://firebasestorage.googleapis.com/v0/b/us188-1b523.appspot.com/o/profile-images%2F${fileName}?alt=media`,
+        photoURL: `https://firebasestorage.googleapis.com/v0/b/us188-1b523.appspot.com/o/profileImages%2F${fileName}?alt=media`,
       });
       setAccountDrawerVisible(false);
       function timeout(delay) {
@@ -78,7 +77,7 @@ function AccountDrawer({
       }
       await timeout(500);
       setAccountDrawerVisible(true);
-      message.success('头像修改成功!');
+      message.success('修改成功!');
     } catch (error) {
       message.error('修改失败，请稍后再试');
     }
@@ -95,7 +94,7 @@ function AccountDrawer({
       }
       await timeout(500);
       setAccountDrawerVisible(true);
-      message.success('昵称修改成功!');
+      message.success('修改成功!');
       setInputUsername(null);
     } catch (error) {
       message.error('修改失败，请稍后再试');
@@ -125,11 +124,11 @@ function AccountDrawer({
             <div className='photo-section'>
               <div className='sec-left'>头像：</div>
               <Avatar
-                className='profile-photo'
+                className='account-photo'
                 src={
                   currentUser && currentUser.photoURL
                     ? currentUser.photoURL
-                    : outlinePerson
+                    : UserIcon
                 }
               />
               <div className='sec-right'>
@@ -187,7 +186,11 @@ function AccountDrawer({
           </div>
         </div>
         <div className='acc-bottom'>
-          <Button className='signout-button' onClick={handleSignOut}>
+          <Button
+            className='signout-button'
+            size='small'
+            onClick={handleSignOut}
+          >
             注销账号
           </Button>
         </div>

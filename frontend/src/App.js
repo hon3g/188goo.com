@@ -8,10 +8,10 @@ import { setCurrentUser } from './redux/user/user.actions';
 import './App.css';
 
 function App({ setCurrentUser }) {
-
   useEffect(() => {
     const unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
+      console.log('anth called');
     });
     return () => unsubscribeFromAuth();
   }, [setCurrentUser]);

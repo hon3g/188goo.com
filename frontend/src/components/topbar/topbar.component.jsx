@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Tooltip, Button } from 'antd';
 import { ReactComponent as LocationIcon } from '../../assets/location_on_black_24dp.svg';
 
@@ -35,11 +35,11 @@ function TopBar({
   return (
     <header className='topbar'>
       <div className='title-location'>
-        <Tooltip title='硬刷新'>
+        <Tooltip title='全部信息'>
           <div className='title'>
-            <a href='/' className='a'>
+            <Link to='/' className='a'>
               美国188
-            </a>
+            </Link>
           </div>
         </Tooltip>
 

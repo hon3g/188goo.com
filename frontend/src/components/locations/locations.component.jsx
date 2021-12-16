@@ -7,7 +7,6 @@ import { setLocationDrawerVisible } from '../../redux/location-drawer/location-d
 
 import './locations.styles.scss';
 
-
 function Locations({ setLocationDrawerVisible }) {
   return (
     <div>
@@ -54,7 +53,8 @@ function Locations({ setLocationDrawerVisible }) {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  setLocationDrawerVisible: (visible) => dispatch(setLocationDrawerVisible(visible))
+  setLocationDrawerVisible: (visible) =>
+    dispatch(setLocationDrawerVisible(visible)),
 });
 
 export default connect(null, mapDispatchToProps)(Locations);
