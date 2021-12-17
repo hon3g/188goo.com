@@ -50,25 +50,24 @@ function HomePage({
       <div className='middle'>
         <div className='middle-left'>
           <div className='radios-and-buttons shadow'>
+            <RadioGroup />
             <div>
               <Button
                 type='primary'
                 ghost
                 onClick={() => setLocationDrawerVisible(true)}
-                style={{ marginRight: '1rem' }}
+                style={{ marginLeft: '1rem' }}
               >
-                切换州区
+                切换地区
               </Button>
-              <RadioGroup />
+              <Button
+                type='primary'
+                onClick={handlePostAd}
+                style={{ marginLeft: '1rem' }}
+              >
+                发布信息
+              </Button>
             </div>
-            <Button
-              type='primary'
-              size='large'
-              onClick={handlePostAd}
-              style={{ marginLeft: '1rem' }}
-            >
-              发布信息
-            </Button>
           </div>
 
           <div className='post-list shadow'>

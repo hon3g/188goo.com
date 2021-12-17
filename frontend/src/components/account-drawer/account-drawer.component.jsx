@@ -150,6 +150,7 @@ function AccountDrawer({
                           size='small'
                           maxLength={5}
                           onChange={(e) => setInputUsername(e.target.value)}
+                          autoFocus={true}
                         />
                         <Button
                           type='primary'

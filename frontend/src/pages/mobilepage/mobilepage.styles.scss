@@ -9,19 +9,34 @@
   }
 
   .middle {
-    margin: 1.5%;
+    margin-bottom: 0.5rem;
     flex-grow: 1;
 
     .middle-left {
+      .buttons {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        background: white;
+        border-radius: 3px;
+        padding: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+      .navbar {
+        background: white;
+        margin-bottom: 0.5rem;
+        border-radius: 3px;
+      }
 
-      .radios-and-buttons {
+      .locations {
         background: white;
         display: flex;
         justify-content: space-between;
         align-items: center;
         height: 3rem;
         margin-bottom: 0.5rem;
-        padding: 1.5rem;
+        padding: 1rem;
         border-radius: 3px;
         white-space: nowrap;
         overflow-x: scroll;
@@ -38,7 +53,7 @@
     .middle-right {
       background-color: rgb(255, 255, 255);
       height: 500px;
-      width: 100%;
+      width: calc(100% - 0.5rem);
       margin-left: 0.5rem;
       border-radius: 3px;
       position: sticky;

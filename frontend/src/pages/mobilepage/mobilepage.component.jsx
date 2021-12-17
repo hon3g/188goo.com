@@ -50,28 +50,29 @@ function MobilePage({
 
       <div className='middle'>
         <div className='middle-left'>
-          <div className='navbar'>
-            <Navbar />
-          </div>
-          <div className='radios-and-buttons shadow'>
-            <div>
-              <Button
-                type='primary'
-                ghost
-                onClick={() => setLocationDrawerVisible(true)}
-                style={{ marginRight: '1rem' }}
-              >
-                切换州区
-              </Button>
-              <RadioGroup />
-            </div>
+          <div className='buttons shadow'>
             <Button
               type='primary'
               onClick={handlePostAd}
-              style={{ marginLeft: '1rem' }}
             >
               发布信息
             </Button>
+          </div>
+
+          <div className='locations shadow'>
+            <RadioGroup />
+            <Button
+              type='primary'
+              ghost
+              style={{ marginLeft: '1rem' }}
+              onClick={() => setLocationDrawerVisible(true)}
+            >
+              切换州区
+            </Button>
+          </div>
+
+          <div className='navbar shadow'>
+            <Navbar />
           </div>
 
           <div className='post-list shadow'>
@@ -79,7 +80,7 @@ function MobilePage({
           </div>
         </div>
         {/* <div className='middle-right shadow'> */}
-          {/* <ChatWindow /> */}
+        {/* <ChatWindow /> */}
         {/* </div> */}
       </div>
 
