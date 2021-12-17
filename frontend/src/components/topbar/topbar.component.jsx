@@ -43,7 +43,7 @@ function TopBar({
           </div>
         </Tooltip>
 
-        <Tooltip title='切换地区'>
+        <Tooltip title='切换州区'>
           <span className='location' onClick={handleChangeLocation}>
             <LocationIcon className='loc-icon' />[
             {STATES.has(state) ? state : '全美'}]

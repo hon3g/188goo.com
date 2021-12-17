@@ -29,7 +29,6 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
   const [isSameCategory, setIsSameCategory] = useState(false);
 
   const handleClick = (post) => (_) => {
-    console.log('clicked post: ', post);
     setCurrentPost(post);
     setPostDetailModalVisible(true);
   };

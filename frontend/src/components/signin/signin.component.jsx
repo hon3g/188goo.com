@@ -91,9 +91,8 @@ function SignIn({ inputRef, setSignInDrawerVisible, setAccountDrawerVisible }) {
         // user in with confirmationResult.confirm(code).
         setConfirmationResult(confirmationResult);
       })
-      .catch((error) => {
+      .catch(() => {
         // Error; SMS not sent
-        console.log(error.message);
         alert('验证码未能发送, 请稍后再尝试');
         setSignInDrawerVisible(false);
       });

@@ -15,18 +15,7 @@ import { randomDisplayName } from '../signin/naming';
 
 import { resizeFile } from '../post-form/image-resizer';
 
-import UserIcon from '../../assets/user.png';
-
 import './account-drawer.styles.scss';
-
-function formatedPhoneNum(numStr) {
-  // Input: +13475557048
-  const partOne = numStr.slice(2, 5); // 347
-  const partTwo = numStr.slice(5, 8); // 555
-  const partThree = numStr.slice(8); // 7048
-  // Output: +1 (347) 555-7048
-  return `+1 (${partOne}) ${partTwo}-${partThree}`;
-}
 
 function AccountDrawer({
   visible,
@@ -36,7 +25,7 @@ function AccountDrawer({
   setCurrentUser,
 }) {
   const inputProfilePhoto = useRef();
-  const [inputUsername, setInputUsername] = useState();
+  const [inputUsername, setInputUsername] = useState('');
 
   useEffect(() => {
     if (auth.currentUser && !auth.currentUser.displayName) {
@@ -95,7 +84,7 @@ function AccountDrawer({
       await timeout(500);
       setAccountDrawerVisible(true);
       message.success('修改成功!');
-      setInputUsername(null);
+      setInputUsername('');
     } catch (error) {
       message.error('修改失败，请稍后再试');
     }
@@ -116,7 +105,7 @@ function AccountDrawer({
             {currentUser ? formatedPhoneNum(currentUser.phoneNumber) : null}
           </h3>
           <Button type='primary' onClick={() => setPostFormModalVisible(true)}>
-            免费发布信息
+            免费发布
           </Button>
         </div>
         <div className='acc-middle'>
@@ -128,7 +117,7 @@ function AccountDrawer({
                 src={
                   currentUser && currentUser.photoURL
                     ? currentUser.photoURL
-                    : UserIcon
+                    : null
                 }
               />
               <div className='sec-right'>
@@ -168,7 +157,7 @@ function AccountDrawer({
                           ghost
                           size='small'
                           onClick={handleEditUsername}
-                          disabled={!inputUsername}
+                          disabled={!inputUsername.replace(/\s+/g, '')}
                         >
                           确认
                         </Button>
@@ -197,6 +186,15 @@ function AccountDrawer({
       </div>
     </Drawer>
   );
+}
+
+function formatedPhoneNum(numStr) {
+  // Input: +13475557048
+  const partOne = numStr.slice(2, 5); // 347
+  const partTwo = numStr.slice(5, 8); // 555
+  const partThree = numStr.slice(8); // 7048
+  // Output: +1 (347) 555-7048
+  return `+1 (${partOne}) ${partTwo}-${partThree}`;
 }
 
 const mapSateToProps = (state) => ({

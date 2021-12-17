@@ -36,5 +36,9 @@
   fill: #1890ff;
   &:hover {
     cursor: pointer;
+    fill: #40a3ff;
+  }
+  &:active {
+    fill: #0084ff;
   }
 }

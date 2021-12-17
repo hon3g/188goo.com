@@ -9,7 +9,7 @@ import { setLocationDrawerVisible } from '../../redux/location-drawer/location-d
 function LocationDrawer({ visible, setLocationDrawerVisible }) {
   return (
     <Drawer
-      title='切换地区'
+      title='切换州区'
       placement='left'
       width={375}
       onClose={() => setLocationDrawerVisible(false)}
