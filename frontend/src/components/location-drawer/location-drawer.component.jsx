@@ -4,14 +4,13 @@ import Locations from '../locations/locations.component';
 import { connect } from 'react-redux';
 import { setLocationDrawerVisible } from '../../redux/location-drawer/location-drawer.actions';
 
-
+import './location-drawer.styles.scss';
 
 function LocationDrawer({ visible, setLocationDrawerVisible }) {
   return (
     <Drawer
       title='切换州区'
       placement='left'
-      width={375}
       onClose={() => setLocationDrawerVisible(false)}
       visible={visible}
     >

@@ -1,0 +1,60 @@
+.topbar {
+  background: white;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+
+  .title-location {
+    margin: auto 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .title {
+      font-size: 1.5rem;
+      white-space: nowrap;
+      font-weight: bold;
+      &:hover {
+        cursor: pointer;
+        color: var(--blue);
+      }
+    }
+
+    .location {
+      color: black;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      white-space: nowrap;
+
+      &:hover {
+        cursor: pointer;
+        color: var(--blue);
+      }
+
+      .loc-icon {
+        position: relative;
+        top: 2.5px;
+      }
+    }
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .account {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    margin: 0.6rem 1rem;
+  }
+}
+
+// .a {
+//   color: black;
+// }

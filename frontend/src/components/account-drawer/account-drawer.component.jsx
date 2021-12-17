@@ -94,7 +94,6 @@ function AccountDrawer({
     <Drawer
       title='个人中心'
       placement='right'
-      width={375}
       onClose={() => setAccountDrawerVisible(false)}
       visible={visible}
       destroyOnClose={true}
