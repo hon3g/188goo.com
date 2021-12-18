@@ -104,7 +104,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
             <div className='square'></div>
             <List.Item.Meta
               title={
-                <span onClick={handleClick(post)} className='post-title'>
+                <span onClick={handleClick(post)} className='post-title-m'>
                   {post.title}
                 </span>
               }
