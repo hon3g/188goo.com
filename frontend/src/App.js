@@ -33,6 +33,7 @@ function App({ setCurrentUser }) {
         <Route path='/:state' element={<MobilePage />} />
         <Route path='/:state/:city' element={<MobilePage />} />
         <Route path='/:state/:city/:category' element={<MobilePage />} />
+        {/* <Route path='/聊天' element={<MobileChatPage />} /> */}
       </Routes>
     );
   }

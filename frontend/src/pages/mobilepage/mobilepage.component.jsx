@@ -9,7 +9,7 @@ import AccountDrawer from '../../components/account-drawer/account-drawer.compon
 import PostDetailModal from '../../components/post-detail-modal/post-detail-modal.component';
 import PostFormModal from '../../components/post-form-modal/post-form-modal.component';
 import Footer from '../../components/footer/footer.component';
-import ChatWindow from '../../components/chat-window/chat-window.component';
+import ChatWindow from '../../components-mobile/chat-window/chat-window.component';
 
 import { Button } from 'antd';
 
@@ -50,6 +50,10 @@ function MobilePage({
 
       <div className='middle'>
         <div className='middle-left'>
+          <div className='navbar shadow'>
+            <Navbar />
+          </div>
+
           <div className='buttons shadow'>
             <Button
               type='primary'
@@ -75,17 +79,13 @@ function MobilePage({
             </Button>
           </div>
 
-          <div className='navbar shadow'>
-            <Navbar />
-          </div>
-
           <div className='post-list shadow'>
             <PostList />
           </div>
         </div>
-        {/* <div className='middle-right shadow'> */}
-        {/* <ChatWindow /> */}
-        {/* </div> */}
+        <div className='middle-right shadow'>
+          <ChatWindow />
+        </div>
       </div>
 
       <div className='bottom'>
