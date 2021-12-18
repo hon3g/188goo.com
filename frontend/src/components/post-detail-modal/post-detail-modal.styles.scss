@@ -39,3 +39,46 @@
     }
   }
 }
+
+.m-post-detail {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 100%;
+
+  .m-detail-images {
+    .m-image-holder {
+      width: 300px;
+      height: 300px;
+      position: relative;
+      left: 50px;
+
+      &:hover {
+        transform: scale(1.1);
+        transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+      }
+    }
+  }
+
+  .m-detail-text {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    line-height: 2;
+
+    .m-desc {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .m-info {
+      display: flex;
+      flex-direction: column;
+
+      .m-num {
+        font-size: 1.5rem;
+        color: #1890ff;
+      }
+    }
+  }
+}

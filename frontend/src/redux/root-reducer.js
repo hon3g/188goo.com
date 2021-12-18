@@ -8,6 +8,7 @@ import accountDrawerReducer from './account-drawer/account-drawer.reducer';
 import userReducer from './user/user.reducer';
 import currentPostReducer from './current-post/current-post.reducer';
 import postFormReducer from './post-form/post-form.reducer';
+import isMobileReducer from './is-mobile/is-mobile.reducer';
 
 export default combineReducers({
   postDetailModal: postDetailModalReducer,
@@ -18,4 +19,5 @@ export default combineReducers({
   currentPost: currentPostReducer,
   postFormModal: postFormModalReducer,
   postForm: postFormReducer,
+  isMobile: isMobileReducer,
 });

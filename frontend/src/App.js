@@ -7,12 +7,12 @@ import { Routes, Route } from 'react-router-dom';
 import { auth } from './firebase/firebase';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
+import { setIsMobile } from './redux/is-mobile/is-mobile.actions';
 
 import './App.css';
 
-function App({ setCurrentUser }) {
+function App({ setCurrentUser, setIsMobile }) {
   useEffect(() => {
-    console.log(window.screen.width);
     const unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
     });
@@ -20,6 +20,7 @@ function App({ setCurrentUser }) {
   }, [setCurrentUser]);
 
   if (window.screen.width >= 852) {
+    setIsMobile(false);
     return (
       <Routes>
         <Route path='/' element={<HomePage />} />
@@ -29,6 +30,7 @@ function App({ setCurrentUser }) {
       </Routes>
     );
   } else {
+    setIsMobile(true);
     return (
       <Routes>
         <Route path='/' element={<MobilePage />} />
@@ -43,6 +45,7 @@ function App({ setCurrentUser }) {
 
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+  setIsMobile: (boolean) => dispatch(setIsMobile(boolean)),
 });
 
 export default connect(null, mapDispatchToProps)(App);
