@@ -82,13 +82,13 @@ function ChatWindow({ currentUser, setSignInDrawerVisible }) {
   };
 
   return (
-    <div className='chat-window'>
-      <div className='chat-content' onClick={() => setShowPicker(false)}>
+    <div className='m-chat-window'>
+      <div className='m-chat-content' onClick={() => setShowPicker(false)}>
         {messages &&
           messages.map((msg) => <ChatMsg key={msg.createdAt} msg={msg} />)}
         <div ref={chatBottom} />
       </div>
-      <div className='chat-bottom'>
+      <div className='m-chat-bottom'>
         <Input.Group compact>
           <Input
             ref={inputRef}
@@ -100,7 +100,7 @@ function ChatWindow({ currentUser, setSignInDrawerVisible }) {
             style={{ lineHeight: '1.2em' }}
             suffix={
               <EmojiSvg
-                className='e'
+                className='m-e'
                 onClick={() => setShowPicker((pre) => !pre)}
               />
             }
@@ -122,13 +122,13 @@ function ChatWindow({ currentUser, setSignInDrawerVisible }) {
 function ChatMsg(props) {
   const { photoURL, displayName, text } = props.msg;
   return (
-    <div className='chat-msg'>
+    <div className='m-chat-msg'>
       <Avatar
-        className='chat-photo'
+        className='m-chat-photo'
         src={photoURL || null}
         alt='profile photo'
       />
-      <span className='chat-name'>{displayName}</span>
+      <span className='m-chat-name'>{displayName}</span>
       <span>{text}</span>
     </div>
   );

@@ -9,7 +9,6 @@ import AccountDrawer from '../../components/account-drawer/account-drawer.compon
 import PostDetailModal from '../../components/post-detail-modal/post-detail-modal.component';
 import PostFormModal from '../../components/post-form-modal/post-form-modal.component';
 import Footer from '../../components/footer/footer.component';
-import ChatWindow from '../../components-mobile/chat-window/chat-window.component';
 
 import { Button } from 'antd';
 
@@ -17,6 +16,8 @@ import { connect } from 'react-redux';
 import { setLocationDrawerVisible } from '../../redux/location-drawer/location-drawer.actions';
 import { setPostFormModalVisible } from '../../redux/post-form-modal/post-form-modal.actions';
 import { setSignInDrawerVisible } from '../../redux/signin-drawer/signin-drawer.actions';
+
+import { useNavigate } from 'react-router-dom';
 
 import 'antd/dist/antd.css';
 import './mobilepage.styles.scss';
@@ -27,6 +28,8 @@ function MobilePage({
   setPostFormModalVisible,
   setSignInDrawerVisible,
 }) {
+  const navigate = useNavigate();
+
   const handlePostAd = () => {
     if (currentUser) {
       setPostFormModalVisible(true);
@@ -36,29 +39,30 @@ function MobilePage({
   };
 
   return (
-    <div className='mobilepage'>
+    <div className='m-mobilepage'>
       <LocationDrawer />
       <SignInDrawer />
       <AccountDrawer />
       <PostDetailModal />
       <PostFormModal />
 
-      <div className='top'>
+      <div className='m-top'>
         <TopBar />
         <SlideShow />
       </div>
 
-      <div className='middle'>
-        <div className='middle-left'>
-          <div className='navbar shadow'>
+      <div className='m-middle'>
+        <div className='m-middle-nav-and-list'>
+          <div className='m-navbar shadow'>
             <Navbar />
           </div>
 
-          <div className='buttons shadow'>
+          <div className='m-buttons shadow'>
             <Button
               type='primary'
               ghost
               style={{ borderColor: '#FF8718', color: '#FF8718' }}
+              onClick={() => navigate('/chat')}
             >
               找人聊天
             </Button>
@@ -67,7 +71,7 @@ function MobilePage({
             </Button>
           </div>
 
-          <div className='locations shadow'>
+          <div className='m-locations shadow'>
             <RadioGroup />
             <Button
               type='primary'
@@ -79,16 +83,13 @@ function MobilePage({
             </Button>
           </div>
 
-          <div className='post-list shadow'>
+          <div className='m-post-list shadow'>
             <PostList />
           </div>
         </div>
-        <div className='middle-right shadow'>
-          <ChatWindow />
-        </div>
       </div>
 
-      <div className='bottom'>
+      <div className='m-bottom'>
         <Footer />
       </div>
     </div>

@@ -1,5 +1,7 @@
 import HomePage from './pages/homepage/homepage.component';
 import MobilePage from './pages/mobilepage/mobilepage.component';
+import MobileChat from './pages/mobilechat/mobilechat.component';
+
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { auth } from './firebase/firebase';
@@ -33,7 +35,7 @@ function App({ setCurrentUser }) {
         <Route path='/:state' element={<MobilePage />} />
         <Route path='/:state/:city' element={<MobilePage />} />
         <Route path='/:state/:city/:category' element={<MobilePage />} />
-        {/* <Route path='/聊天' element={<MobileChatPage />} /> */}
+        <Route path='/chat' element={<MobileChat />} />
       </Routes>
     );
   }

@@ -1,19 +1,19 @@
-.mobilepage {
+.m-mobilepage {
   background-color: #f9f9f9;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 
-  .top {
+  .m-top {
     flex-grow: 0;
   }
 
-  .middle {
+  .m-middle {
     margin-bottom: 0.5rem;
     flex-grow: 1;
 
-    .middle-left {
-      .buttons {
+    .m-middle-nav-and-list {
+      .m-buttons {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -23,13 +23,13 @@
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
       }
-      .navbar {
+      .m-navbar {
         background: white;
         margin-bottom: 0.5rem;
         border-radius: 3px;
       }
 
-      .locations {
+      .m-locations {
         background: white;
         display: flex;
         justify-content: space-between;
@@ -43,23 +43,35 @@
         overflow-y: hidden;
       }
 
-      .post-list {
+      .m-post-list {
         background: white;
         padding-left: 0.5rem;
         padding-right: 0.5rem;
         border-radius: 3px;
       }
     }
-
-    .middle-right {
-      background-color: rgb(255, 255, 255);
-      height: 500px;
-      border-radius: 3px;
-    }
   }
 
-  .bottom {
+  .m-bottom {
     flex-grow: 0;
+
+    .footer {
+      height: 3rem;
+      background: white;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      padding-left: 1.5%;
+      padding-right: 1.5%;
+    
+      .feedback {
+        color: black;
+    
+        &:hover {
+            color: var(--blue);
+        }
+      }
+    }
   }
 }
 
