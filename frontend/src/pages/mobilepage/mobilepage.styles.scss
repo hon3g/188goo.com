@@ -15,7 +15,7 @@
     .middle-left {
       .buttons {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: center;
         background: white;
         border-radius: 3px;
@@ -45,7 +45,8 @@
 
       .post-list {
         background: white;
-        padding: 1rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
         border-radius: 3px;
       }
     }

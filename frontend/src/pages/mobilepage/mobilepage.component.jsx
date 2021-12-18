@@ -1,7 +1,7 @@
 import TopBar from '../../components-mobile/topbar/topbar.component';
 import SlideShow from '../../components-mobile/slideshow/slideshow.component';
 import Navbar from '../../components-mobile/navbar/navbar.component';
-import PostList from '../../components/post-list/post-list.component';
+import PostList from '../../components-mobile/post-list/post-list.component';
 import RadioGroup from '../../components/radio-group/radio-group.component';
 import LocationDrawer from '../../components/location-drawer/location-drawer.component';
 import SignInDrawer from '../../components/signin-drawer/signin-drawer.component';
@@ -53,8 +53,12 @@ function MobilePage({
           <div className='buttons shadow'>
             <Button
               type='primary'
-              onClick={handlePostAd}
+              ghost
+              style={{ borderColor: '#FF8718', color: '#FF8718' }}
             >
+              找人聊天
+            </Button>
+            <Button type='primary' onClick={handlePostAd}>
               发布信息
             </Button>
           </div>

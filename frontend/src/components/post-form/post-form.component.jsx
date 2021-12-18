@@ -139,7 +139,7 @@ function PostForm({
           />
         </div>
         <div className='title'>
-          <Input size='large' placeholder='标题' onChange={onTitleChange} />
+          <Input size='large' placeholder='标题' onChange={onTitleChange} maxLength={50}/>
         </div>
         <div className='description'>
           <TextArea

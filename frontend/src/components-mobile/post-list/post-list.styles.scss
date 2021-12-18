@@ -1,23 +1,25 @@
-.ant-list-item-meta-title {
-  max-width: 90%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.mobile-post-list {
+  .ant-list-item-meta-title {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: break-word;
 
-  &:hover {
-    transform-origin: 0 0;
-    transform: scale(1.005);
-  }
-
-  .post-title {
-    font-size: 1rem;
-    font-weight: normal;
-
-    &:hover {
-      cursor: pointer;
-      color: var(--blue);
+    .post-title {
+      font-size: 1rem;
+      font-weight: normal;
+      
+      &:hover {
+        cursor: pointer;
+        color: var(--blue);
+      }
     }
   }
+}
+
+.tags {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .ant-tag {
@@ -26,6 +28,10 @@
 
 .ant-modal-header {
   padding-right: 38px;
+}
+
+.ant-pagination {
+  padding: 0.8rem;
 }
 
 .square {
