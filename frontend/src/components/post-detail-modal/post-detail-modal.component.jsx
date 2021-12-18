@@ -33,7 +33,7 @@ function PostDetailModal({
         visible={visible}
         onCancel={() => setPostDetailModalVisible(false)}
         width={'75vw'}
-        bodyStyle={{ height: '75vh' }}
+        bodyStyle={{ height: '75vh', padding: '0px' }}
         destroyOnClose={true}
         footer={[
           <Button
@@ -88,11 +88,12 @@ function PostDetailModal({
   } else {
     return (
       <Modal
+        title={currentPost.title}
         centered
         visible={visible}
         onCancel={() => setPostDetailModalVisible(false)}
         width={'100vw'}
-        bodyStyle={{ height: '90vh', padding: '0px', paddingTop: '2rem' }}
+        bodyStyle={{ height: '85vh', padding: '0px' }}
         destroyOnClose={true}
         footer={[
           <Button
