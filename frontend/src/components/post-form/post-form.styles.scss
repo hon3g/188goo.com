@@ -10,13 +10,19 @@
   font-size: 16px !important;
 }
 
+.ant-upload-list-item-info {
+  width: 100%;
+}
+
 .post-form {
   height: 100%;
   overflow: scroll;
   display: grid;
-  grid-template-columns: 5% 50% 10% 30% 5%;
+  grid-template-columns: 55% 10% 35%;
+  padding: 2rem 4rem;
 
   .form-left {
+
     .selections {
       margin: 1rem auto;
     }
@@ -28,21 +34,41 @@
     .description {
       margin: 1rem auto;
     }
+  }
 
-    .phone {
+  .form-right {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.m-post-form {
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  .m-form-text {
+
+    .m-selection {
+      margin: 1rem auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .m-title {
+      margin: 1rem auto;
+    }
+
+    .m-description {
       margin: 1rem auto;
     }
   }
 
-  .form-right {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+  .m-form-images {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
   }
-}
-
-.ant-upload-list-item-info {
-  width: 20vw;
 }

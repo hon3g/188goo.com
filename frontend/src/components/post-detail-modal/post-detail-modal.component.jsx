@@ -75,10 +75,13 @@ function PostDetailModal({
             <div className='detail-right'>
               {currentPost.images && currentPost.images.length !== 0 ? (
                 currentPost.images.map((imgUrl) => (
-                  <Image width={200} src={imgUrl} />
+                  <Image width='50%' src={imgUrl} />
                 ))
               ) : (
-                <ImageSvg className='image-holder' />
+                <div>
+                  <ImageSvg className='image-holder' />
+                  <ImageSvg className='image-holder' />
+                </div>
               )}
             </div>
           </div>
@@ -116,7 +119,7 @@ function PostDetailModal({
             <div className='m-detail-images'>
               {currentPost.images && currentPost.images.length !== 0
                 ? currentPost.images.map((imgUrl) => (
-                    <Image width={150} src={imgUrl} />
+                    <Image width='50%' src={imgUrl} />
                   ))
                 : null}
             </div>

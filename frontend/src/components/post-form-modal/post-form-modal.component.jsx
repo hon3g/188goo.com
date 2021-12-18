@@ -25,34 +25,35 @@ function PostFormModal({
   description,
   images,
   setFormInit,
+  isMobile,
 }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [spinning, setSpinning] = useState(false);
 
   const IsValidForm = () => {
     if (!isValidPhoneNum(contactNum)) {
-      message.error('号码格式不正确', 5);
+      message.error('号码格式不正确');
       return false;
     } else if (!state) {
-      message.error('请选择地区', 5);
+      message.error('请选择地区');
       return false;
     } else if (!category) {
-      message.error('请选择类型', 5);
+      message.error('请选择类型');
       return false;
     } else if (!title) {
-      message.error('标题不能空', 5);
+      message.error('标题不能空');
       return false;
     } else if (title.length < 4) {
-      message.error('标题最少4个字', 5);
+      message.error('标题最少4个字');
       return false;
     } else if (title.length > 50) {
-      message.error('标题最多50个字', 5);
+      message.error('标题最多50个字');
       return false;
     } else if (!description) {
-      message.error('描述不能空', 5);
+      message.error('描述不能空');
       return false;
     } else if (description.length < 10) {
-      message.error('描述最少10个字', 5);
+      message.error('描述最少10个字');
       return false;
     } else {
       return true;
@@ -162,8 +163,12 @@ function PostFormModal({
       centered
       visible={visible}
       onCancel={handleCloseFormModal}
-      width={'75vw'}
-      bodyStyle={{ height: '75vh' }}
+      width={!isMobile ? '75vw' : '100vw'}
+      bodyStyle={
+        !isMobile
+          ? { height: '75vh', padding: '0px' }
+          : { height: '85vh', padding: '0px' }
+      }
       destroyOnClose={true}
       footer={
         !isSubmitted ? (
@@ -206,6 +211,7 @@ const mapSateToProps = (state) => ({
   title: state.postForm.title,
   description: state.postForm.description,
   images: state.postForm.images,
+  isMobile: state.isMobile.boolean,
 });
 
 const mapDispatchToProps = (dispatch) => ({
