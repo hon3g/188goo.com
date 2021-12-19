@@ -17,7 +17,7 @@ import { setLocationDrawerVisible } from '../../redux/location-drawer/location-d
 import { setPostFormModalVisible } from '../../redux/post-form-modal/post-form-modal.actions';
 import { setSignInDrawerVisible } from '../../redux/signin-drawer/signin-drawer.actions';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Head from '../../components/head/head.component';
 
@@ -31,6 +31,7 @@ function MobilePage({
   setSignInDrawerVisible,
 }) {
   const navigate = useNavigate();
+  const { state } = useParams();
 
   const handlePostAd = () => {
     if (currentUser) {
@@ -76,14 +77,16 @@ function MobilePage({
 
           <div className='m-locations shadow'>
             <RadioGroup />
-            {/* <Button
-              type='primary'
-              ghost
-              style={{ marginLeft: '1rem' }}
-              onClick={() => setLocationDrawerVisible(true)}
-            >
-              切换州区
-            </Button> */}
+            {state !== '纽约' ? (
+              <Button
+                type='primary'
+                ghost
+                style={{ marginLeft: '1rem' }}
+                onClick={() => setLocationDrawerVisible(true)}
+              >
+                切换州区
+              </Button>
+            ) : null}
           </div>
 
           <div className='m-post-list shadow'>

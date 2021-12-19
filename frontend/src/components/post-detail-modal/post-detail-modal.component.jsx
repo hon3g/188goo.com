@@ -62,13 +62,13 @@ function PostDetailModal({
               <br />
               <div className='info'>
                 <span>
-                  电话：<span className='num'>{currentPost.contact_num}</span>
+                  🤙：<span className='num'>{currentPost.contact_num}</span>
                 </span>
                 <span>
-                  位置：{currentPost.state}
+                  📍：{currentPost.state}
                   {currentPost.city ? `/${currentPost.city}` : null}
                 </span>
-                <span>日期：{formattedDate(currentPost.pub_date)}</span>
+                <span>📅：{formattedDate(currentPost.pub_date)}</span>
               </div>
             </div>
             <span />
@@ -119,7 +119,7 @@ function PostDetailModal({
             <div className='m-detail-images'>
               {currentPost.images && currentPost.images.length !== 0
                 ? currentPost.images.map((imgUrl) => (
-                    <Image width='50%' src={imgUrl} className='m-images'/>
+                    <Image width='50%' src={imgUrl} className='m-images' />
                   ))
                 : null}
             </div>
@@ -132,13 +132,13 @@ function PostDetailModal({
               <br />
               <div className='m-info'>
                 <span>
-                  电话：<span className='m-num'>{currentPost.contact_num}</span>
+                  🤙：<span className='m-num'>{currentPost.contact_num}</span>
                 </span>
                 <span>
-                  位置：{currentPost.state}
+                  📍：{currentPost.state}
                   {currentPost.city ? `/${currentPost.city}` : null}
                 </span>
-                <span>日期：{formattedDate(currentPost.pub_date)}</span>
+                <span>📅：{formattedDate(currentPost.pub_date)}</span>
               </div>
             </div>
             <span />
