@@ -14,15 +14,15 @@ import { Provider } from 'react-redux';
 import './index.css';
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <ConfigProvider locale={zhCN}>
           <App />
         </ConfigProvider>
       </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 

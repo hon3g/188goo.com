@@ -62,13 +62,13 @@ function PostDetailModal({
               <br />
               <div className='info'>
                 <span>
-                  🤙：<span className='num'>{currentPost.contact_num}</span>
+                  🤙电话：<span className='num'>{currentPost.contact_num}</span>
                 </span>
                 <span>
-                  📍：{currentPost.state}
+                  📍位置：{currentPost.state}
                   {currentPost.city ? `/${currentPost.city}` : null}
                 </span>
-                <span>📅：{formattedDate(currentPost.pub_date)}</span>
+                <span>📅日期：{formattedDate(currentPost.pub_date)}</span>
               </div>
             </div>
             <span />
@@ -132,13 +132,13 @@ function PostDetailModal({
               <br />
               <div className='m-info'>
                 <span>
-                  🤙：<span className='m-num'>{currentPost.contact_num}</span>
+                  🤙电话：<span className='m-num'>{currentPost.contact_num}</span>
                 </span>
                 <span>
-                  📍：{currentPost.state}
+                  📍位置：{currentPost.state}
                   {currentPost.city ? `/${currentPost.city}` : null}
                 </span>
-                <span>📅：{formattedDate(currentPost.pub_date)}</span>
+                <span>📅日期：{formattedDate(currentPost.pub_date)}</span>
               </div>
             </div>
             <span />

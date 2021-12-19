@@ -7,7 +7,7 @@ function Head() {
   const { pathname } = useLocation();
 
   const [title, setTitle] = useState('美国188 找工 租房 二手 转让 免费发布 168地区 在线聊天');
-  const [description, setDescription] = useState('美国188 为美华人提供一个简单易用的信息网站, 专注华人 招聘求职, 房屋租售, 二手买卖, 生意转让, 在线聊天');
+  const [description, setDescription] = useState('美国188 为美华人提供一个简单易用的信息网站 专注华人 招聘求职 房屋租售 二手买卖 生意转让 在线聊天');
   const [keywords, setKeywords] = useState('美国188, 找工作, 租房, 二手, 转让, 地区168, 招聘求职, 房屋租售, 二手买卖, 生意转让, 发布信息, 在线聊天');
 
   useEffect(() => {
