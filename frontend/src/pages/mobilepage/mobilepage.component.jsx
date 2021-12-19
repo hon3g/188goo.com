@@ -19,6 +19,8 @@ import { setSignInDrawerVisible } from '../../redux/signin-drawer/signin-drawer.
 
 import { useNavigate } from 'react-router-dom';
 
+import Head from '../../components/head/head.component';
+
 import 'antd/dist/antd.css';
 import './mobilepage.styles.scss';
 
@@ -40,6 +42,7 @@ function MobilePage({
 
   return (
     <div className='m-mobilepage'>
+      <Head />
       <LocationDrawer />
       <SignInDrawer />
       <AccountDrawer />
@@ -73,14 +76,14 @@ function MobilePage({
 
           <div className='m-locations shadow'>
             <RadioGroup />
-            <Button
+            {/* <Button
               type='primary'
               ghost
               style={{ marginLeft: '1rem' }}
               onClick={() => setLocationDrawerVisible(true)}
             >
               切换州区
-            </Button>
+            </Button> */}
           </div>
 
           <div className='m-post-list shadow'>

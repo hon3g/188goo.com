@@ -45,15 +45,6 @@ function ChatWindow({ currentUser, setSignInDrawerVisible }) {
     };
   }, []);
 
-  // useEffect(() => {
-  //   inputRef.current.focus();
-  //   chatBottom.current.scrollIntoView({
-  //     behavior: 'smooth',
-  //     inline: 'start',
-  //     block: 'nearest',
-  //   });
-  // }, [messages]);
-
   const onEmojiClick = (_, emojiObject) => {
     setInput((pre) => pre + emojiObject.emoji);
     inputRef.current.focus();

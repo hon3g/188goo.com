@@ -17,6 +17,8 @@ import { setLocationDrawerVisible } from '../../redux/location-drawer/location-d
 import { setPostFormModalVisible } from '../../redux/post-form-modal/post-form-modal.actions';
 import { setSignInDrawerVisible } from '../../redux/signin-drawer/signin-drawer.actions';
 
+import Head from '../../components/head/head.component';
+
 import 'antd/dist/antd.css';
 import './homepage.styles.scss';
 
@@ -36,6 +38,7 @@ function HomePage({
 
   return (
     <div className='homepage'>
+      <Head />
       <LocationDrawer />
       <SignInDrawer />
       <AccountDrawer />
@@ -58,7 +61,7 @@ function HomePage({
                 onClick={() => setLocationDrawerVisible(true)}
                 style={{ marginLeft: '1rem' }}
               >
-                切换地区
+                切换州区
               </Button>
               <Button
                 type='primary'

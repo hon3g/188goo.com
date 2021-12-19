@@ -56,7 +56,7 @@ function PostDetailModal({
             <div className='detail-left'>
               <div className='desc'>
                 <span>{currentPost.description}</span>
-                <br />
+                <span style={{ height: '1rem' }}></span>
                 <span>联系我时，请说是在美国188看到的</span>
               </div>
               <br />
@@ -126,7 +126,7 @@ function PostDetailModal({
             <div className='m-detail-text'>
               <div className='m-desc'>
                 <span>{currentPost.description}</span>
-                <br />
+                <span style={{ height: '1rem' }}></span>
                 <span>联系我时，请说是在美国188看到的</span>
               </div>
               <br />

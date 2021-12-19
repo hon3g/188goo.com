@@ -2,4 +2,11 @@
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
+  position: relative;
+  top: 0.5rem;
+
+  &::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+  }
 }

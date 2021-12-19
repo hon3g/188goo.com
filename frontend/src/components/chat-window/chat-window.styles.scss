@@ -9,13 +9,13 @@
     overflow-wrap: break-word;
     overflow-y: scroll;
     overflow-x: hidden;
-    padding: 0.5rem;
+    padding: calc(1rem - 5px) 1rem;
     display: flex;
     flex-direction: column-reverse;
 
     .chat-msg {
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
+      margin-top: 5px;
+      margin-bottom: 5px;
 
       .chat-photo {
         background: linear-gradient(90deg, #afd2ff 0%, #ddd7ff 69%);
