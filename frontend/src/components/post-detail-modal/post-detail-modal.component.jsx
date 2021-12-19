@@ -119,7 +119,7 @@ function PostDetailModal({
             <div className='m-detail-images'>
               {currentPost.images && currentPost.images.length !== 0
                 ? currentPost.images.map((imgUrl) => (
-                    <Image width='50%' src={imgUrl} />
+                    <Image width='50%' src={imgUrl} className='m-images'/>
                   ))
                 : null}
             </div>

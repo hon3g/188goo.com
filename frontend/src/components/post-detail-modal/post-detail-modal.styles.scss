@@ -44,20 +44,6 @@
   padding: 1rem;
   width: 100%;
 
-  .m-detail-images {
-    .m-image-holder {
-      width: 300px;
-      height: 300px;
-      position: relative;
-      left: 50px;
-
-      &:hover {
-        transform: scale(1.1);
-        transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
-      }
-    }
-  }
-
   .m-detail-text {
     font-size: 1rem;
     display: flex;
@@ -79,4 +65,8 @@
       }
     }
   }
+}
+
+.m-images {
+  margin-bottom: 2rem;
 }
