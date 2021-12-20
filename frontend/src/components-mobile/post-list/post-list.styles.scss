@@ -1,16 +1,18 @@
-.ant-list-item-meta-title {
-  max-width: 100%;
-  white-space: normal;
-  overflow-wrap: break-word;
-  margin-bottom: 1rem;
+.m-post-list {
+  .ant-list-item-meta-title {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: break-word;
+    margin-bottom: 1rem;
 
-  .m-post-title {
-    font-size: 1rem;
-    font-weight: normal;
+    .m-post-title {
+      font-size: 1rem;
+      font-weight: normal;
 
-    &:hover {
-      cursor: pointer;
-      color: var(--blue);
+      &:hover {
+        cursor: pointer;
+        color: var(--blue);
+      }
     }
   }
 }

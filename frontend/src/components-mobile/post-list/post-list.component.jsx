@@ -88,7 +88,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
   }, [state, city, category, searchParams, navigate]);
 
   return (
-    <div>
+    <div className='m-post-list'>
       <LoadingBar color='#1890ff' ref={loadingBar} />
       <List
         pagination={{
