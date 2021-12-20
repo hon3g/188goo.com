@@ -17,6 +17,7 @@ function TopBar({
   setSignInDrawerVisible,
   setAccountDrawerVisible,
   currentUser,
+  isMobile,
 }) {
   const { state } = useParams();
 
@@ -32,51 +33,97 @@ function TopBar({
     setAccountDrawerVisible(true);
   };
 
-  return (
-    <header className='topbar'>
-      <div className='title-location'>
-        <Tooltip title='全部信息'>
-          <div className='title'>
-            <Link to='/' className='a'>
-              美国188
-            </Link>
-          </div>
-        </Tooltip>
-
-        <Tooltip title='切换州区'>
-          <span className='location'>
-            <Button size='small' onClick={handleChangeLocation}>
-              <LocationIcon className='loc-icon' />
-              {STATES.has(state) ? state : '全美'}
-            </Button>
-          </span>
-        </Tooltip>
-      </div>
-
-      <div className='navbar'>
-        <Navbar />
-      </div>
-
-      <div className='account'>
-        {!currentUser ? (
-          <Tooltip title='登陆'>
-            <Button type='primary' ghost onClick={handleSignIn}>
-              登陆
-            </Button>
+  if (!isMobile) {
+    return (
+      <header className='topbar'>
+        <div className='title-location'>
+          <Tooltip title='全部信息'>
+            <div className='title'>
+              <Link to='/' className='a'>
+                美国188
+              </Link>
+            </div>
           </Tooltip>
-        ) : (
-          <Tooltip title='个人中心'>
-            <Button type='primary' ghost onClick={handleAccount}>
-              个人中心
-            </Button>
+
+          <Tooltip title='切换州区'>
+            <span className='location'>
+              <Button size='small' onClick={handleChangeLocation}>
+                <LocationIcon className='loc-icon' />
+                {STATES.has(state) ? state : '全美'}
+              </Button>
+            </span>
           </Tooltip>
-        )}
-      </div>
-    </header>
-  );
+        </div>
+
+        <div className='navbar'>
+          <Navbar />
+        </div>
+
+        <div className='account'>
+          {!currentUser ? (
+            <Tooltip title='登陆'>
+              <Button type='primary' ghost onClick={handleSignIn}>
+                登陆
+              </Button>
+            </Tooltip>
+          ) : (
+            <Tooltip title='个人中心'>
+              <Button type='primary' ghost onClick={handleAccount}>
+                个人中心
+              </Button>
+            </Tooltip>
+          )}
+        </div>
+      </header>
+    );
+  } else {
+    return (
+      <header className='m-topbar'>
+        <div className='m-title-location'>
+          <Tooltip title='全部信息'>
+            <div className='m-title'>
+              <Link to='/' className='m-a'>
+                美国188
+              </Link>
+            </div>
+          </Tooltip>
+
+          <Tooltip title='切换州区'>
+            <span className='m-location'>
+              <Button size='small' onClick={handleChangeLocation}>
+                <LocationIcon className='m-loc-icon' />
+                {STATES.has(state) ? state : '全美'}
+              </Button>
+            </span>
+          </Tooltip>
+        </div>
+
+        <div className='m-navbar'></div>
+
+        <div className='m-account'>
+          {!currentUser ? (
+            <Tooltip title='登陆'>
+              <Button type='primary' ghost onClick={handleSignIn}>
+                登陆
+              </Button>
+            </Tooltip>
+          ) : (
+            <Tooltip title='个人中心'>
+              <Button type='primary' ghost onClick={handleAccount}>
+                个人中心
+              </Button>
+            </Tooltip>
+          )}
+        </div>
+      </header>
+    );
+  }
 }
 
-const mapSateToProps = (state) => ({ currentUser: state.user.currentUser });
+const mapSateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+  isMobile: state.isMobile.boolean,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   setLocationDrawerVisible: (visible) =>

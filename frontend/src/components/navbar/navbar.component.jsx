@@ -6,6 +6,8 @@ import home from '../../assets/home.png';
 import buying from '../../assets/buying.png';
 import shop from '../../assets/shop.png';
 
+import { connect } from 'react-redux';
+
 import './navbar.styles.scss';
 
 const SECTIONS = [
@@ -36,7 +38,7 @@ const SECTIONS = [
 
 const { SubMenu } = Menu;
 
-function Navbar() {
+function Navbar({ isMobile }) {
   const [current, setCurrent] = useState(null);
   const { state, city, category } = useParams();
   const currentState = state || '全美';
@@ -97,39 +99,79 @@ function Navbar() {
     navigate(url);
   };
 
-  return (
-    <Menu
-      onClick={handleClick}
-      selectedKeys={current}
-      mode='horizontal'
-      disabledOverflow={true}
-      style={{
-        borderBottom: 'none',
-      }}
-    >
-      {SECTIONS.map((section) => (
-        <SubMenu
-          icon={
-            section.type === '招聘求职' ? (
-              <img src={resume} className='icon' alt='' />
-            ) : section.type === '房屋租售' ? (
-              <img src={home} className='icon' alt='' />
-            ) : section.type === '二手买卖' ? (
-              <img src={buying} className='icon' alt='' />
-            ) : section.type === '生意转让' ? (
-              <img src={shop} className='icon' alt='' />
-            ) : null
-          }
-          key={section.type}
-          title={section.type}
-        >
-          {section.categories.map((category) => (
-            <Menu.Item key={category}>{category}</Menu.Item>
-          ))}
-        </SubMenu>
-      ))}
-    </Menu>
-  );
+  if (!isMobile) {
+    return (
+      <Menu
+        onClick={handleClick}
+        selectedKeys={current}
+        mode='horizontal'
+        disabledOverflow={true}
+        style={{
+          borderBottom: 'none',
+        }}
+      >
+        {SECTIONS.map((section) => (
+          <SubMenu
+            icon={
+              section.type === '招聘求职' ? (
+                <img src={resume} className='icon' alt='' />
+              ) : section.type === '房屋租售' ? (
+                <img src={home} className='icon' alt='' />
+              ) : section.type === '二手买卖' ? (
+                <img src={buying} className='icon' alt='' />
+              ) : section.type === '生意转让' ? (
+                <img src={shop} className='icon' alt='' />
+              ) : null
+            }
+            key={section.type}
+            title={section.type}
+          >
+            {section.categories.map((category) => (
+              <Menu.Item key={category}>{category}</Menu.Item>
+            ))}
+          </SubMenu>
+        ))}
+      </Menu>
+    );
+  } else {
+    return (
+      <Menu
+        onClick={handleClick}
+        selectedKeys={current}
+        mode='inline'
+        triggerSubMenuAction='click'
+        style={{
+          borderBottom: 'none',
+        }}
+      >
+        {SECTIONS.map((section) => (
+          <SubMenu
+            icon={
+              section.type === '招聘求职' ? (
+                <img src={resume} className='icon' alt='' />
+              ) : section.type === '房屋租售' ? (
+                <img src={home} className='icon' alt='' />
+              ) : section.type === '二手买卖' ? (
+                <img src={buying} className='icon' alt='' />
+              ) : section.type === '生意转让' ? (
+                <img src={shop} className='icon' alt='' />
+              ) : null
+            }
+            key={section.type}
+            title={section.type}
+          >
+            {section.categories.map((category) => (
+              <Menu.Item key={category}>{category}</Menu.Item>
+            ))}
+          </SubMenu>
+        ))}
+      </Menu>
+    );
+  }
 }
 
-export default Navbar;
+const mapSateToProps = (state) => ({
+  isMobile: state.isMobile.boolean,
+});
+
+export default connect(mapSateToProps)(Navbar);

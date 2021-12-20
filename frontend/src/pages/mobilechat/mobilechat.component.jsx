@@ -1,5 +1,5 @@
-import TopBar from '../../components-mobile/topbar/topbar.component';
-import SlideShow from '../../components-mobile/slideshow/slideshow.component';
+import TopBar from '../../components/topbar/topbar.component';
+import SlideShow from '../../components/slideshow/slideshow.component';
 import LocationDrawer from '../../components/location-drawer/location-drawer.component';
 import SignInDrawer from '../../components/signin-drawer/signin-drawer.component';
 import AccountDrawer from '../../components/account-drawer/account-drawer.component';

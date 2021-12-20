@@ -83,13 +83,17 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': config('RDS_DB_NAME'),
+    #     'USER': config('RDS_USERNAME'),
+    #     'PASSWORD': config('RDS_PASSWORD'),
+    #     'HOST': config('RDS_HOSTNAME'),
+    #     'PORT': config('RDS_PORT'),
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('RDS_DB_NAME'),
-        'USER': config('RDS_USERNAME'),
-        'PASSWORD': config('RDS_PASSWORD'),
-        'HOST': config('RDS_HOSTNAME'),
-        'PORT': config('RDS_PORT'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

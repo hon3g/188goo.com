@@ -1,7 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
 import { List, Tag, message } from 'antd';
 import { useParams, useSearchParams, useNavigate } from 'react-router-dom';
-import { TAG_COLORS, STATES, CITIES, TYPES, CATEGORIES } from './constants';
+import {
+  TAG_COLORS,
+  STATES,
+  CITIES,
+  TYPES,
+  CATEGORIES,
+} from '../../components/post-list/constants';
 import LoadingBar from 'react-top-loading-bar';
 import axios from 'axios';
 
@@ -82,7 +88,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
   }, [state, city, category, searchParams, navigate]);
 
   return (
-    <div className='mobile-post-list'>
+    <div>
       <LoadingBar color='#1890ff' ref={loadingBar} />
       <List
         pagination={{
@@ -102,7 +108,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
         dataSource={data.results}
         renderItem={(post) => (
           <List.Item>
-            <div className='square'></div>
+            <div className='m-square'></div>
             <List.Item.Meta
               title={
                 <span onClick={handleClick(post)} className='m-post-title'>
@@ -110,7 +116,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
                 </span>
               }
               description={
-                <div className='tags'>
+                <div className='m-tags'>
                   <Tag>{formattedDate(post.pub_date)}</Tag>
                   <Tag
                     color={
@@ -129,7 +135,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
           </List.Item>
         )}
       />
-      {dim ? <div className='page-dim' /> : null}
+      {dim ? <div className='m-page-dim' /> : null}
     </div>
   );
 }

@@ -1,23 +1,21 @@
-.mobile-post-list {
-  .ant-list-item-meta-title {
-    max-width: 100%;
-    white-space: normal;
-    overflow-wrap: break-word;
-    margin-bottom: 1rem;
+.ant-list-item-meta-title {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: break-word;
+  margin-bottom: 1rem;
 
-    .m-post-title {
-      font-size: 1rem;
-      font-weight: normal;
-      
-      &:hover {
-        cursor: pointer;
-        color: var(--blue);
-      }
+  .m-post-title {
+    font-size: 1rem;
+    font-weight: normal;
+
+    &:hover {
+      cursor: pointer;
+      color: var(--blue);
     }
   }
 }
 
-.tags {
+.m-tags {
   display: flex;
   justify-content: space-between;
 }
@@ -34,7 +32,7 @@
   padding: 0.8rem;
 }
 
-.square {
+.m-square {
   height: 8px;
   width: 3px;
   background-color: var(--blue);
@@ -44,7 +42,7 @@
   border-radius: 2px;
 }
 
-.page-dim {
+.m-page-dim {
   position: fixed;
   padding: 0;
   margin: 0;
