@@ -103,7 +103,7 @@ function Navbar() {
       selectedKeys={current}
       mode='inline'
       triggerSubMenuAction='click'
-      inlineCollapsed={false}
+      // inlineCollapsed={false}
       style={{
         borderBottom: 'none',
       }}

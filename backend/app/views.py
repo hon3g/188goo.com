@@ -32,17 +32,17 @@ def _fake_posts(request):
         city = City.objects.get(name=random.choice(NY))
         category = Category.objects.get(name=random.choice(CATEGORIES))
         user = User.objects.get(username='hongzhao')
-        p = Post(contact_num='3475557048', state=state, city=city, category=category, user=user, title=random.choice(TITLES), content=CONTENT)
+        p = Post(contact_num='3475557048', state=state, city=city, category=category, user=user, title=random.choice(TITLES), description=CONTENT)
         p.save()
 
     for region in STATES:
         for state_name in STATES[region]:
-            for _ in range(8):
+            for _ in range(88):
                 print('\033[91m' + state_name + '\033[0m')
                 state = State.objects.get(name=state_name)
                 category = Category.objects.get(name=random.choice(CATEGORIES))
                 user = User.objects.get(username='hongzhao')
-                p = Post(contact_num='3475557048', state=state, category=category, user=user, title=random.choice(TITLES), content=CONTENT)
+                p = Post(contact_num='3475557048', state=state, category=category, user=user, title=random.choice(TITLES), description=CONTENT)
                 p.save()
 
     html = "<html><body>Fake posts created!</body></html>"

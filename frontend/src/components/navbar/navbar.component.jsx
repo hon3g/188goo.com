@@ -102,6 +102,7 @@ function Navbar() {
       onClick={handleClick}
       selectedKeys={current}
       mode='horizontal'
+      disabledOverflow={true}
       style={{
         borderBottom: 'none',
       }}
