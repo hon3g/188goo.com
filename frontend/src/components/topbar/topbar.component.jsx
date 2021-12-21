@@ -80,39 +80,31 @@ function TopBar({
     return (
       <header className='m-topbar'>
         <div className='m-title-location'>
-          <Tooltip title='全部信息'>
-            <div className='m-title'>
-              <Link to='/' className='m-a'>
-                美国188
-              </Link>
-            </div>
-          </Tooltip>
+          <div className='m-title'>
+            <Link to='/' className='m-a'>
+              美国188
+            </Link>
+          </div>
 
-          <Tooltip title='切换州区'>
-            <span className='m-location'>
-              <Button size='small' onClick={handleChangeLocation}>
-                <LocationIcon className='m-loc-icon' />
-                {STATES.has(state) ? state : '全美'}
-              </Button>
-            </span>
-          </Tooltip>
+          <span className='m-location'>
+            <Button size='small' onClick={handleChangeLocation}>
+              <LocationIcon className='m-loc-icon' />
+              {STATES.has(state) ? state : '全美'}
+            </Button>
+          </span>
         </div>
 
         <div className='m-navbar'></div>
 
         <div className='m-account'>
           {!currentUser ? (
-            <Tooltip title='登陆'>
-              <Button type='primary' ghost onClick={handleSignIn}>
-                登陆
-              </Button>
-            </Tooltip>
+            <Button type='primary' ghost onClick={handleSignIn}>
+              登陆
+            </Button>
           ) : (
-            <Tooltip title='个人中心'>
-              <Button type='primary' ghost onClick={handleAccount}>
-                个人中心
-              </Button>
-            </Tooltip>
+            <Button type='primary' ghost onClick={handleAccount}>
+              个人中心
+            </Button>
           )}
         </div>
       </header>

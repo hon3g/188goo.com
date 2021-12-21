@@ -120,4 +120,7 @@
 
 .m-a {
   color: black;
+  &:focus {
+    color: black;
+  }
 }

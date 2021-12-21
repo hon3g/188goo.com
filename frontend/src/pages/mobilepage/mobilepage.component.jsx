@@ -68,7 +68,7 @@ function MobilePage({
               style={{ borderColor: '#FF8718', color: '#FF8718' }}
               onClick={() => navigate('/chat')}
             >
-              找人聊天
+              在线聊天
             </Button>
             <Button type='primary' onClick={handlePostAd}>
               发布信息

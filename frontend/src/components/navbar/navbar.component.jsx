@@ -127,7 +127,9 @@ function Navbar({ isMobile }) {
             title={section.type}
           >
             {section.categories.map((category) => (
-              <Menu.Item key={category}>{category}</Menu.Item>
+              <Menu.Item key={category}>
+                {category.startsWith('全部') ? category.concat('*') : category}
+              </Menu.Item>
             ))}
           </SubMenu>
         ))}
@@ -161,7 +163,9 @@ function Navbar({ isMobile }) {
             title={section.type}
           >
             {section.categories.map((category) => (
-              <Menu.Item key={category}>{category}</Menu.Item>
+              <Menu.Item key={category}>
+                {category.startsWith('全部') ? category.concat('*') : category}
+              </Menu.Item>
             ))}
           </SubMenu>
         ))}
