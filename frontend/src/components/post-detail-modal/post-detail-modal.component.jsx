@@ -25,7 +25,7 @@ function PostDetailModal({
             onClick={() => setPostDetailModalVisible(false)}
             style={{ marginRight: '1rem' }}
           >
-            返回
+            关闭
           </Button>,
           currentPost.title,
         ]}
