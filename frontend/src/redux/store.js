@@ -3,10 +3,12 @@ import logger from 'redux-logger';
 
 import rootReducer from './root-reducer';
 
+const middlewares = [];
+
 // Only use logger in development
-const middlewares = [process.env.NODE_ENV === 'development' && logger].filter(
-  Boolean
-);
+if (process.env.NODE_ENV === 'development') {
+  middlewares.push(logger);
+}
 
 const store = createStore(rootReducer, applyMiddleware(...middlewares));
 
