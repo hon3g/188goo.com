@@ -9,6 +9,8 @@ import { connect } from 'react-redux';
 import { setPostDetailModalVisible } from '../../redux/post-detail-modal/post-detail-modal.actions';
 import { setCurrentPost } from '../../redux/current-post/current-post.actions';
 
+import { API_GATEWAY } from '../../apiGateway';
+
 import './post-list.styles.scss';
 
 export function formattedDate(date) {
@@ -62,7 +64,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
       setIsSameCategory(false);
     }
 
-    const api = `http://127.0.0.1:8000/api/list/?state__name=${args.state}&city__name=${args.city}&category__type=${args.type}&category__name=${args.category}&page=${args.page}`;
+    const api = `${API_GATEWAY}/api/list/?state__name=${args.state}&city__name=${args.city}&category__type=${args.type}&category__name=${args.category}&page=${args.page}`;
     const fetchData = async () => {
       loadingBar.current.continuousStart();
       message.destroy();

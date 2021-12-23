@@ -3,11 +3,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import { STATES } from '../post-list/constants';
 
+import { connect } from 'react-redux';
+
 import './radio-group.styles.scss';
 
 const NY = ['曼哈顿', '法拉盛', '布鲁伦', '皇后区', '布朗士', '长岛', '史登岛'];
 
-const RadioGroup = () => {
+const RadioGroup = ({ isMobile }) => {
   const { state, city, category } = useParams();
   const navigate = useNavigate();
 
@@ -29,7 +31,7 @@ const RadioGroup = () => {
     <Radio.Group
       onChange={onChange}
       value={city || '全部'}
-      className='radio-group'
+      className={!isMobile?'radio-group':null}
     >
       <Radio value={'全部'}>全部</Radio>
       {NY.map((area) => (
@@ -41,4 +43,8 @@ const RadioGroup = () => {
   );
 };
 
-export default RadioGroup;
+const mapSateToProps = (state) => ({
+  isMobile: state.isMobile.boolean,
+});
+
+export default connect(mapSateToProps)(RadioGroup);

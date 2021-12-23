@@ -11,6 +11,8 @@ import { isValidPhoneNum } from '../signin/signin.component';
 
 import axios from 'axios';
 
+import { API_GATEWAY } from '../../apiGateway';
+
 import './post-form-modal.styles.scss';
 
 function PostFormModal({
@@ -84,7 +86,7 @@ function PostFormModal({
 
   const postTextData = (idToken) => {
     // Setup axios
-    const url = 'http://localhost:8000/api/create/';
+    const api = `${API_GATEWAY}/api/create/`;
     const data = {
       user: currentUser.uid,
       contact_num: contactNum,
@@ -102,7 +104,7 @@ function PostFormModal({
     };
     // Post text data
     axios
-      .post(url, data, config)
+      .post(api, data, config)
       .then((response) => {
         // Create a list of objects
         if (images) {
@@ -129,7 +131,7 @@ function PostFormModal({
       json.push(obj);
     }
     // Setup axios
-    const url = 'http://localhost:8000/api/images/';
+    const api = `${API_GATEWAY}/api/images/`;
     const data = json;
     const config = {
       headers: {
@@ -138,7 +140,7 @@ function PostFormModal({
       },
     };
     axios
-      .post(url, data, config)
+      .post(api, data, config)
       .then(() => {
         setIsSubmitted(true);
         setSpinning(false);
