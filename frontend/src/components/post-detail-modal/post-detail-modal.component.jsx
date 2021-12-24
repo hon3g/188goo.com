@@ -74,7 +74,7 @@ function PostDetailModal({
             <span />
             <div className='detail-right'>
               {currentPost.images && currentPost.images.length !== 0 ? (
-                currentPost.images.map((imgUrl) => (
+                currentPost.images.slice().reverse().map((imgUrl) => (
                   <Image width='50%' src={imgUrl} />
                 ))
               ) : (
@@ -118,7 +118,7 @@ function PostDetailModal({
           <div className='m-post-detail'>
             <div className='m-detail-images'>
               {currentPost.images && currentPost.images.length !== 0
-                ? currentPost.images.map((imgUrl) => (
+                ? currentPost.images.slice().reverse().map((imgUrl) => (
                     <Image width='50%' src={imgUrl} className='m-images' />
                   ))
                 : null}

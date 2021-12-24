@@ -103,6 +103,7 @@ function ChatWindow({ currentUser, setSignInDrawerVisible }) {
           onEmojiClick={onEmojiClick}
           disableSearchBar={true}
           native={true}
+          groupVisibility={{ recently_used: false }}
           pickerStyle={{ width: '100%', overflow: 'visible' }}
         />
       ) : null}

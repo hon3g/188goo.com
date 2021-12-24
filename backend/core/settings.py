@@ -171,4 +171,5 @@ REST_FRAMEWORK = {
 
 CORS_ALLOWED_ORIGINS = [
     'https://www.us-188.com',
+    'http://localhost:3000',
 ]

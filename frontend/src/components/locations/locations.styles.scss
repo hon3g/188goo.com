@@ -1,4 +1,14 @@
 .state-name {
+    color: black;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    &:hover {
+        cursor: pointer;
+        color: var(--blue);
+    }
+}
+
+.m-state-name {
     font-size: 15px;
     color: black;
     margin-top: 4px;

@@ -7,13 +7,15 @@ import { setLocationDrawerVisible } from '../../redux/location-drawer/location-d
 
 import './locations.styles.scss';
 
-function Locations({ setLocationDrawerVisible }) {
+function Locations({ setLocationDrawerVisible, isMobile }) {
+  const stateNameClass = !isMobile ? 'state-name' : 'm-state-name';
+
   return (
     <div>
       <Link
         to='/全美'
         onClick={() => setLocationDrawerVisible(false)}
-        className='state-name'
+        className={stateNameClass}
       >
         全美
       </Link>
@@ -37,7 +39,7 @@ function Locations({ setLocationDrawerVisible }) {
               {region.map((state) => (
                 <Link
                   to={`/${state}`}
-                  className='state-name'
+                  className={stateNameClass}
                   key={state}
                   onClick={() => setLocationDrawerVisible(false)}
                 >
@@ -52,9 +54,13 @@ function Locations({ setLocationDrawerVisible }) {
   );
 }
 
+const mapSateToProps = (state) => ({
+  isMobile: state.isMobile.boolean,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   setLocationDrawerVisible: (visible) =>
     dispatch(setLocationDrawerVisible(visible)),
 });
 
-export default connect(null, mapDispatchToProps)(Locations);
+export default connect(mapSateToProps, mapDispatchToProps)(Locations);
