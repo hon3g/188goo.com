@@ -117,7 +117,11 @@
 
 .m-a {
   color: black;
-  &:focus {
+  &:hover,
+  &:focus,
+  &:active,
+  &:link,
+  &:visited {
     color: black;
   }
 }

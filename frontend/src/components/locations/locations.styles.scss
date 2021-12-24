@@ -1,7 +1,8 @@
 .state-name {
+    font-size: 15px;
     color: black;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    margin-top: 4px;
+    margin-bottom: 4px;
     &:hover {
         cursor: pointer;
         color: var(--blue);
