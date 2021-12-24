@@ -33,3 +33,5 @@ staticfiles/
 
 # Production
 backend.zip
+
+# zip -d backend.zip __MACOSX/\*

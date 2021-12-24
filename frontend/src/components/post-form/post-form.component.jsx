@@ -20,6 +20,8 @@ import { resizeFile } from './image-resizer';
 
 import axios from 'axios';
 
+import { API_GATEWAY } from '../../apiGateway';
+
 import './post-form.styles.scss';
 
 const { TextArea } = Input;
@@ -66,7 +68,8 @@ function PostForm({
   };
 
   const getPresignedUrl = async () => {
-    const response = await axios('http://127.0.0.1:8000/get_presigned_url');
+    const api = `${API_GATEWAY}/get_presigned_url`
+    const response = await axios(api);
     setImageUploadUrl(response.data);
   };
 

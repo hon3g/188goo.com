@@ -1,12 +1,15 @@
 from django.http import HttpResponse
+from django.shortcuts import redirect
 from .aws_s3 import create_presigned_url
+
+
+def index(request):
+    return redirect('https://www.us-188.com/')
 
 
 def get_presigned_url(request):
     response = create_presigned_url()
     return HttpResponse(response)
-
-
 
 
 # Create fake data
@@ -47,4 +50,3 @@ def get_presigned_url(request):
 
 #     html = "<html><body>Fake posts created!</body></html>"
 #     return HttpResponse(html)
-
