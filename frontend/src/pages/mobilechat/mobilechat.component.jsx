@@ -13,7 +13,6 @@ import { useNavigate } from 'react-router-dom';
 
 import Head from '../../components/head/head.component';
 
-import 'antd/dist/antd.css';
 import './mobilechat.styles.scss';
 
 function MobileChat() {

@@ -121,6 +121,12 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
               {post.category}
             </Tag>
             <Tag>{formattedDate(post.pub_date)}</Tag>
+            <p className='sr-only'>
+              {post.state}
+              {post.city}
+              {post.description}
+              {post.contact_num}
+            </p>
           </List.Item>
         )}
       />

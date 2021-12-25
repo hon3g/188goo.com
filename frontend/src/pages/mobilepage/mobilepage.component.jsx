@@ -21,7 +21,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import Head from '../../components/head/head.component';
 
-import 'antd/dist/antd.css';
 import './mobilepage.styles.scss';
 
 function MobilePage({
@@ -89,9 +88,9 @@ function MobilePage({
             ) : null}
           </div>
 
-          <div className='m-post-list shadow'>
+          <main className='m-post-list shadow'>
             <PostList />
-          </div>
+          </main>
         </div>
       </div>
 

@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
 import { setIsMobile } from './redux/is-mobile/is-mobile.actions';
 
+import 'antd/dist/antd.css';
 import './App.css';
 
 function App({ setCurrentUser, setIsMobile }) {

@@ -19,7 +19,6 @@ import { setSignInDrawerVisible } from '../../redux/signin-drawer/signin-drawer.
 
 import Head from '../../components/head/head.component';
 
-import 'antd/dist/antd.css';
 import './homepage.styles.scss';
 
 function HomePage({
@@ -73,9 +72,9 @@ function HomePage({
             </div>
           </div>
 
-          <div className='post-list shadow'>
+          <main className='post-list shadow'>
             <PostList />
-          </div>
+          </main>
         </div>
         <div className='middle-right shadow'>
           <ChatWindow />

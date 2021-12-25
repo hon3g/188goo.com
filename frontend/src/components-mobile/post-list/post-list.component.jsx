@@ -134,6 +134,12 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
                 </div>
               }
             />
+            <p className='sr-only'>
+              {post.state}
+              {post.city}
+              {post.description}
+              {post.contact_num}
+            </p>
           </List.Item>
         )}
       />

@@ -70,13 +70,16 @@ function PostDetailModal({
                 </span>
                 <span>日期🗓️：{formattedDate(currentPost.pub_date)}</span>
               </div>
+              <br />
+              <br />
             </div>
             <span />
             <div className='detail-right'>
               {currentPost.images && currentPost.images.length !== 0 ? (
-                currentPost.images.slice().reverse().map((imgUrl) => (
-                  <Image width='50%' src={imgUrl} />
-                ))
+                currentPost.images
+                  .slice()
+                  .reverse()
+                  .map((imgUrl) => <Image width='50%' src={imgUrl} />)
               ) : (
                 <div>
                   <ImageSvg className='image-holder' />
@@ -118,9 +121,12 @@ function PostDetailModal({
           <div className='m-post-detail'>
             <div className='m-detail-images'>
               {currentPost.images && currentPost.images.length !== 0
-                ? currentPost.images.slice().reverse().map((imgUrl) => (
-                    <Image width='50%' src={imgUrl} className='m-images' />
-                  ))
+                ? currentPost.images
+                    .slice()
+                    .reverse()
+                    .map((imgUrl) => (
+                      <Image width='50%' src={imgUrl} className='m-images' />
+                    ))
                 : null}
             </div>
             <div className='m-detail-text'>
@@ -141,6 +147,8 @@ function PostDetailModal({
                 </span>
                 <span>日期🗓️：{formattedDate(currentPost.pub_date)}</span>
               </div>
+              <br />
+              <br />
             </div>
             <span />
           </div>
