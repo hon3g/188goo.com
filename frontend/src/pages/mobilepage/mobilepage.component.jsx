@@ -9,6 +9,7 @@ import AccountDrawer from '../../components/account-drawer/account-drawer.compon
 import PostDetailModal from '../../components/post-detail-modal/post-detail-modal.component';
 import PostFormModal from '../../components/post-form-modal/post-form-modal.component';
 import Footer from '../../components/footer/footer.component';
+import Links from '../../components/links/links.component';
 
 import { Button } from 'antd';
 
@@ -42,6 +43,7 @@ function MobilePage({
 
   return (
     <div className='m-mobilepage'>
+      <Links />
       <Head />
       <LocationDrawer />
       <SignInDrawer />

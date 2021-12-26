@@ -15,6 +15,8 @@ function LocationDrawer({ visible, setLocationDrawerVisible }) {
       visible={visible}
     >
       <Locations />
+      <br />
+      <br />
     </Drawer>
   );
 }

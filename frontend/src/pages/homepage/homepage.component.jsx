@@ -9,6 +9,7 @@ import PostDetailModal from '../../components/post-detail-modal/post-detail-moda
 import PostFormModal from '../../components/post-form-modal/post-form-modal.component';
 import Footer from '../../components/footer/footer.component';
 import ChatWindow from '../../components/chat-window/chat-window.component';
+import Links from '../../components/links/links.component';
 
 import { Button } from 'antd';
 
@@ -37,6 +38,7 @@ function HomePage({
 
   return (
     <div className='homepage'>
+      <Links />
       <Head />
       <LocationDrawer />
       <SignInDrawer />

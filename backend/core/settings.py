@@ -31,7 +31,7 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [getenv('HOST'), 'localhost']
+ALLOWED_HOSTS = [getenv('HOST', 'localhost')]
 
 # Application definition
 
@@ -170,6 +170,5 @@ REST_FRAMEWORK = {
 
 
 CORS_ALLOWED_ORIGINS = [
-    'https://www.us-188.com',
-    'http://localhost:3000',
+    getenv('ORIGIN', 'http://localhost:3000'),
 ]
