@@ -126,6 +126,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
               {post.city}
               {post.description}
               {post.contact_num}
+              华人 招聘 360 168 188 美国找工 纽约招聘
             </p>
           </List.Item>
         )}

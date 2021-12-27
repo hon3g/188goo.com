@@ -3,3 +3,6 @@ User-agent: *
 Disallow:
 
 Sitemap: https://www.us-188.com/sitemap.xml
+Sitemap: https://us-188.com/sitemap.xml
+Sitemap: http://www.us-188.com/sitemap.xml
+Sitemap: http://us-188.com/sitemap.xml
