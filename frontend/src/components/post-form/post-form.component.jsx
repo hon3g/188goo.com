@@ -68,7 +68,7 @@ function PostForm({
   };
 
   const getPresignedUrl = async () => {
-    const api = `${API_GATEWAY}/get_presigned_url`
+    const api = `${API_GATEWAY}/get_presigned_url`;
     const response = await axios(api);
     setImageUploadUrl(response.data);
   };
@@ -121,6 +121,8 @@ function PostForm({
               size='large'
               placeholder='联系电话'
               prefix='🇺🇸 +1'
+              type='tel'
+              pattern='[0-9]*'
               onChange={handlePhoneNumInput}
               value={phoneNumInput}
             />

@@ -132,6 +132,8 @@ function SignIn({ inputRef, setSignInDrawerVisible, setAccountDrawerVisible }) {
             size='large'
             placeholder='手机号码'
             prefix='🇺🇸 +1'
+            type='tel'
+            pattern='[0-9]*'
             onChange={handlePhoneNumInput}
             value={inputValue}
             onPressEnter={getOTP}
