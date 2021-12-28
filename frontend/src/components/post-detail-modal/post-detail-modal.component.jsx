@@ -18,17 +18,14 @@ function PostDetailModal({
   if (!isMobile) {
     return (
       <Modal
-        title={[
-          <Button
-            type='primary'
-            ghost
+        title={
+          <span
+            className='back-arrow'
             onClick={() => setPostDetailModalVisible(false)}
-            style={{ marginRight: '1rem' }}
           >
-            关闭
-          </Button>,
-          currentPost.title,
-        ]}
+            &lt;
+          </span>
+        }
         centered
         visible={visible}
         onCancel={() => setPostDetailModalVisible(false)}
@@ -55,6 +52,8 @@ function PostDetailModal({
           <div className='post-detail'>
             <div className='detail-left'>
               <div className='desc'>
+                <span className='desc-title'>{currentPost.title}</span>
+                <br />
                 <span>{currentPost.description}</span>
                 <span style={{ height: '1rem' }}></span>
                 <span>联系我时，请说是在美国188看到的</span>
@@ -94,7 +93,14 @@ function PostDetailModal({
   } else {
     return (
       <Modal
-        title={currentPost.title}
+        title={
+          <span
+            className='m-back-arrow'
+            onClick={() => setPostDetailModalVisible(false)}
+          >
+            &lt;
+          </span>
+        }
         centered
         visible={visible}
         onCancel={() => setPostDetailModalVisible(false)}
@@ -131,6 +137,8 @@ function PostDetailModal({
             </div>
             <div className='m-detail-text'>
               <div className='m-desc'>
+                <span className='m-desc-title'>{currentPost.title}</span>
+                <br />
                 <span>{currentPost.description}</span>
                 <span style={{ height: '1rem' }}></span>
                 <span>联系我时，请说是在美国188看到的</span>

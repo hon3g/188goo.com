@@ -23,7 +23,7 @@ function Footer() {
             target='_blank'
             rel='nofollow noopener'
           >
-            条款政策
+            使用条款
           </a>
         </Space>
       </div>
