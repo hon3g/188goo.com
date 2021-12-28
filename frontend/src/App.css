@@ -5,3 +5,7 @@
 .ant-drawer-title {
   font-weight: bolder !important;
 }
+
+.ant-modal-header {
+  padding: 10px 16px;
+}

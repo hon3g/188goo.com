@@ -18,14 +18,15 @@ function PostDetailModal({
   if (!isMobile) {
     return (
       <Modal
-        title={
-          <span
-            className='back-arrow'
+        title={[
+          <Button
+            type='primary'
+            ghost
             onClick={() => setPostDetailModalVisible(false)}
           >
-            &lt;
-          </span>
-        }
+            关闭
+          </Button>,
+        ]}
         centered
         visible={visible}
         onCancel={() => setPostDetailModalVisible(false)}
@@ -93,14 +94,15 @@ function PostDetailModal({
   } else {
     return (
       <Modal
-        title={
-          <span
-            className='m-back-arrow'
+        title={[
+          <Button
+            type='primary'
+            ghost
             onClick={() => setPostDetailModalVisible(false)}
           >
-            &lt;
-          </span>
-        }
+            关闭
+          </Button>,
+        ]}
         centered
         visible={visible}
         onCancel={() => setPostDetailModalVisible(false)}
