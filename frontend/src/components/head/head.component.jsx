@@ -6,17 +6,33 @@ function Head() {
   const { state, city, category } = useParams();
   const { pathname } = useLocation();
 
-  const [title, setTitle] = useState('美国188，找工，租房，二手，转让，免费发布，在线聊天，168地区');
-  const [description, setDescription] = useState('美国188，为美华人提供一个简单易用的信息网站，招聘求职，房屋租售，二手买卖，生意转让，在线聊天');
-  const [keywords, setKeywords] = useState('美国188,找工作,租房,二手,转让,招聘求职,房屋租售,二手买卖,生意转让,发布信息,在线聊天,华人168');
+  const [title, setTitle] = useState();
+  const [description, setDescription] = useState();
+  const [keywords, setKeywords] = useState();
 
   useEffect(() => {
-    if (pathname === '/') {
-      return;
+    let location = null;
+    if (city !== undefined && city !== '全部') {
+      location = city;
     } else {
-      setTitle(`美国188，${state||''}${city||''}，${category||'找工 租房 二手 转让'}，免费发布，在线聊天，${state||''}168`);
-      setDescription(`美国188 为${state||''}华人提供一个简单易用的信息网站，${category||'找工 租房 二手 转让'}，在线聊天，${city||''}`);
-      setKeywords(`美国188,${state||''}${city||''}找工作,${state||''}${city||''}租房,${state||''}${city||''}二手,${state||''}${city||''}转让,在线聊天,${state||''}${city||''}168,华人168`);
+      location = state;
+    }
+
+    let kind = null;
+    if (category !== undefined) {
+      kind = category;
+    } else {
+      kind = '找工，租房，二手，转让'
+    }
+
+    if (pathname === '/') {
+      setTitle(`美国188：找工，租房，二手，转让，在线聊天`);
+      setDescription(`美国188(us-188.com)，为在美国的华人提供一个方便易用的分类信息和聊天网站，免费发布信息，招聘求职，房屋租售，二手买卖，生意转让，在线聊天`);
+      setKeywords(`美国188,找工作,租房,二手,转让,招聘求职,房屋租售,二手买卖,生意转让,在线聊天,发布信息,168`);
+    } else {
+      setTitle(`美国188：${location}，${kind}，在线聊天`);
+      setDescription(`美国188(us-188.com)，为在${location}的华人提供一个方便易用的分类信息和聊天网站，免费发布信息，${location}招聘求职，${location}房屋租售，${location}二手买卖，${location}生意转让，在线聊天`);
+      setKeywords(`美国188,${location}找工作,${location}租房,${location}二手,${location}转让,${location}招聘求职,${location}房屋租售,${location}二手买卖,${location}生意转让,${location}在线聊天,${location}发布信息,${location}168`);
     }
   }, [state, city, category, pathname]);
 

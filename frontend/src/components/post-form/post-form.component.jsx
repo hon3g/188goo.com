@@ -156,7 +156,7 @@ function PostForm({
               size='large'
               placeholder='描述'
               showCount
-              maxLength={200}
+              maxLength={500}
               rows={12}
               style={{ width: '100%' }}
               onChange={onDescriptionChange}
@@ -224,7 +224,7 @@ function PostForm({
               size='large'
               placeholder='描述'
               showCount
-              maxLength={200}
+              maxLength={500}
               rows={10}
               style={{ width: '100%' }}
               onChange={onDescriptionChange}
