@@ -20,8 +20,6 @@ function PostDetailModal({
       <Modal
         title={[
           <Button
-            type='primary'
-            ghost
             onClick={() => setPostDetailModalVisible(false)}
           >
             关闭
@@ -35,8 +33,6 @@ function PostDetailModal({
         destroyOnClose={true}
         footer={[
           <Button
-            type='primary'
-            ghost
             onClick={() => setPostDetailModalVisible(false)}
           >
             关闭
@@ -96,8 +92,6 @@ function PostDetailModal({
       <Modal
         title={[
           <Button
-            type='primary'
-            ghost
             onClick={() => setPostDetailModalVisible(false)}
           >
             关闭
@@ -111,8 +105,6 @@ function PostDetailModal({
         destroyOnClose={true}
         footer={[
           <Button
-            type='primary'
-            ghost
             onClick={() => setPostDetailModalVisible(false)}
           >
             关闭

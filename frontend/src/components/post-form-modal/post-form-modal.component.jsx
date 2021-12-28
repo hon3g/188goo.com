@@ -161,7 +161,13 @@ function PostFormModal({
 
   return (
     <Modal
-      title={'免费发布信息'}
+    title={[
+      <Button
+        onClick={handleCloseFormModal}
+      >
+        关闭
+      </Button>,
+    ]}
       centered
       visible={visible}
       onCancel={handleCloseFormModal}
