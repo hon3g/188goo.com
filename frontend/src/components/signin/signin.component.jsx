@@ -9,6 +9,8 @@ import { setAccountDrawerVisible } from '../../redux/account-drawer/account-draw
 import { auth } from '../../firebase/firebase';
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 
+import usFlag from '../../assets/us.png';
+
 import './signin.styles.scss';
 
 export function formatPhoneNumber(value) {
@@ -131,7 +133,7 @@ function SignIn({ inputRef, setSignInDrawerVisible, setAccountDrawerVisible }) {
             ref={inputRef}
             size='large'
             placeholder='手机号码'
-            prefix='🇺🇸 +1'
+            prefix={[<img src={usFlag} alt='' className='us-flag'/>, '+1']}
             type='tel'
             pattern='[0-9]*'
             onChange={handlePhoneNumInput}

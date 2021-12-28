@@ -28,7 +28,7 @@ function PostDetailModal({
         centered
         visible={visible}
         onCancel={() => setPostDetailModalVisible(false)}
-        width={'75vw'}
+        width={'1000px'}
         bodyStyle={{ height: '75vh', padding: '0px' }}
         destroyOnClose={true}
         footer={[
@@ -43,7 +43,7 @@ function PostDetailModal({
           style={{
             height: '100%',
             whiteSpace: 'pre-line',
-            overflowY: 'scroll',
+            overflowY: 'auto',
           }}
         >
           <div className='post-detail'>
@@ -52,19 +52,17 @@ function PostDetailModal({
                 <span className='desc-title'>{currentPost.title}</span>
                 <br />
                 <span>{currentPost.description}</span>
-                <span style={{ height: '1rem' }}></span>
-                <span>联系我时，请说是在美国188看到的</span>
               </div>
               <br />
               <div className='info'>
                 <span>
-                  电话🤙：<span className='num'>{currentPost.contact_num}</span>
+                  电话：<span className='num'>{currentPost.contact_num}</span>
                 </span>
                 <span>
-                  位置📍：{currentPost.state}
+                  位置：{currentPost.state}
                   {currentPost.city ? `/${currentPost.city}` : null}
                 </span>
-                <span>日期🗓️：{formattedDate(currentPost.pub_date)}</span>
+                <span>日期：{formattedDate(currentPost.pub_date)}</span>
               </div>
               <br />
               <br />
@@ -115,7 +113,7 @@ function PostDetailModal({
           style={{
             height: '100%',
             whiteSpace: 'pre-line',
-            overflowY: 'scroll',
+            overflowY: 'auto',
           }}
         >
           <div className='m-post-detail'>
@@ -134,20 +132,18 @@ function PostDetailModal({
                 <span className='m-desc-title'>{currentPost.title}</span>
                 <br />
                 <span>{currentPost.description}</span>
-                <span style={{ height: '1rem' }}></span>
-                <span>联系我时，请说是在美国188看到的</span>
               </div>
               <br />
               <div className='m-info'>
                 <span>
-                  电话🤙：
+                  电话：
                   <span className='m-num'>{currentPost.contact_num}</span>
                 </span>
                 <span>
-                  位置📍：{currentPost.state}
+                  位置：{currentPost.state}
                   {currentPost.city ? `/${currentPost.city}` : null}
                 </span>
-                <span>日期🗓️：{formattedDate(currentPost.pub_date)}</span>
+                <span>日期：{formattedDate(currentPost.pub_date)}</span>
               </div>
               <br />
               <br />

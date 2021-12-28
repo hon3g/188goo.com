@@ -9,10 +9,12 @@
   }
 
   .middle {
-    margin: 1rem;
+    margin: 1rem auto;
     flex-grow: 1;
     display: grid;
     grid-template-columns: 70% 30%;
+    width: calc(100% - 2rem);
+    max-width: 1500px;
 
     .middle-left {
       .radios-and-buttons {
@@ -25,7 +27,7 @@
         padding: 1.5rem;
         border-radius: 3px;
         white-space: nowrap;
-        overflow-x: scroll;
+        overflow-x: auto;
         overflow-y: hidden;
       }
 

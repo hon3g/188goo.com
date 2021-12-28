@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Menu } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
-import resume from '../../assets/resume.png';
-import home from '../../assets/home.png';
-import buying from '../../assets/buying.png';
-import shop from '../../assets/shop.png';
+import { ReactComponent as ResumeSvg } from '../../assets/resume.svg';
+import { ReactComponent as HouseSvg } from '../../assets/house.svg';
+import { ReactComponent as OpenboxSvg } from '../../assets/openbox.svg';
+import { ReactComponent as MoneySvg } from '../../assets/money.svg';
 
 import { connect } from 'react-redux';
 
@@ -114,13 +114,13 @@ function Navbar({ isMobile }) {
           <SubMenu
             icon={
               section.type === '招聘求职' ? (
-                <img src={resume} className='icon' alt='' />
+                <ResumeSvg className='icon' />
               ) : section.type === '房屋租售' ? (
-                <img src={home} className='icon' alt='' />
+                <HouseSvg className='icon' />
               ) : section.type === '二手买卖' ? (
-                <img src={buying} className='icon' alt='' />
+                <OpenboxSvg className='icon' />
               ) : section.type === '生意转让' ? (
-                <img src={shop} className='icon' alt='' />
+                <MoneySvg className='icon' />
               ) : null
             }
             key={section.type}
@@ -150,13 +150,13 @@ function Navbar({ isMobile }) {
           <SubMenu
             icon={
               section.type === '招聘求职' ? (
-                <img src={resume} className='icon' alt='' />
+                <ResumeSvg className='m-icon' />
               ) : section.type === '房屋租售' ? (
-                <img src={home} className='icon' alt='' />
+                <HouseSvg className='m-icon' />
               ) : section.type === '二手买卖' ? (
-                <img src={buying} className='icon' alt='' />
+                <OpenboxSvg className='m-icon' />
               ) : section.type === '生意转让' ? (
-                <img src={shop} className='icon' alt='' />
+                <MoneySvg className='m-icon' />
               ) : null
             }
             key={section.type}

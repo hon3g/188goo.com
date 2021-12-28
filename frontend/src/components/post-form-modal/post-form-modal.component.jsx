@@ -171,7 +171,7 @@ function PostFormModal({
       centered
       visible={visible}
       onCancel={handleCloseFormModal}
-      width={!isMobile ? '75vw' : '100vw'}
+      width={!isMobile ? '1000px' : '100vw'}
       bodyStyle={
         !isMobile
           ? { height: '75vh', padding: '0px' }

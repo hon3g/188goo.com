@@ -104,7 +104,7 @@ function AccountDrawer({
             {currentUser ? formatedPhoneNum(currentUser.phoneNumber) : null}
           </h3>
           <Button type='primary' onClick={() => setPostFormModalVisible(true)}>
-            免费发布
+            发布信息
           </Button>
         </div>
         <div className='acc-middle'>

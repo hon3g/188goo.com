@@ -16,7 +16,7 @@
 
 .post-form {
   height: 100%;
-  overflow: scroll;
+  overflow: auto;
   display: grid;
   grid-template-columns: 55% 10% 35%;
   padding: 2rem 4rem;
@@ -45,7 +45,7 @@
 .m-post-form {
   height: 100%;
   width: 100%;
-  overflow: scroll;
+  overflow: auto;
   display: flex;
   flex-direction: column;
   padding: 1rem;

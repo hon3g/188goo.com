@@ -22,6 +22,8 @@ import axios from 'axios';
 
 import { API_GATEWAY } from '../../apiGateway';
 
+import usFlag from '../../assets/us.png';
+
 import './post-form.styles.scss';
 
 const { TextArea } = Input;
@@ -120,7 +122,7 @@ function PostForm({
             <Input
               size='large'
               placeholder='联系电话'
-              prefix='🇺🇸 +1'
+              prefix={[<img src={usFlag} alt='' className='us-flag'/>, '+1']}
               type='tel'
               pattern='[0-9]*'
               onChange={handlePhoneNumInput}
@@ -192,7 +194,7 @@ function PostForm({
             <Input
               size='large'
               placeholder='联系电话'
-              prefix='🇺🇸 +1'
+              prefix={[<img src={usFlag} alt='' className='us-flag'/>, '+1']}
               onChange={handlePhoneNumInput}
               value={phoneNumInput}
             />

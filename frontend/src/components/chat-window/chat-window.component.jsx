@@ -105,6 +105,7 @@ function ChatWindow({ currentUser, setSignInDrawerVisible }) {
           native={true}
           groupVisibility={{ recently_used: false }}
           pickerStyle={{ width: '100%', overflow: 'visible' }}
+          groupVisibility={{ flags: false }}
         />
       ) : null}
     </div>

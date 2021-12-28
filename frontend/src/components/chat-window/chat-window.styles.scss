@@ -7,7 +7,7 @@
   .chat-content {
     flex-grow: 1;
     overflow-wrap: break-word;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     padding: calc(1rem - 5px) 1rem;
     display: flex;
