@@ -20,7 +20,7 @@ import { setSignInDrawerVisible } from '../../redux/signin-drawer/signin-drawer.
 
 import './chat-window.styles.scss';
 
-function ChatWindow({ currentUser, setSignInDrawerVisible }) {
+function ChatWindow({ currentUser, setSignInDrawerVisible, isMobile }) {
   const [input, setInput] = useState('');
   const [showPicker, setShowPicker] = useState();
   const [messages, setMessages] = useState([]);
@@ -76,36 +76,35 @@ function ChatWindow({ currentUser, setSignInDrawerVisible }) {
     <div className='chat-window'>
       <div className='chat-content' onClick={() => setShowPicker(false)}>
         {messages &&
-          messages.map((msg) => <ChatMsg key={msg.createdAt} msg={msg} />)}
+          messages.map((msg) => (
+            <ChatMsg key={msg.createdAt} msg={msg} isMobile={isMobile} />
+          ))}
         <div ref={chatBottom} />
       </div>
       <div className='chat-bottom'>
-        <Input.Group compact>
-          <Input
-            ref={inputRef}
-            placeholder='说点什么...'
-            maxLength={50}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onPressEnter={sendMessage}
-            style={{ lineHeight: '1.2em' }}
-            suffix={
-              <EmojiSvg
-                className='e'
-                onClick={() => setShowPicker((pre) => !pre)}
-              />
-            }
-          />
-        </Input.Group>
+        <Input
+          ref={inputRef}
+          placeholder='说点什么...'
+          maxLength={50}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onPressEnter={sendMessage}
+          size={isMobile?'large':null}
+          suffix={
+            <EmojiSvg
+              className='e'
+              onClick={() => setShowPicker((pre) => !pre)}
+            />
+          }
+        />
       </div>
       {showPicker ? (
         <Picker
           onEmojiClick={onEmojiClick}
           disableSearchBar={true}
           native={true}
-          groupVisibility={{ recently_used: false }}
+          groupVisibility={{ recently_used: false, flags: false }}
           pickerStyle={{ width: '100%', overflow: 'visible' }}
-          groupVisibility={{ flags: false }}
         />
       ) : null}
     </div>
@@ -114,8 +113,9 @@ function ChatWindow({ currentUser, setSignInDrawerVisible }) {
 
 function ChatMsg(props) {
   const { photoURL, displayName, text } = props.msg;
+  const isMobile = props.isMobile;
   return (
-    <div className='chat-msg'>
+    <div className='chat-msg' style={isMobile ? { fontSize: '16px' } : null}>
       <Avatar
         className='chat-photo'
         src={photoURL || null}
@@ -129,6 +129,7 @@ function ChatMsg(props) {
 
 const mapSateToProps = (state) => ({
   currentUser: state.user.currentUser,
+  isMobile: state.isMobile.boolean,
 });
 
 const mapDispatchToProps = (dispatch) => ({
