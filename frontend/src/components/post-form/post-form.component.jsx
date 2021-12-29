@@ -169,12 +169,12 @@ function PostForm({
         <div className='form-right'>
           <Upload
             listType='picture'
-            maxCount={5}
+            maxCount={6}
             accept='image/*'
             beforeUpload={getPresignedUrl}
             customRequest={handleImageUpload}
             onRemove={handleRemoveImage}
-            disabled={imageMap.size >= 4 ? true : false}
+            disabled={imageMap.size >= 5 ? true : false}
             onPreview={() => {
               return null;
             }}
@@ -237,12 +237,12 @@ function PostForm({
         <div className='m-form-images'>
           <Upload
             listType='picture'
-            maxCount={5}
+            maxCount={6}
             accept='image/*'
             beforeUpload={getPresignedUrl}
             customRequest={handleImageUpload}
             onRemove={handleRemoveImage}
-            disabled={imageMap.size >= 4 ? true : false}
+            disabled={imageMap.size >= 5 ? true : false}
             style={{ width: '100%' }}
             onPreview={() => {
               return null;
