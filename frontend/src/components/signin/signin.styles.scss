@@ -25,9 +25,20 @@
 .signin-form {
   display: flex;
   flex-direction: column;
+
+  .ant-input-prefix {
+    font-size: 20px;
+    margin: auto;
+    margin-right: 0.5rem;
+  }
+
+  .ant-input-lg {
+    font-size: 20px;
+  }
 }
 
 .us-flag {
-  width: 1.2rem;
+  width: 1.4rem;
+  margin: auto;
   margin-right: 0.5rem;
 }

@@ -132,7 +132,6 @@ function SignIn({ inputRef, setSignInDrawerVisible, setAccountDrawerVisible }) {
           <Input
             ref={inputRef}
             size='large'
-            placeholder='手机号码'
             prefix={[<img src={usFlag} alt='' className='us-flag'/>, '+1']}
             type='tel'
             pattern='[0-9]*'
@@ -143,7 +142,7 @@ function SignIn({ inputRef, setSignInDrawerVisible, setAccountDrawerVisible }) {
           <br />
           <br />
           <div className='get-code-button'>
-            <Button type='primary' ghost loading={false} onClick={getOTP}>
+            <Button type='primary' size='large' loading={false} onClick={getOTP}>
               换取验证码
             </Button>
           </div>
