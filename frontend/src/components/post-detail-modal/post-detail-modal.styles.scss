@@ -12,17 +12,20 @@
     .desc {
       display: flex;
       flex-direction: column;
+      margin-bottom: 2rem;
 
       .desc-title {
         font-size: 1.2rem;
         font-weight: bold;
         color: var(--blue);
+        margin-bottom: 2rem;
       }
     }
 
     .info {
       display: flex;
       flex-direction: column;
+      margin-bottom: 10rem;
 
       .num {
         font-size: 1.5rem;
@@ -59,17 +62,20 @@
     .m-desc {
       display: flex;
       flex-direction: column;
+      margin-bottom: 2rem;
 
       .m-desc-title {
         font-size: 1.2rem;
         font-weight: bolder;
         color: var(--blue);
+        margin-bottom: 2rem;
       }
     }
 
     .m-info {
       display: flex;
       flex-direction: column;
+      margin-bottom: 10rem;
 
       .m-num {
         font-size: 1.5rem;

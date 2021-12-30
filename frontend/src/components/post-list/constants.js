@@ -2,7 +2,6 @@ export const TAG_COLORS = [
   '#2ab7ca',
   '#2db7f5',
   '#87d068',
-  '#108ee9',
   '#c99789',
   '#3da4ab',
   '#96ceb4',

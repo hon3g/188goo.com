@@ -44,10 +44,8 @@ function PostDetailModal({
             <div className='detail-left'>
               <div className='desc'>
                 <span className='desc-title'>{currentPost.title}</span>
-                <br />
                 <span>{currentPost.description}</span>
               </div>
-              <br />
               <div className='info'>
                 <span>
                   电话：<span className='num'>{currentPost.contact_num}</span>
@@ -58,8 +56,6 @@ function PostDetailModal({
                 </span>
                 <span>日期：{formattedDate(currentPost.pub_date)}</span>
               </div>
-              <br />
-              <br />
             </div>
             <span />
             <div className='detail-right'>
@@ -93,7 +89,7 @@ function PostDetailModal({
         visible={visible}
         onCancel={() => setPostDetailModalVisible(false)}
         width={'100vw'}
-        bodyStyle={{ height: '85vh', padding: '0px' }}
+        bodyStyle={{ height: '100vh', padding: '0px' }}
         destroyOnClose={true}
         footer={null}
       >
@@ -118,10 +114,8 @@ function PostDetailModal({
             <div className='m-detail-text'>
               <div className='m-desc'>
                 <span className='m-desc-title'>{currentPost.title}</span>
-                <br />
                 <span>{currentPost.description}</span>
               </div>
-              <br />
               <div className='m-info'>
                 <span>
                   电话：
@@ -133,8 +127,6 @@ function PostDetailModal({
                 </span>
                 <span>日期：{formattedDate(currentPost.pub_date)}</span>
               </div>
-              <br />
-              <br />
             </div>
             <span />
           </div>

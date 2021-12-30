@@ -7,11 +7,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
 
-    &:hover {
-      transform-origin: 0 0;
-      transform: scale(1.005);
-    }
-
     .post-title {
       font-size: 1rem;
       font-weight: bold;

@@ -182,7 +182,7 @@ function PostFormModal({
       bodyStyle={
         !isMobile
           ? { height: '75vh', padding: '0px' }
-          : { height: '85vh', padding: '0px' }
+          : { height: '100vh', padding: '0px' }
       }
       destroyOnClose={true}
       closable={false}
