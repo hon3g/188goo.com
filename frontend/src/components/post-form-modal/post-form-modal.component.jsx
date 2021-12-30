@@ -161,13 +161,20 @@ function PostFormModal({
 
   return (
     <Modal
-    title={[
-      <Button
-        onClick={handleCloseFormModal}
-      >
-        关闭
-      </Button>,
-    ]}
+      title={
+        <div className='post-form-top'>
+          <Button onClick={handleCloseFormModal}>关闭</Button>
+          {!isSubmitted ? (
+            <Button
+              type='primary'
+              onClick={handleFormSubmit}
+              disabled={spinning}
+            >
+              确认发布
+            </Button>
+          ) : null}
+        </div>
+      }
       centered
       visible={visible}
       onCancel={handleCloseFormModal}
@@ -178,13 +185,8 @@ function PostFormModal({
           : { height: '85vh', padding: '0px' }
       }
       destroyOnClose={true}
-      footer={
-        !isSubmitted ? (
-          <Button type='primary' onClick={handleFormSubmit} disabled={spinning}>
-            确认发布
-          </Button>
-        ) : null
-      }
+      closable={false}
+      footer={null}
     >
       {!isSubmitted ? (
         <PostForm />

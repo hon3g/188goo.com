@@ -31,13 +31,7 @@ function PostDetailModal({
         width={'1000px'}
         bodyStyle={{ height: '75vh', padding: '0px' }}
         destroyOnClose={true}
-        footer={[
-          <Button
-            onClick={() => setPostDetailModalVisible(false)}
-          >
-            关闭
-          </Button>,
-        ]}
+        footer={null}
       >
         <pre
           style={{
@@ -101,13 +95,7 @@ function PostDetailModal({
         width={'100vw'}
         bodyStyle={{ height: '85vh', padding: '0px' }}
         destroyOnClose={true}
-        footer={[
-          <Button
-            onClick={() => setPostDetailModalVisible(false)}
-          >
-            关闭
-          </Button>,
-        ]}
+        footer={null}
       >
         <pre
           style={{
