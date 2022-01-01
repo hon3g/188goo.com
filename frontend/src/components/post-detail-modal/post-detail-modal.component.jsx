@@ -19,9 +19,7 @@ function PostDetailModal({
     return (
       <Modal
         title={[
-          <Button
-            onClick={() => setPostDetailModalVisible(false)}
-          >
+          <Button onClick={() => setPostDetailModalVisible(false)}>
             关闭
           </Button>,
         ]}
@@ -48,13 +46,20 @@ function PostDetailModal({
               </div>
               <div className='info'>
                 <span>
-                  电话：<span className='num'>{currentPost.contact_num}</span>
+                  电话：
+                  <a href={`tel:${currentPost.contact_num}`} className='num'>
+                    {currentPost.contact_num}
+                  </a>
                 </span>
                 <span>
-                  位置：{currentPost.state}
+                  位置：
+                  {currentPost.state}
                   {currentPost.city ? `/${currentPost.city}` : null}
                 </span>
-                <span>日期：{formattedDate(currentPost.pub_date)}</span>
+                <span>
+                  日期：
+                  {formattedDate(currentPost.pub_date)}
+                </span>
               </div>
             </div>
             <span />
@@ -79,9 +84,7 @@ function PostDetailModal({
     return (
       <Modal
         title={[
-          <Button
-            onClick={() => setPostDetailModalVisible(false)}
-          >
+          <Button onClick={() => setPostDetailModalVisible(false)}>
             关闭
           </Button>,
         ]}
@@ -119,13 +122,19 @@ function PostDetailModal({
               <div className='m-info'>
                 <span>
                   电话：
-                  <span className='m-num'>{currentPost.contact_num}</span>
+                  <a href={`tel:${currentPost.contact_num}`} className='m-num'>
+                    {currentPost.contact_num}
+                  </a>
                 </span>
                 <span>
-                  位置：{currentPost.state}
+                  位置：
+                  {currentPost.state}
                   {currentPost.city ? `/${currentPost.city}` : null}
                 </span>
-                <span>日期：{formattedDate(currentPost.pub_date)}</span>
+                <span>
+                  日期：
+                  {formattedDate(currentPost.pub_date)}
+                </span>
               </div>
             </div>
             <span />

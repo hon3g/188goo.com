@@ -147,7 +147,6 @@ function AccountDrawer({
                       <div>
                         <Input
                           style={{ width: '130px' }}
-                          size='small'
                           maxLength={5}
                           onChange={(e) => setInputUsername(e.target.value)}
                           autoFocus={true}
@@ -155,7 +154,6 @@ function AccountDrawer({
                         <Button
                           type='primary'
                           ghost
-                          size='small'
                           onClick={handleEditUsername}
                           disabled={!inputUsername.replace(/\s+/g, '')}
                         >

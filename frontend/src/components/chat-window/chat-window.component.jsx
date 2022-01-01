@@ -89,7 +89,7 @@ function ChatWindow({ currentUser, setSignInDrawerVisible, isMobile }) {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onPressEnter={sendMessage}
-          size={isMobile?'large':null}
+          size={isMobile ? 'large' : null}
           suffix={
             <EmojiSvg
               className='e'
