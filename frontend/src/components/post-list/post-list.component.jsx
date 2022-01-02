@@ -14,7 +14,11 @@ import { API_GATEWAY } from '../../apiGateway';
 import './post-list.styles.scss';
 
 export function formattedDate(date) {
-  return new Date(date).toLocaleDateString().replace(/\//g, '-');
+  const _date = new Date(date);
+  const year = _date.toLocaleString('default', { year: 'numeric' });
+  const month = _date.toLocaleString('default', { month: '2-digit' });
+  const day = _date.toLocaleString('default', { day: '2-digit' });
+  return [year, month, day].join('-');
 }
 
 function PostList({ setPostDetailModalVisible, setCurrentPost }) {
@@ -106,9 +110,15 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
             <div className='square'></div>
             <List.Item.Meta
               title={
-                <span onClick={handleClick(post)} className='post-title'>
-                  {post.title}
-                </span>
+                <div className='post-title-location'>
+                  <span onClick={handleClick(post)} className='post-title'>
+                    {post.title}
+                  </span>
+                  <span className='post-location'>
+                    {post.state}
+                    {post.city ? `/${post.city}` : null}
+                  </span>
+                </div>
               }
             />
             <Tag
@@ -121,13 +131,13 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
               {post.category}
             </Tag>
             <Tag>{formattedDate(post.pub_date)}</Tag>
-            <p className='sr-only'>
+            <article className='sr-only'>
               {post.state}
               {post.city}
               {post.description}
               {post.contact_num}
               华人 招聘 360 168 188 美国找工 纽约招聘 纽约租房
-            </p>
+            </article>
           </List.Item>
         )}
       />

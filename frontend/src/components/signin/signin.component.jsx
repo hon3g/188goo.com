@@ -142,7 +142,7 @@ function SignIn({ inputRef, setSignInDrawerVisible, setAccountDrawerVisible }) {
           <br />
           <br />
           <div className='get-code-button'>
-            <Button type='primary' loading={false} onClick={getOTP}>
+            <Button type='primary' size='large' loading={false} onClick={getOTP}>
               换取验证码
             </Button>
           </div>

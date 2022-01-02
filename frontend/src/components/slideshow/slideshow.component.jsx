@@ -10,7 +10,7 @@ function SlideShow({ isMobile }) {
   return (
     <Carousel autoplay>
       <div>
-        <span className='slide-content' style={!isMobile?{ height: '200px' }:{ height: '130px' }}>
+        <span className='slide-content' style={!isMobile?{ height: '180px' }:{ height: '130px' }}>
           <BrowsingSvg className='svg' />
           <JobSvg className='svg' />
         </span>

@@ -12,10 +12,15 @@
         font-size: 1rem;
         font-weight: bold;
 
-        &:hover {
+        &:active {
           cursor: pointer;
           color: var(--blue);
         }
+      }
+
+      .m-post-location {
+        color: rgba(0, 0, 0, 0.5);
+        margin-left: 0.5rem;
       }
     }
   }
@@ -24,10 +29,6 @@
 .m-tags {
   display: flex;
   justify-content: space-between;
-}
-
-.ant-tag {
-  font-size: 12.5px;
 }
 
 .ant-modal-header {

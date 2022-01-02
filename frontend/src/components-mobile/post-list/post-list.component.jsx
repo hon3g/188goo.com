@@ -8,6 +8,7 @@ import {
   TYPES,
   CATEGORIES,
 } from '../../components/post-list/constants';
+import { formattedDate } from '../../components/post-list/post-list.component';
 import LoadingBar from 'react-top-loading-bar';
 import axios from 'axios';
 
@@ -18,10 +19,6 @@ import { setCurrentPost } from '../../redux/current-post/current-post.actions';
 import { API_GATEWAY } from '../../apiGateway';
 
 import './post-list.styles.scss';
-
-export function formattedDate(date) {
-  return new Date(date).toLocaleDateString().replace(/\//g, '-');
-}
 
 function PostList({ setPostDetailModalVisible, setCurrentPost }) {
   const [data, setData] = useState({});
@@ -113,9 +110,15 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
             <div className='m-square'></div>
             <List.Item.Meta
               title={
-                <span onClick={handleClick(post)} className='m-post-title'>
-                  {post.title}
-                </span>
+                <div>
+                  <span onClick={handleClick(post)} className='m-post-title'>
+                    {post.title}
+                  </span>
+                  <span className='m-post-location'>
+                    {post.state}
+                    {post.city ? `/${post.city}` : null}
+                  </span>
+                </div>
               }
               description={
                 <div className='m-tags'>
@@ -134,13 +137,13 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
                 </div>
               }
             />
-            <p className='sr-only'>
+            <article className='sr-only'>
               {post.state}
               {post.city}
               {post.description}
               {post.contact_num}
               华人 招聘 360 168 188 美国找工 纽约招聘 纽约租房
-            </p>
+            </article>
           </List.Item>
         )}
       />

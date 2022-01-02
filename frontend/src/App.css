@@ -9,3 +9,8 @@
 .ant-modal-header {
   padding: 10px 16px;
 }
+
+.ant-tag {
+  font-size: 13px;
+  padding: auto;
+}

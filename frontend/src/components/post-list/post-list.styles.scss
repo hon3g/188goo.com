@@ -3,26 +3,31 @@
 
   .ant-list-item-meta-title {
     max-width: 90%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 
-    .post-title {
-      font-size: 1rem;
-      font-weight: bold;
-      position: relative;
-      top: 3px;
+    .post-title-location {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
-      &:hover {
-        cursor: pointer;
-        color: var(--blue);
+      .post-title {
+        font-size: 1rem;
+        font-weight: bold;
+        position: relative;
+        top: 3px;
+
+        &:hover {
+          cursor: pointer;
+          color: var(--blue);
+        }
+      }
+      .post-location {
+        color: rgba(0, 0, 0, 0.5);
+        position: relative;
+        top: 3px;
+        margin-left: 0.5rem;
       }
     }
   }
-}
-
-.ant-tag {
-  font-size: 12.5px;
 }
 
 .ant-modal-header {

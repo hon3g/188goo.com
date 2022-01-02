@@ -5,7 +5,7 @@ import { setPostDetailModalVisible } from '../../redux/post-detail-modal/post-de
 
 import { formattedDate } from '../post-list/post-list.component';
 
-import { ReactComponent as ImageSvg } from '../../assets/undraw_images_re_0kll.svg';
+import Poster from '../../assets/poster.jpg';
 
 import './post-detail-modal.styles.scss';
 
@@ -68,12 +68,14 @@ function PostDetailModal({
                 currentPost.images
                   .slice()
                   .reverse()
-                  .map((imgUrl) => <Image width='50%' src={imgUrl} />)
+                  .map((imgUrl) => (
+                    <Image
+                      width={currentPost.images.length == 1 ? '100%' : '50%'}
+                      src={imgUrl}
+                    />
+                  ))
               ) : (
-                <div>
-                  <ImageSvg className='image-holder' />
-                  <ImageSvg className='image-holder' />
-                </div>
+                <Image width='100%' src={Poster} />
               )}
             </div>
           </div>
@@ -104,16 +106,6 @@ function PostDetailModal({
           }}
         >
           <div className='m-post-detail'>
-            <div className='m-detail-images'>
-              {currentPost.images && currentPost.images.length !== 0
-                ? currentPost.images
-                    .slice()
-                    .reverse()
-                    .map((imgUrl) => (
-                      <Image width='50%' src={imgUrl} className='m-images' />
-                    ))
-                : null}
-            </div>
             <div className='m-detail-text'>
               <div className='m-desc'>
                 <span className='m-desc-title'>{currentPost.title}</span>
@@ -137,7 +129,21 @@ function PostDetailModal({
                 </span>
               </div>
             </div>
-            <span />
+            <div className='m-detail-images'>
+              {currentPost.images && currentPost.images.length !== 0 ? (
+                currentPost.images
+                  .slice()
+                  .reverse()
+                  .map((imgUrl) => (
+                    <Image
+                      width={currentPost.images.length == 1 ? '100%' : '50%'}
+                      src={imgUrl}
+                    />
+                  ))
+              ) : (
+                <Image width='100%' src={Poster} />
+              )}
+            </div>
           </div>
         </pre>
       </Modal>

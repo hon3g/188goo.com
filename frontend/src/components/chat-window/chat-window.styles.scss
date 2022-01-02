@@ -35,11 +35,8 @@
 }
 
 .e {
-  fill: #1890ff;
+  fill: var(--blue);
   &:hover {
     cursor: pointer;
-  }
-  &:active {
-    fill: #0084ff;
   }
 }
