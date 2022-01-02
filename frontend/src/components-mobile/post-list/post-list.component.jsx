@@ -100,7 +100,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
           total: data.count,
           pageSize: 50,
           showSizeChanger: false,
-          showQuickJumper: true,
+          showQuickJumper: false,
           showLessItems: true,
         }}
         itemLayout='horizontal'
