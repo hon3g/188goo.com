@@ -24,7 +24,6 @@ class PostSerializer(serializers.ModelSerializer):
     # Hide some fields in get requests for now
     def to_representation(self, obj):
         rep = super(PostSerializer, self).to_representation(obj)
-        rep.pop('id', None)
         rep.pop('user', None)
         rep.pop('slug', None)
         return rep
