@@ -12,6 +12,7 @@ import { signOut, updateProfile } from 'firebase/auth';
 import { ref, uploadBytes } from 'firebase/storage';
 
 import { randomDisplayName } from '../signin/naming';
+import DefaultAvatar from '../../assets/default_avatar.jpeg';
 
 import { resizeFile } from '../post-form/image-resizer';
 
@@ -116,7 +117,7 @@ function AccountDrawer({
                 src={
                   currentUser && currentUser.photoURL
                     ? currentUser.photoURL
-                    : null
+                    : DefaultAvatar
                 }
               />
               <div className='sec-right'>

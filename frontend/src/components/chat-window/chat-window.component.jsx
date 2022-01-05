@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Input, Avatar } from 'antd';
 import { ReactComponent as EmojiSvg } from '../../assets/sentiment_satisfied_black_24dp.svg';
+import DefaultAvatar from '../../assets/default_avatar.jpeg';
 
 import Picker from 'emoji-picker-react';
 
@@ -121,7 +122,7 @@ function ChatMsg(props) {
     <div className='chat-msg' style={isMobile ? { fontSize: '16px' } : null}>
       <Avatar
         className='chat-photo'
-        src={photoURL || null}
+        src={photoURL || DefaultAvatar}
         alt='profile photo'
       />
       <div className='chat-right'>

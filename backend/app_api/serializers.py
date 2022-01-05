@@ -20,6 +20,16 @@ class PostSerializer(serializers.ModelSerializer):
         fields = ('id', 'user', 'contact_num', 'state', 'city',
                   'category', 'title', 'slug', 'description', 'images', 'pub_date')
 
+    
+    # Hide some fields in get requests for now
+    def to_representation(self, obj):
+        rep = super(PostSerializer, self).to_representation(obj)
+        rep.pop('id', None)
+        rep.pop('user', None)
+        rep.pop('slug', None)
+        return rep
+
+
     def get_images(self, post):
         queryset = Image.objects.filter(post=post.id)
         img_urls = queryset.values_list('img_url', flat=True)
