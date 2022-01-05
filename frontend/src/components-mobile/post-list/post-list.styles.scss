@@ -1,6 +1,6 @@
 .m-list {
   .ant-list-item {
-    // padding: 12px 0px !important;
+    padding: 12px 0px !important;
 
     .ant-list-item-meta-title {
       max-width: 100%;
@@ -9,7 +9,7 @@
       margin-bottom: 1rem;
 
       .m-post-title {
-        font-size: 1rem;
+        font-size: 17px;
         font-weight: bold;
 
         &:active {
@@ -42,7 +42,6 @@
 .m-square {
   height: 8px;
   width: 3px;
-  background-color: var(--blue);
   position: relative;
   bottom: 1.8px;
   margin-right: 0.5rem;

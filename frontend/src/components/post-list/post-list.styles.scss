@@ -1,5 +1,5 @@
 .ant-list-item {
-  // padding: 10px 0px !important;
+  padding: 10px 0px 10px 8px !important;
 
   .ant-list-item-meta-title {
     max-width: 90%;
@@ -10,7 +10,7 @@
       text-overflow: ellipsis;
 
       .post-title {
-        font-size: 1rem;
+        font-size: 17px;
         font-weight: bold;
         position: relative;
         top: 3px;
@@ -37,7 +37,6 @@
 .square {
   height: 8px;
   width: 3px;
-  background-color: var(--blue);
   position: relative;
   top: 1px;
   margin-left: 0.5rem;

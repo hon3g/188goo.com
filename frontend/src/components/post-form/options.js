@@ -107,7 +107,6 @@ export const CATEGORY_OPTIONS = [
     label: '房屋租售',
     children: [
       { value: '房屋出租', label: '房屋出租' },
-      { value: '房屋求租', label: '房屋求租' },
       { value: '店铺出租', label: '店铺出租' },
       { value: '房产出租', label: '房产出租' },
     ],

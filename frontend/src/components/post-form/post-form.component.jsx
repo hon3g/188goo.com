@@ -122,9 +122,7 @@ function PostForm({
             <Input
               size='large'
               placeholder='联系电话'
-              prefix={[<img src={usFlag} alt='' className='us-flag'/>, '+1']}
-              type='tel'
-              pattern='[0-9]*'
+              prefix={[<img src={usFlag} alt='' className='us-flag' />, '+1']}
               onChange={handlePhoneNumInput}
               value={phoneNumInput}
             />
@@ -135,14 +133,14 @@ function PostForm({
               style={{ width: '50%' }}
               options={LOCATION_OPTIONS}
               onChange={onSelectLocationChange}
-              placeholder='请选择地区'
+              placeholder='选择地区'
             />
             <Cascader
               size='large'
               style={{ width: '50%' }}
               options={CATEGORY_OPTIONS}
               onChange={onSelectCategoryChange}
-              placeholder='请选择类型'
+              placeholder='选择类型'
             />
           </div>
           <div className='title'>
@@ -169,18 +167,18 @@ function PostForm({
         <div className='form-right'>
           <Upload
             listType='picture'
-            maxCount={6}
+            maxCount={10}
             accept='image/*'
             beforeUpload={getPresignedUrl}
             customRequest={handleImageUpload}
             onRemove={handleRemoveImage}
-            disabled={imageMap.size >= 5 ? true : false}
+            disabled={imageMap.size >= 9 ? true : false}
             onPreview={() => {
               return null;
             }}
           >
             <Button icon={<UploadOutlined />} style={{ width: '100%' }}>
-              上传照片 (可选)
+              上传照片 (推荐)
             </Button>
           </Upload>
         </div>
@@ -194,7 +192,9 @@ function PostForm({
             <Input
               size='large'
               placeholder='联系电话'
-              prefix={[<img src={usFlag} alt='' className='us-flag'/>, '+1']}
+              prefix={[<img src={usFlag} alt='' className='us-flag' />, '+1']}
+              type='tel'
+              pattern='[0-9]*'
               onChange={handlePhoneNumInput}
               value={phoneNumInput}
             />
@@ -203,14 +203,14 @@ function PostForm({
             size='large'
             options={LOCATION_OPTIONS}
             onChange={onSelectLocationChange}
-            placeholder='请选择地区'
+            placeholder='选择地区'
             className='m-selection'
           />
           <Cascader
             size='large'
             options={CATEGORY_OPTIONS}
             onChange={onSelectCategoryChange}
-            placeholder='请选择类型'
+            placeholder='选择类型'
             className='m-selection'
           />
           <div className='m-title'>
@@ -237,19 +237,19 @@ function PostForm({
         <div className='m-form-images'>
           <Upload
             listType='picture'
-            maxCount={6}
+            maxCount={10}
             accept='image/*'
             beforeUpload={getPresignedUrl}
             customRequest={handleImageUpload}
             onRemove={handleRemoveImage}
-            disabled={imageMap.size >= 5 ? true : false}
+            disabled={imageMap.size >= 9 ? true : false}
             style={{ width: '100%' }}
             onPreview={() => {
               return null;
             }}
           >
             <Button icon={<UploadOutlined />} style={{ width: '100%' }}>
-              上传照片 (可选)
+              上传照片 (推荐)
             </Button>
           </Upload>
         </div>

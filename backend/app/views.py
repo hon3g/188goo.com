@@ -30,7 +30,7 @@ def get_presigned_url(request):
 
 
 # def _fake_posts(request):
-#     for _ in range(88):
+#     for _ in range(888):
 #         state = State.objects.get(name='纽约')
 #         city = City.objects.get(name=random.choice(NY))
 #         category = Category.objects.get(name=random.choice(CATEGORIES))
@@ -40,7 +40,7 @@ def get_presigned_url(request):
 
 #     for region in STATES:
 #         for state_name in STATES[region]:
-#             for _ in range(88):
+#             for _ in range(888):
 #                 print('\033[91m' + state_name + '\033[0m')
 #                 state = State.objects.get(name=state_name)
 #                 category = Category.objects.get(name=random.choice(CATEGORIES))

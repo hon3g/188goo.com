@@ -31,17 +31,10 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
   const [dim, setDim] = useState(false);
   const loadingBar = useRef(null);
 
-  const [sameTagColor, setSameTagColor] = useState(null);
-  const [isSameCategory, setIsSameCategory] = useState(false);
-
   const handleClick = (post) => (_) => {
     setCurrentPost(post);
     setPostDetailModalVisible(true);
   };
-
-  useEffect(() => {
-    setSameTagColor(TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)]);
-  }, [state, city, category]);
 
   useEffect(() => {
     const args = {
@@ -63,9 +56,6 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
     }
     if (CATEGORIES.has(category)) {
       args.category = category;
-      setIsSameCategory(true);
-    } else {
-      setIsSameCategory(false);
     }
 
     const api = `${API_GATEWAY}/api/list/?state__name=${args.state}&city__name=${args.city}&category__type=${args.type}&category__name=${args.category}&page=${args.page}`;
@@ -77,7 +67,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
       // function timeout(delay) {
       //   return new Promise((res) => setTimeout(res, delay));
       // }
-      // await timeout(5000);
+      // await timeout(500);
       setData(response.data);
       setDim(false);
       loadingBar.current.complete();
@@ -89,7 +79,13 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
 
   return (
     <div>
-      <LoadingBar color='#1890ff' ref={loadingBar} />
+      <LoadingBar
+        color='#1890ff'
+        ref={loadingBar}
+        transitionTime={300}
+        loaderSpeed={200}
+        waitingTime={300}
+      />
       <List
         pagination={{
           onChange: (page) => {
@@ -107,7 +103,10 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
         dataSource={data.results}
         renderItem={(post) => (
           <List.Item style={{ paddingLeft: '0.5rem', paddingRight: '0rem' }}>
-            <div className='square'></div>
+            <div
+              className='square'
+              style={{ backgroundColor: TAG_COLORS.get(post.category) }}
+            ></div>
             <List.Item.Meta
               title={
                 <div className='post-title-location'>
@@ -121,19 +120,9 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
                 </div>
               }
             />
-            <Tag
-              color={
-                isSameCategory
-                  ? sameTagColor
-                  : TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)]
-              }
-            >
-              {post.category}
-            </Tag>
+            <Tag color={TAG_COLORS.get(post.category)}>{post.category}</Tag>
             <Tag>{formattedDate(post.pub_date)}</Tag>
             <article className='sr-only'>
-              {post.state}
-              {post.city}
               {post.description}
               {post.contact_num}
               华人 招聘 360 168 188 美国找工 纽约招聘 纽约租房

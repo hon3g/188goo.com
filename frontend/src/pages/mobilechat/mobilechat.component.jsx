@@ -36,7 +36,12 @@ function MobileChat() {
       <div className='m-middle'>
         <div className='m-middle-nav-and-list'>
           <div className='m-back-button-div shadow'>
-            <Button type='primary' onClick={() => navigate('/')}>
+            <Button
+              type='primary'
+              ghost
+              style={{ borderColor: '#FF8718', color: '#FF8718' }}
+              onClick={() => navigate('/')}
+            >
               返回看贴
             </Button>
           </div>

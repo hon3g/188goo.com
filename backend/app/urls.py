@@ -5,6 +5,6 @@ app_name = 'app'
 
 urlpatterns = [
     path('', index),
-    path ('get_presigned_url', get_presigned_url),
+    path('get_presigned_url', get_presigned_url),
     # path('_fake_posts', _fake_posts),
 ]

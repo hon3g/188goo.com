@@ -30,17 +30,10 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
   const [dim, setDim] = useState(false);
   const loadingBar = useRef(null);
 
-  const [sameTagColor, setSameTagColor] = useState(null);
-  const [isSameCategory, setIsSameCategory] = useState(false);
-
   const handleClick = (post) => (_) => {
     setCurrentPost(post);
     setPostDetailModalVisible(true);
   };
-
-  useEffect(() => {
-    setSameTagColor(TAG_COLORS[Math.floor(Math.random() * TAG_COLORS.length)]);
-  }, [state, city, category]);
 
   useEffect(() => {
     const args = {
@@ -62,9 +55,6 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
     }
     if (CATEGORIES.has(category)) {
       args.category = category;
-      setIsSameCategory(true);
-    } else {
-      setIsSameCategory(false);
     }
 
     const api = `${API_GATEWAY}/api/list/?state__name=${args.state}&city__name=${args.city}&category__type=${args.type}&category__name=${args.category}&page=${args.page}`;
@@ -88,7 +78,13 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
 
   return (
     <div className='m-list'>
-      <LoadingBar color='#1890ff' ref={loadingBar} />
+      <LoadingBar
+        color='#1890ff'
+        ref={loadingBar}
+        transitionTime={300}
+        loaderSpeed={200}
+        waitingTime={300}
+      />
       <List
         pagination={{
           onChange: (page) => {
@@ -107,7 +103,10 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
         dataSource={data.results}
         renderItem={(post) => (
           <List.Item>
-            <div className='m-square'></div>
+            <div
+              className='m-square'
+              style={{ backgroundColor: TAG_COLORS.get(post.category) }}
+            ></div>
             <List.Item.Meta
               title={
                 <div>
@@ -123,23 +122,13 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
               description={
                 <div className='m-tags'>
                   <Tag>{formattedDate(post.pub_date)}</Tag>
-                  <Tag
-                    color={
-                      isSameCategory
-                        ? sameTagColor
-                        : TAG_COLORS[
-                            Math.floor(Math.random() * TAG_COLORS.length)
-                          ]
-                    }
-                  >
+                  <Tag color={TAG_COLORS.get(post.category)}>
                     {post.category}
                   </Tag>
                 </div>
               }
             />
             <article className='sr-only'>
-              {post.state}
-              {post.city}
               {post.description}
               {post.contact_num}
               华人 招聘 360 168 188 美国找工 纽约招聘 纽约租房

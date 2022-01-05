@@ -89,12 +89,15 @@ function ChatWindow({ currentUser, setSignInDrawerVisible, isMobile }) {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onPressEnter={sendMessage}
+          enterKeyHint='send'
           size={isMobile ? 'large' : null}
           suffix={
-            <EmojiSvg
-              className='e'
-              onClick={() => setShowPicker((pre) => !pre)}
-            />
+            !isMobile ? (
+              <EmojiSvg
+                className='e'
+                onClick={() => setShowPicker((pre) => !pre)}
+              />
+            ) : null
           }
         />
       </div>
@@ -121,8 +124,10 @@ function ChatMsg(props) {
         src={photoURL || null}
         alt='profile photo'
       />
-      <span className='chat-name'>{displayName}</span>
-      <span>{text}</span>
+      <div className='chat-right'>
+        <span className='chat-name'>{displayName}</span>
+        <span>{text}</span>
+      </div>
     </div>
   );
 }

@@ -16,15 +16,24 @@
     .chat-msg {
       margin-top: 5px;
       margin-bottom: 5px;
+      display: flex;
 
       .chat-photo {
-        background: linear-gradient(90deg, #afd2ff 0%, #ddd7ff 69%);
+        background: var(--pi-lg);
         margin: auto;
+        flex-shrink: 0;
+        margin-right: 0.5rem;
+        margin-top: 0px;
       }
 
-      .chat-name {
-        color: rgba(0, 0, 0, 0.5);
-        margin: auto 0.5rem;
+      .chat-right {
+        position: relative;
+        top: 5px;
+        flex: 1 1 auto;
+        .chat-name {
+          color: rgba(0, 0, 0, 0.5);
+          margin-right: 0.5rem;
+        }
       }
     }
   }

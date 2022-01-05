@@ -24,6 +24,8 @@ pre {
 
 :root {
   --blue: #1890ff;
+  --bg-lg: linear-gradient(90deg, #eef5ff 0%, #f6f5ff 69%);
+  --pi-lg: radial-gradient(circle farthest-side, #fcefd0, #fbba08);
 }
 
 .sr-only {

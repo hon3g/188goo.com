@@ -86,25 +86,29 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('RDS_DB_NAME'),
-        'USER': config('RDS_USERNAME'),
-        'PASSWORD': config('RDS_PASSWORD'),
-        'HOST': config('RDS_HOSTNAME'),
-        'PORT': config('RDS_PORT'),
-        "OPTIONS": {
-            "init_command": "SET innodb_strict_mode=1",
-            "charset": "utf8mb4",
-            "use_unicode": True,
-        },
+if getenv('HOST'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': config('RDS_DB_NAME'),
+            'USER': config('RDS_USERNAME'),
+            'PASSWORD': config('RDS_PASSWORD'),
+            'HOST': config('RDS_HOSTNAME'),
+            'PORT': config('RDS_PORT'),
+            "OPTIONS": {
+                "init_command": "SET innodb_strict_mode=1",
+                "charset": "utf8mb4",
+                "use_unicode": True,
+            },
+        }
     }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation

@@ -1,3 +1,7 @@
+.ant-modal {
+  color: black;
+}
+
 .ant-modal-title {
   font-weight: bolder !important;
 }

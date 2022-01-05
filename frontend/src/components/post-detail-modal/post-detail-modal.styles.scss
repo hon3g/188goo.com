@@ -3,24 +3,31 @@
   grid-template-columns: 45% 10% 45%;
   padding: 1rem 2rem;
   margin-bottom: 10rem;
-  font-weight: bold;
 
   .detail-left {
     font-size: 1rem;
     display: flex;
     flex-direction: column;
-    line-height: 2;
+    line-height: 2.2;
 
     .desc {
       display: flex;
       flex-direction: column;
-      margin-bottom: 2rem;
 
       .desc-title {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         font-weight: bold;
         color: var(--blue);
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #f0f0f0;
+        line-height: 1.5;
+      }
+
+      .desc-desc {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #f0f0f0;
       }
     }
 
@@ -30,6 +37,7 @@
 
       .num {
         font-size: 1.5rem;
+        font-weight: bold;
         color: #ff8718;
       }
     }
@@ -42,24 +50,31 @@
   padding: 1rem;
   width: 100%;
   margin-bottom: 10rem;
-  font-weight: bold;
 
   .m-detail-text {
     font-size: 17px;
     display: flex;
     flex-direction: column;
-    line-height: 2;
+    line-height: 2.2;
 
     .m-desc {
       display: flex;
       flex-direction: column;
-      margin-bottom: 2rem;
 
       .m-desc-title {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         font-weight: bolder;
         color: var(--blue);
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #f0f0f0;
+        line-height: 1.5;
+      }
+
+      .m-desc-desc {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #f0f0f0;
       }
     }
 
@@ -70,6 +85,7 @@
 
       .m-num {
         font-size: 1.5rem;
+        font-weight: bold;
         color: #ff8718;
       }
     }

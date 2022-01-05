@@ -22,7 +22,7 @@
         .account-photo {
           height: 66px;
           width: 66px;
-          background: linear-gradient(90deg, #afd2ff 0%, #ddd7ff 69%);
+          background: var(--pi-lg);
           margin: auto;
         }
       }

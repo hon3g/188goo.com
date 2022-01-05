@@ -6,6 +6,7 @@ import { setPostDetailModalVisible } from '../../redux/post-detail-modal/post-de
 import { formattedDate } from '../post-list/post-list.component';
 
 import Poster from '../../assets/poster.jpg';
+import Warning from '../../assets/warning.jpg';
 
 import './post-detail-modal.styles.scss';
 
@@ -42,7 +43,7 @@ function PostDetailModal({
             <div className='detail-left'>
               <div className='desc'>
                 <span className='desc-title'>{currentPost.title}</span>
-                <span>{currentPost.description}</span>
+                <span className='desc-desc'>{currentPost.description}</span>
               </div>
               <div className='info'>
                 <span>
@@ -68,14 +69,12 @@ function PostDetailModal({
                 currentPost.images
                   .slice()
                   .reverse()
-                  .map((imgUrl) => (
-                    <Image
-                      width={currentPost.images.length == 1 ? '100%' : '50%'}
-                      src={imgUrl}
-                    />
-                  ))
+                  .map((imgUrl) => <Image width='50%' src={imgUrl} />)
               ) : (
-                <Image width='100%' src={Poster} />
+                <div>
+                  <Image width='50%' src={Poster} />
+                  <Image width='50%' src={Warning} />
+                </div>
               )}
             </div>
           </div>
@@ -109,7 +108,7 @@ function PostDetailModal({
             <div className='m-detail-text'>
               <div className='m-desc'>
                 <span className='m-desc-title'>{currentPost.title}</span>
-                <span>{currentPost.description}</span>
+                <span className='m-desc-desc'>{currentPost.description}</span>
               </div>
               <div className='m-info'>
                 <span>
@@ -134,14 +133,12 @@ function PostDetailModal({
                 currentPost.images
                   .slice()
                   .reverse()
-                  .map((imgUrl) => (
-                    <Image
-                      width={currentPost.images.length == 1 ? '100%' : '50%'}
-                      src={imgUrl}
-                    />
-                  ))
+                  .map((imgUrl) => <Image width='50%' src={imgUrl} />)
               ) : (
-                <Image width='100%' src={Poster} />
+                <div>
+                  <Image width='50%' src={Poster} />
+                  <Image width='50%' src={Warning} />
+                </div>
               )}
             </div>
           </div>
