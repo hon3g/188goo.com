@@ -107,7 +107,7 @@ function PostFormModal({
       .post(api, data, config)
       .then((response) => {
         // Create a list of objects
-        if (images) {
+        if (images.length > 0) {
           postImageUrls(idToken, response, images);
         } else {
           setIsSubmitted(true);

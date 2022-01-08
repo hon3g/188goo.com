@@ -16,7 +16,12 @@ function SlideShow({ isMobile }) {
         </span>
       </div>
       {/* <div>
-        <span className='slide-content'>Hello World</span>
+        <span
+          className='slide-content'
+          style={!isMobile ? { height: '180px' } : { height: '130px' }}
+        >
+          hello world
+        </span>
       </div> */}
     </Carousel>
   );
