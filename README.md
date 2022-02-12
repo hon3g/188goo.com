@@ -1,6 +1,6 @@
 # [188goo.com](https://www.us-188.com/)
-Fast and user friendly job and housing site for new Chinese immigrants
-Python Django backend
-JavaScript React frontend
-AWS (EC2, RDS, S3, CloudFront, VPC, Route 53, etc.)
+Fast and user friendly job and housing site for new Chinese immigrants<br />
+Python Django backend<br />
+JavaScript React frontend<br />
+AWS (EC2, RDS, S3, CloudFront, VPC, Route 53, etc.)<br />
 Google Cloud (Authentication, Realtime NoSQL, and Storage)
