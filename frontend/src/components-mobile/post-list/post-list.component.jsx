@@ -71,7 +71,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
       setDim(false);
       loadingBar.current.complete();
       message.destroy();
-      message.success('刷新成功!', 1);
+      message.success('刷新成功!', 0.1);
     };
     fetchData();
   }, [state, city, category, searchParams, navigate]);
