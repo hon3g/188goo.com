@@ -12,10 +12,10 @@ def get_presigned_url(request):
     return HttpResponse(response)
 
 
-# Create fake data
+# Create dummy data
 
 # from .models import Post, State, City, User, Category
-# from ._states import STATES
+# from .states import STATES
 # import random
 
 
@@ -29,7 +29,7 @@ def get_presigned_url(request):
 # CONTENT = "滚滚长江东逝水，浪花淘尽英雄。是非成败转头空，青山依旧在，几度夕阳红。白发渔樵江渚上，惯看秋月春风。一壶浊酒喜相逢，古今多少事，都付笑谈中。是非成败转头空，青山依旧在，惯看秋月春风。一壶浊酒喜相逢，古今多少事，滚滚长江东逝水，浪花淘尽英雄。 几度夕阳红。白发渔樵江渚上，都付笑谈中"
 
 
-# def _fake_posts(request):
+# def dummy_posts(request):
 #     for _ in range(888):
 #         state = State.objects.get(name='纽约')
 #         city = City.objects.get(name=random.choice(NY))
@@ -48,5 +48,5 @@ def get_presigned_url(request):
 #                 p = Post(contact_num='3475557048', state=state, category=category, user=user, title=random.choice(TITLES), description=CONTENT)
 #                 p.save()
 
-#     html = "<html><body>Fake posts created!</body></html>"
+#     html = "<html><body>Dummy posts created!</body></html>"
 #     return HttpResponse(html)

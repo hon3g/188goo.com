@@ -7,7 +7,7 @@ CATEGORIES = {
 
 
 # from django.db import migrations
-# from app._category_data import CATEGORIES
+# from app.category_data import CATEGORIES
 
 
 # class Migration(migrations.Migration):

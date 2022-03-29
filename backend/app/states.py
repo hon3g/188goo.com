@@ -63,7 +63,7 @@ STATES = {
 
 
 # from django.db import migrations
-# from app._states import STATES
+# from app.states import STATES
 
 
 # class Migration(migrations.Migration):
