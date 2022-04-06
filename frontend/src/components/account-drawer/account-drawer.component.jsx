@@ -174,13 +174,13 @@ function AccountDrawer({
           </div>
         </div>
         <div className='acc-bottom'>
-          {/* <Button
+          <Button
             className='signout-button'
             size='small'
             onClick={handleSignOut}
           >
             注销账号
-          </Button> */}
+          </Button>
         </div>
       </div>
     </Drawer>
