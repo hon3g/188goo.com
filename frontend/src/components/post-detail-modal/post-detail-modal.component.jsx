@@ -108,24 +108,27 @@ function PostDetailModal({
             <div className='m-detail-text'>
               <div className='m-desc'>
                 <span className='m-desc-title'>{currentPost.title}</span>
+                <div className='m-info'>
+                  <span>
+                    电话：
+                    <a
+                      href={`tel:${currentPost.contact_num}`}
+                      className='m-num'
+                    >
+                      {currentPost.contact_num}
+                    </a>
+                  </span>
+                  <span>
+                    位置：
+                    {currentPost.state}
+                    {currentPost.city ? `/${currentPost.city}` : null}
+                  </span>
+                  <span>
+                    日期：
+                    {formattedDate(currentPost.pub_date)}
+                  </span>
+                </div>
                 <span className='m-desc-desc'>{currentPost.description}</span>
-              </div>
-              <div className='m-info'>
-                <span>
-                  电话：
-                  <a href={`tel:${currentPost.contact_num}`} className='m-num'>
-                    {currentPost.contact_num}
-                  </a>
-                </span>
-                <span>
-                  位置：
-                  {currentPost.state}
-                  {currentPost.city ? `/${currentPost.city}` : null}
-                </span>
-                <span>
-                  日期：
-                  {formattedDate(currentPost.pub_date)}
-                </span>
               </div>
             </div>
             <div className='m-detail-images'>
