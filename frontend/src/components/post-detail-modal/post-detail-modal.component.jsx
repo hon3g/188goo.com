@@ -45,6 +45,9 @@ function PostDetailModal({
                 <span className='desc-title'>{currentPost.title}</span>
                 <span className='desc-desc'>{currentPost.description}</span>
               </div>
+            </div>
+            <span />
+            <div className='detail-right'>
               <div className='info'>
                 <span>
                   电话：
@@ -62,9 +65,6 @@ function PostDetailModal({
                   {formattedDate(currentPost.pub_date)}
                 </span>
               </div>
-            </div>
-            <span />
-            <div className='detail-right'>
               {currentPost.images && currentPost.images.length !== 0 ? (
                 currentPost.images
                   .slice()

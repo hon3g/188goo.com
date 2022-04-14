@@ -24,16 +24,23 @@
         line-height: 1.5;
       }
 
-      .desc-desc {
-        margin-bottom: 1rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid #f0f0f0;
-      }
+      // .desc-desc {
+      //   margin-bottom: 1rem;
+      //   padding-bottom: 1rem;
+      //   border-bottom: 1px solid #f0f0f0;
+      // }
     }
-
+  }
+  .detail-right {
+    
     .info {
+      font-size: 1rem;
       display: flex;
       flex-direction: column;
+      line-height: 2.2;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #f0f0f0;
 
       .num {
         font-size: 1.5rem;
