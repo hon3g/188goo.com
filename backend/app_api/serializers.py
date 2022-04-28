@@ -2,6 +2,8 @@ from rest_framework import serializers
 from app.models import Post, State, City, Category, Image
 from django.contrib.auth.models import User
 
+from .banned import BANNED_WORDS
+
 
 class PostSerializer(serializers.ModelSerializer):
     user = serializers.SlugRelatedField(
@@ -20,7 +22,14 @@ class PostSerializer(serializers.ModelSerializer):
         fields = ('id', 'user', 'contact_num', 'state', 'city',
                   'category', 'title', 'slug', 'description', 'images', 'pub_date')
 
-    
+
+    def validate(self, attrs):
+        for word in BANNED_WORDS:
+            if word in attrs['title'] or word in attrs['description']:
+                raise serializers.ValidationError()
+        return attrs
+
+
     # Hide some fields in get requests for now
     def to_representation(self, obj):
         rep = super(PostSerializer, self).to_representation(obj)
