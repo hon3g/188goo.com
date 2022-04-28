@@ -34,4 +34,5 @@ staticfiles/
 # Production
 backend.zip
 
+# hidden files: .env .ebextensions
 # zip -d backend.zip __MACOSX/\*
