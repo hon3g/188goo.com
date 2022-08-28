@@ -18,11 +18,13 @@ def create_presigned_url():
     object_name = get_random_unique_object_name()
 
     try:
-        response = s3_client.generate_presigned_url('put_object',
-                                                    Params={'Bucket': 'us-188',
-                                                            'Key': object_name,
-                                                            'ContentType': 'multipart/form-data'},
-                                                    ExpiresIn=60)
+        response = s3_client.generate_presigned_url(
+            'put_object',
+            Params={'Bucket': 'us-188', 
+                    'Key': object_name, 'ContentType': 
+                    'multipart/form-data'},
+            ExpiresIn=60)
+            
     except ClientError as e:
         logging.error(e)
         return None
