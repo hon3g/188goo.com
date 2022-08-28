@@ -9,7 +9,6 @@ import {
   CATEGORIES,
 } from '../../components/post-list/constants';
 import { formattedDate } from '../../components/post-list/post-list.component';
-import LoadingBar from 'react-top-loading-bar';
 import axios from 'axios';
 
 import { connect } from 'react-redux';
@@ -26,9 +25,7 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
   const { state, city, category } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
-
   const [dim, setDim] = useState(false);
-  const loadingBar = useRef(null);
 
   const handleClick = (post) => (_) => {
     setCurrentPost(post);
@@ -59,7 +56,6 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
 
     const api = `${API_GATEWAY}/api/list/?state__name=${args.state}&city__name=${args.city}&category__type=${args.type}&category__name=${args.category}&page=${args.page}`;
     const fetchData = async () => {
-      loadingBar.current.continuousStart();
       message.destroy();
       message.loading('正在刷新...', 168);
       const response = await axios(api);
@@ -69,7 +65,6 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
       // await timeout(5000);
       setData(response.data);
       setDim(false);
-      loadingBar.current.complete();
       message.destroy();
       message.success('刷新成功!', 0.1);
     };
@@ -78,13 +73,6 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
 
   return (
     <div className='m-list'>
-      <LoadingBar
-        color='#1890ff'
-        ref={loadingBar}
-        transitionTime={300}
-        loaderSpeed={200}
-        waitingTime={300}
-      />
       <List
         pagination={{
           onChange: (page) => {

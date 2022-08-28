@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { List, Tag, message } from 'antd';
+import { List, Tag } from 'antd';
 import { useParams, useSearchParams, useNavigate } from 'react-router-dom';
 import { TAG_COLORS, STATES, CITIES, TYPES, CATEGORIES } from './constants';
 import LoadingBar from 'react-top-loading-bar';
@@ -61,8 +61,6 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
     const api = `${API_GATEWAY}/api/list/?state__name=${args.state}&city__name=${args.city}&category__type=${args.type}&category__name=${args.category}&page=${args.page}`;
     const fetchData = async () => {
       loadingBar.current.continuousStart();
-      message.destroy();
-      message.loading('正在刷新...', 168);
       const response = await axios(api);
       // function timeout(delay) {
       //   return new Promise((res) => setTimeout(res, delay));
@@ -71,8 +69,6 @@ function PostList({ setPostDetailModalVisible, setCurrentPost }) {
       setData(response.data);
       setDim(false);
       loadingBar.current.complete();
-      message.destroy();
-      message.success('刷新成功!', 0.1);
     };
     fetchData();
   }, [state, city, category, searchParams, navigate]);

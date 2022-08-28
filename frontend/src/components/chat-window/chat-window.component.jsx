@@ -32,7 +32,7 @@ function ChatWindow({ currentUser, setSignInDrawerVisible, isMobile }) {
     let q = query(
       collection(db, 'chatMessages'),
       orderBy('createdAt', 'desc'),
-      limit(20)
+      limit(50)
     );
     const unsubscribeFromCollection = onSnapshot(q, (querySnapshot) => {
       const _messages = [];
