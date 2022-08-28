@@ -4,14 +4,14 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://188goo.com">
+  <a href="https://188goo.com" target="_blank">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">A classified advertisements website with sections devoted to jobs, housing, for sale, and services for new Chinese immigrants.</h3>
 
   <p align="center">
-    <a href="https://188goo.com"><strong>Explore the website »</strong></a>
+    <a href="https://188goo.com" target="_blank"><strong>Explore the website »</strong></a>
     <br />
     <br />
     <a href="https://github.com/hon3g/188goo.com/issues">Report Bug</a>
@@ -23,7 +23,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://188goo.com)
+[![Product Name Screen Shot][product-screenshot]](https://us-188.com/纽约)
 
 There are many classified advertisements websites available in the Chinese immigrant community; however, I didn't find one that's simple, mobile friendly, and easy to use. I want to create a simple and beautiful website for job seekers and apartment renters to easily find what they are looking for as well as for advertisers to effortlessly create posts.
 
