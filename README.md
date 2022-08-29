@@ -72,7 +72,7 @@ Below is an example of how you can instruct your audience on installing and sett
    ```
 2. Install Python packages
     ```sh
-    python3 install -r requirement.txt
+    python3 -m pip install -r requirement.txt
     ```
 3. Install NPM packages
    ```sh
