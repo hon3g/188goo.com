@@ -7,11 +7,12 @@ import string
 import datetime
 
 
-s3_client = boto3.client('s3',
-                         region_name='us-east-1',
-                         aws_access_key_id=config('AWS_ACCESS_KEY_ID'),
-                         aws_secret_access_key=config('AWS_SECRET_ACCESS_KEY'),
-                         )
+s3_client = boto3.client(
+    's3',
+    region_name='us-east-1',
+    aws_access_key_id=config('AWS_ACCESS_KEY_ID'),
+    aws_secret_access_key=config('AWS_SECRET_ACCESS_KEY'),
+    )
 
 
 def create_presigned_url():
@@ -24,7 +25,7 @@ def create_presigned_url():
                     'Key': object_name, 'ContentType': 
                     'multipart/form-data'},
             ExpiresIn=60)
-            
+
     except ClientError as e:
         logging.error(e)
         return None
