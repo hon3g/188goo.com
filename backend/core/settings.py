@@ -96,7 +96,6 @@ if getenv('HOST'):
             'HOST': config('RDS_HOSTNAME'),
             'PORT': config('RDS_PORT'),
             "OPTIONS": {
-                "init_command": "SET innodb_strict_mode=1",
                 "charset": "utf8mb4",
                 "use_unicode": True,
             },
