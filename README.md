@@ -8,7 +8,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">A classified advertisements website with sections devoted to jobs, housing, for sale, and services for new Chinese immigrants.</h3>
+  <h3 align="center">Website is taken down due to AWS bills.</h3>
 
   <p align="center">
     <a href="https://188goo.com"><strong>Explore the website »</strong></a>
